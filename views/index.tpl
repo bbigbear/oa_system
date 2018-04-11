@@ -80,7 +80,7 @@
 		  </ul>
 		  <div class="layui-tab-content">
 		    <div class="layui-tab-item layui-show">内容1</div>
-		    <div class="layui-tab-item">内容2</div>
+		    <div class="layui-tab-item"><iframe src='/v1/desk' style="width:100%;height:800px;"></iframe></div>
 		  </div>
 		</div>
 	</div>
@@ -115,7 +115,7 @@
 			form.render('select');	
 		}				
 	});
-	var dic = { "公告管理": "/v1/office/announcement", "新闻管理": "/v1/office/news"};
+	var dic = {"公告管理": "/v1/office/announcement", "新闻管理": "/v1/office/news"};
 	var newarray=new Array()
 	var list =[]
 	list[0]="信息中心"

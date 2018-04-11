@@ -11,3 +11,7 @@ type MainController struct {
 func (c *MainController) Get() {
 	c.TplName = "index.tpl"
 }
+
+func (c *MainController) GetDesktop() {
+	c.TplName = "personal_desktop.tpl"
+}
