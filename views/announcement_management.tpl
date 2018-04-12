@@ -167,31 +167,28 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 	  });
   
 	$('#add').on('click',function(){
-		var data={
-			'campusName':{{.campus_name}},
-			'name':$("#name").val()
-			};
-		console.log(data)
-		$.ajax({
-			type:"POST",
-			contentType:"application/json;charset=utf-8",
-			url:"/v1/canteen/add_action",
-			data:JSON.stringify(data),
-			async:false,
-			error:function(request){
-				alert("post error")						
-			},
-			success:function(res){
-				if(res.code==200){
-					alert("新增成功")
-					window.location.reload();					
-				}else{
-					alert("新增失败")
-				}						
-			}
+		layer.open({
+			  type: 2,
+			  title: '新建公告通知',
+			  //closeBtn: 0, //不显示关闭按钮
+			  shadeClose: true,
+			  shade: false,
+			  area: ['893px', '600px'],
+			 // offset: 'rb', //右下角弹出
+			  //time: 2000, //2秒后自动关闭
+			  maxmin: true,
+			  anim: 2,
+			  content: ['/v1/office/announcement/add'], //iframe的url，no代表不显示滚动条
+			  //cancel: function(index, layero){ 
+			 // if(confirm('确定要关闭么')){ //只有当点击confirm框的确定时，该层才会关闭
+			  //  layer.close(index)
+			 // }
+			   
+			 // },
 		});
 		return false;
 	});
+	
 });
 </script>
 

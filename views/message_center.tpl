@@ -11,32 +11,13 @@
   <meta name="format-detection" content="telephone=no">
 
   <link rel="stylesheet" href="/static/css/layui.css">
-<!--  <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">-->
-  <script src="//code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<!--  <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">-->
 
 <style>
-body{padding: 40px;}
-#sortable { list-style-type: none; margin: 0; padding: 0; width: auto; }
-#sortable li { margin: 5px 20px 20px 0; padding: 1px; float: left; width: 100px; height: 90px;text-align: center; }
-ul li img { width: 60px; height: 60px; text-align: center; }
-ul li span {display:block; text-align: center; }
+body{padding: 10px;}
 </style>
 </head>
 <body>
-<ul id="sortable">
-  <li class="ui-state-default"><img src="../static/img/admin.jpg" /><span>公告管理</span></li>
-  <li class="ui-state-default"><img src="../static/img/car.png" /><span>新闻管理</span></li>
-  <li class="ui-state-default"><img src="../static/img/fill.png" /><span>我是文字</span></li>
-  <li class="ui-state-default"><img src="../static/img/car.png" /><span>我是文字</span></li>
-  <li class="ui-state-default"><img src="../static/img/car.png" /><span>新闻管理</span></li>
-  <li class="ui-state-default"><img src="../static/img/admin.jpg" /><span>公告管理</span></li>
-  <li class="ui-state-default"><img src="../static/img/fill.png" /><span>我是文字</span></li>
-  <li class="ui-state-default"><img src="../static/img/car.png" /><span>新闻管理</span></li>
-  <li class="ui-state-default"><img src="../static/img/car.png" /><span>新闻管理</span></li>
-  <li class="ui-state-default"><img src="../static/img/car.png" /><span>新闻管理</span></li>
-</ul>
+
 <script src="/static/layui.js"></script>
 <!-- <script src="../build/lay/dest/layui.all.js"></script> -->
 

@@ -17,17 +17,101 @@ body{padding: 10px;}
 </head>
 <body>
 <form class="layui-form layui-form-pane1" action="">
+ <div class="layui-form-item"> 
+  <div class="layui-inline">
+    <div class="layui-input-inline" style="width: 150px;">
+      <select name="style" id="style" lay-filter="style_select">
+		    <option value="选择公告类型" > 选择公告类型</option>
+			<option value="决定" > 决定</option>
+			<option value="通知" > 通知</option>
+			<option value="通报" > 通报</option>
+			<option value="其他" > 其他</option>
+      </select>
+    </div>
+  </div>
+  <div class="layui-inline">
+    <div class="layui-input-inline" style="width: 500px;">
+      <input type="text" name="title" id="title" autocomplete="off" placeholder="请输入公告标题..." class="layui-input">
+    </div>
+  </div>
+ </div>
   <div class="layui-form-item">
-    <label class="layui-form-label">食堂名称</label>
-    <div class="layui-input-block">
-	<input type="text" name="Name" id="name" placeholder="请输入食堂名称" autocomplete="off" class="layui-input">
+    <label class="layui-form-label">按部门发布</label>
+    <div class="layui-input-block" style="width: 500px;">
+	<input type="text" name="range" id="range" autocomplete="off" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
+    <label class="layui-form-label">发布时间</label>
+    <div class="layui-input-block" style="width: 500px;">
+	<input type="text" name="date" id="time" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-inline">
+    <label class="layui-form-label">有效期</label>
+    <div class="layui-input-inline" style="width: 120px;">
+      <input type="text" name="date" id="date1" autocomplete="off" class="layui-input">
+    </div>
+	<div class="layui-input-inline" style="width: 120px;">
+      <input type="text" name="date" id="date2" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  </div>
+ <!-- <div class="layui-form-item">
+    <div class="layui-inline">
+    <label class="layui-form-label">事务提醒</label>
+      <div class="layui-input-block">
+	      <input type="checkbox" name="like1[write]" lay-skin="primary" title="发送事务提醒信息" checked="">
+	      <input type="checkbox" name="like1[read]" lay-skin="primary" title="分享到企业社区" checked="">
+	  </div>
+    </div>
+  </div>-->
+  <div class="layui-form-item">
+    <div class="layui-inline">
+    <label class="layui-form-label">置顶</label>
+      <div class="layui-input-inline" style="width: 250px;">
+	      <input type="checkbox" name="top" lay-skin="primary" title="使公告通知置顶，显示为重要" checked="">	      
+	  </div>
+	  <div class="layui-input-inline"  style="width: 50px;">
+          <input type="text" name="date" id="day" autocomplete="off" class="layui-input" value="0">	  
+      </div>
+	  <div class="layui-form-mid layui-word-aux">天后结束置顶，0表示一直置顶</div>  
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">内容简介</label>
+    <div class="layui-input-block" style="width: 500px;">
+	<input type="text" name="Name" id="name" autocomplete="off" placeholder="最多输入30个字" class="layui-input">
+    </div>
+  </div>
+<!--  <div class="layui-form-item">
+    <div class="layui-inline">
+    <label class="layui-form-label">附件与权限</label>
+      <div class="layui-input-inline">
+		  <div style="margin-top:10px;">	    
+	        <i class="layui-icon">&#xe61d;</i><a id="dish_del">添加附件</a>	
+		  </div>     
+	  </div>
+    </div>
+  </div>-->
+  <div class="layui-form-item layui-form-text">
     <div class="layui-input-block">
-      <button class="layui-btn" id="add">确认</button>
+      <textarea placeholder="请输入内容" class="layui-textarea" name="Info" id="info"></textarea>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">关键词</label>
+    <div class="layui-input-inline" style="width: 300px;">
+	  <input type="text" name="Name" id="name" autocomplete="off" class="layui-input">
+    </div>
+	<div class="layui-form-mid layui-word-aux">(您可以调整关键词内容，多个关键词请用,分隔)</div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" id="add">发布</button>
 <!--	  <input type="hidden" id="pic_path">-->
-      <button type="reset" class="layui-btn layui-btn-primary">取消</button>
+      <button type="reset" class="layui-btn layui-btn-primary">保存</button>
     </div>
   </div>
 </form>
@@ -46,6 +130,27 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
   , $ = layui.jquery
   ,layedit=layui.layedit
   ,element=layui.element;
+
+	 laydate.render({
+	    elem: '#time'
+		,type: 'datetime'
+	  });
+	
+	 laydate.render({
+	    elem: '#date1'
+	    ,type: 'date'
+	  });
+	
+	 laydate.render({
+	    elem: '#date2'
+	    ,type: 'date'
+	  });
+	
+	//文本域
+	var index=layedit.build('info',{
+		hideTool:['image','face']
+	});
+ 
   
 	$('#add').on('click',function(){
 		var data={
@@ -65,7 +170,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 			success:function(res){
 				if(res.code==200){
 					alert("新增成功")
-					window.location.reload();					
+					window.location.reload();		
 				}else{
 					alert("新增失败")
 				}						

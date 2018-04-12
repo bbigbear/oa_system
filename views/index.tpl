@@ -66,7 +66,16 @@
             <dd><a href="javascript:;">新闻管理</a></dd>
           </dl>
 		</li>
-        <li class="layui-nav-item"><a href="">工作流</a></li>
+        <li class="layui-nav-item">
+		  <a href="javascript:;">招聘管理</a>
+		  <dl class="layui-nav-child">
+            <dd><a href="javascript:;">招聘需求</a></dd>
+			<dd><a href="javascript:;">招聘计划</a></dd>
+			<dd><a href="javascript:;">人才库</a></dd>
+			<dd><a href="javascript:;">招聘筛选</a></dd>
+			<dd><a href="javascript:;">招聘录用</a></dd>
+          </dl>
+		</li>
       </ul>
     </div>
   </div>
