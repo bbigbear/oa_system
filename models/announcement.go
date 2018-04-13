@@ -10,14 +10,14 @@ type Announcement struct {
 	Style     string
 	Range     string
 	Title     string
-	Day       time.Time
+	Day       string
 	TopStatus string
 	TopDay    int
 	Brief     string
 	Detail    string
 	KeyWord   string
-	StartTime time.Time
-	EndTime   time.Time
+	StartTime string
+	EndTime   string
 	Status    string
 }
 

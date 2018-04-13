@@ -44,7 +44,7 @@ body{padding: 10px;}
   <div class="layui-form-item">
     <label class="layui-form-label">发布时间</label>
     <div class="layui-input-block" style="width: 500px;">
-	<input type="text" name="date" id="time" autocomplete="off" class="layui-input">
+	<input type="text" name="date" id="day" autocomplete="off" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
@@ -74,7 +74,7 @@ body{padding: 10px;}
 	      <input type="checkbox" name="top" lay-skin="primary" title="使公告通知置顶，显示为重要" checked="">	      
 	  </div>
 	  <div class="layui-input-inline"  style="width: 50px;">
-          <input type="text" name="date" id="day" autocomplete="off" class="layui-input" value="0">	  
+          <input type="text" name="topday" id="topday" autocomplete="off" class="layui-input" value="0">	  
       </div>
 	  <div class="layui-form-mid layui-word-aux">天后结束置顶，0表示一直置顶</div>  
     </div>
@@ -82,7 +82,7 @@ body{padding: 10px;}
   <div class="layui-form-item">
     <label class="layui-form-label">内容简介</label>
     <div class="layui-input-block" style="width: 500px;">
-	<input type="text" name="Name" id="name" autocomplete="off" placeholder="最多输入30个字" class="layui-input">
+	<input type="text" name="brief" id="brief" autocomplete="off" placeholder="最多输入30个字" class="layui-input">
     </div>
   </div>
 <!--  <div class="layui-form-item">
@@ -97,13 +97,13 @@ body{padding: 10px;}
   </div>-->
   <div class="layui-form-item layui-form-text">
     <div class="layui-input-block">
-      <textarea placeholder="请输入内容" class="layui-textarea" name="Info" id="info"></textarea>
+      <textarea placeholder="请输入内容" class="layui-textarea" name="detail" id="detail"></textarea>
     </div>
   </div>
   <div class="layui-form-item">
     <label class="layui-form-label">关键词</label>
     <div class="layui-input-inline" style="width: 300px;">
-	  <input type="text" name="Name" id="name" autocomplete="off" class="layui-input">
+	  <input type="text" name="keyword" id="keyword" autocomplete="off" class="layui-input">
     </div>
 	<div class="layui-form-mid layui-word-aux">(您可以调整关键词内容，多个关键词请用,分隔)</div>
   </div>
@@ -111,7 +111,7 @@ body{padding: 10px;}
     <div class="layui-input-block">
       <button class="layui-btn" id="add">发布</button>
 <!--	  <input type="hidden" id="pic_path">-->
-      <button type="reset" class="layui-btn layui-btn-primary">保存</button>
+      <button class="layui-btn layui-btn-primary" id="save">保存</button>
     </div>
   </div>
 </form>
@@ -132,7 +132,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
   ,element=layui.element;
 
 	 laydate.render({
-	    elem: '#time'
+	    elem: '#day'
 		,type: 'datetime'
 	  });
 	
@@ -147,21 +147,50 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 	  });
 	
 	//文本域
-	var index=layedit.build('info',{
+	var index=layedit.build('detail',{
 		hideTool:['image','face']
 	});
+		
  
-  
+   //发布
 	$('#add').on('click',function(){
+		var style=$("#style").val()
+		var topStauts=$("input[name='top']:checked").val()
+		var topday=$("#topday").val()
+		if (topStauts=="on"){
+			topStauts="on"
+		}else{
+			topStauts="off"
+			topday=""
+		}
+		//alert($("input[name='top']:checked").val())
+		//if($("input[name={{.Type}}]:checked").val()!=undefined){
+		//	checkbox_src=checkbox_src+$("input[name={{.Type}}]:checked").val()+',';
+		//}
 		var data={
-			'campusName':{{.campus_name}},
-			'name':$("#name").val()
+			'auth':"admin",
+			'style':$("#style").val(),
+			'range':$("#range").val(),
+			'title':$("#title").val(),
+			'day':$("#day").val(),
+			'topStatus':topStauts,
+			'topDay':topday,
+			'brief':$("#brief").val(),
+			'detail':layedit.getContent(index),
+			'keyWord':$("#keyword").val(),
+			'startTime':$("#date1").val(),
+			'endTime':$("#date2").val(),
+			'status':"生效"
 			};
 		console.log(data)
-		$.ajax({
+		if (style=="选择公告类型"){
+			alert("请选择公告类型")
+		}else{
+			//发布
+			$.ajax({
 			type:"POST",
 			contentType:"application/json;charset=utf-8",
-			url:"/v1/canteen/add_action",
+			url:"/v1/office/announcement/add_action",
 			data:JSON.stringify(data),
 			async:false,
 			error:function(request){
@@ -169,13 +198,70 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 			},
 			success:function(res){
 				if(res.code==200){
-					alert("新增成功")
+					alert("发布成功")
 					window.location.reload();		
 				}else{
-					alert("新增失败")
+					alert("发布失败")
 				}						
 			}
-		});
+		  	});			
+		}			
+		return false;
+	});
+	//保存
+	$('#save').on('click',function(){
+		var style=$("#style").val()
+		var topStauts=$("input[name='top']:checked").val()
+		var topday=$("#topday").val()
+		if (topStauts=="on"){
+			topStauts="on"
+		}else{
+			topStauts="off"
+			topday=""
+		}
+		//alert($("input[name='top']:checked").val())
+		//if($("input[name={{.Type}}]:checked").val()!=undefined){
+		//	checkbox_src=checkbox_src+$("input[name={{.Type}}]:checked").val()+',';
+		//}
+		var data={
+			'auth':"admin",
+			'style':$("#name").val(),
+			'range':$("#range").val(),
+			'title':$("#title").val(),
+			'day':$("#day").val(),
+			'topStatus':topStauts,
+			'topDay':topday,
+			'brief':$("#brief").val(),
+			'detail':$("#detail").val(),
+			'keyWord':$("#keyword").val(),
+			'startTime':$("#date1").val(),
+			'endTime':$("#date2").val(),
+			'status':"草稿"
+			};
+		console.log(data)
+		if (style=="选择公告类型"){
+			alert("请选择公告类型")
+		}else{
+			//发布
+			$.ajax({
+			type:"POST",
+			contentType:"application/json;charset=utf-8",
+			url:"/v1/office/announcement/add_action",
+			data:JSON.stringify(data),
+			async:false,
+			error:function(request){
+				alert("post error")						
+			},
+			success:function(res){
+				if(res.code==200){
+					alert("保存成功")
+					window.location.reload();		
+				}else{
+					alert("保存失败")
+				}						
+			}
+		  	});			
+		}			
 		return false;
 	});
 });

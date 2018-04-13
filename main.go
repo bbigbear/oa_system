@@ -25,7 +25,7 @@ func main() {
 func DBConnection() {
 	fmt.Println("初始化数据库")
 	orm.RegisterDriver("mysql", orm.DRMySQL)
-	orm.RegisterDataBase("default", "mysql", "root:qwe!23@/oa_system?charset=utf8&loc=Local")
+	orm.RegisterDataBase("default", "mysql", "root:qwe!23@/oa_system?charset=utf8")
 }
 
 func RegisterModel() {
