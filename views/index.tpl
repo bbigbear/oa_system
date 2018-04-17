@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>OA系统</title>
 <link rel="stylesheet" href="/static/css/layui.css">
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -88,7 +89,7 @@
 		    <li lay-id="22">我的桌面</li>
 		  </ul>
 		  <div class="layui-tab-content">
-		    <div class="layui-tab-item layui-show">内容1</div>
+		    <div class="layui-tab-item layui-show"><iframe src='/v1/message_center' style="width:100%;height:800px;"></iframe></div>
 		    <div class="layui-tab-item"><iframe src='/v1/desk' style="width:100%;height:800px;"></iframe></div>
 		  </div>
 		</div>
@@ -108,6 +109,7 @@
 
 <script src="/static/layui.js"></script>
 <!--<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>-->
+
 <script>
 	//JavaScript代码区域
 	layui.use(['element','layer','jquery','table'], function(){
@@ -128,8 +130,7 @@
 	var newarray=new Array()
 	var list =[]
 	list[0]="信息中心"
-	list[1]="我的桌面"
-	
+	list[1]="我的桌面"	
 	
 	element.on('nav(test)', function(elem){
 	  //alert(dic[elem[0].textContent])
@@ -137,14 +138,19 @@
 	  console.log(elem[0].textContent);
 	  console.log(list);
 	  //console.log($.inArray(list, elem[0].textContent));
-	  var index= $.inArray(elem[0].textContent,list)
+	  ChangeTabs(elem[0].textContent)  	  	  
+	});
+	
+	//切换tabs
+	function ChangeTabs(n){
+	  var index= $.inArray(n,list)
 	  //var data=elem[0].textContent;	  
 	  if(index==-1){
 		//新增一个Tab项
-		  list.push(elem[0].textContent)
+		  list.push(n)
 	      element.tabAdd('demo', {
-	        title: elem[0].textContent //用于演示
-	        ,content: '<iframe src='+dic[elem[0].textContent]+' style="width:100%;height:800px;"></iframe>'
+	        title: n //用于演示
+	        ,content: '<iframe src='+dic[n]+' style="width:100%;height:800px;"></iframe>'
 	        ,id:list.length-1 //实际使用一般是规定好的id，这里以时间戳模拟下
 	      });
 		//切换
@@ -152,8 +158,8 @@
 	  }else{
 		//切换到tab项
 		  element.tabChange('demo', index);
-	  }	  	  	  
-	});
+	  }
+	}
 	
 	//删除
 	element.on('tabDelete(demo)', function(data){

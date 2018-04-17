@@ -12,6 +12,7 @@
 
   <link rel="stylesheet" href="/static/css/layui.css">
 
+
 <style>
 body{padding: 10px;}
 </style>
@@ -73,8 +74,7 @@ body{padding: 10px;}
 	<table id="list" lay-filter="announcement"></table>
 	<script type="text/html" id="barDemo">
 		<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit">详情</a>		
-		<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit">终止</a>
-		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">修改</a>
+		<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="stop">终止</a>
 		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 	</script>
 
@@ -91,6 +91,8 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
   ,element=layui.element
   ,table=layui.table;
 
+	
+	
 	laydate.render({
 	    elem: '#date'
 	    ,type: 'date'
@@ -104,19 +106,19 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 	  table.render({
 	    elem: '#list'
 	    ,height: 315
-	    ,url: '/v1/restaurant_dish/getdata?id={{.id}}'//数据接口
+	    ,url: '/v1/office/announcement/getdata'//数据接口
 	    ,page: true //开启分页
 		,id: 'listReload'
 	    ,cols: [[ //表头
 		  {type:'checkbox', fixed: 'left'}		  
-	      ,{field:'Name', title:'发布人', width:120}
-		  ,{field:'Price',  title:'类型', width:120}
-	      ,{field:'Detail',  title:'发布范围', width:120}
-		  ,{field:'DishType',  title:'标题', width:120}
-		  ,{field:'DishType',  title:'发布时间', width:120}
-		  ,{field:'DishType',  title:'生效时间', width:120}
-		  ,{field:'DishType',  title:'终止日期', width:120}
-		  ,{field:'DishType',  title:'发布状态', width:120}
+	      ,{field:'Auth', title:'发布人', width:120}
+		  ,{field:'Style',  title:'类型', width:120}
+	      ,{field:'Range',  title:'发布范围', width:120}
+		  ,{field:'Title',  title:'标题', width:120}
+		  ,{field:'Day',  title:'发布时间', width:120}
+		  ,{field:'StartTime',  title:'生效时间', width:120}
+		  ,{field:'EndTime',  title:'终止日期', width:120}
+		  ,{field:'Status',  title:'发布状态', width:120}
 		  ,{fixed: 'right', title:'操作',width:200, align:'center', toolbar: '#barDemo'}
 	    ]]
 	  });
@@ -128,7 +130,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 		      //layer.msg('查看操作');		
 			  layer.open({
 			  type: 2,
-			  title: '查看菜品',
+			  title: '查看公告',
 			  //closeBtn: 0, //不显示关闭按钮
 			  shadeClose: true,
 			  shade: false,
@@ -137,7 +139,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 			  //time: 2000, //2秒后自动关闭
 			  maxmin: true,
 			  anim: 2,
-			  content: ['/v1/restaurant_dish/edit?id='+data.Id+"&rid={{.id}}"], //iframe的url，no代表不显示滚动条
+			  content: ['/v1/office/announcement/edit?id='+data.Id], //iframe的url，no代表不显示滚动条
 			  cancel: function(index, layero){ 
 			  if(confirm('确定要关闭么')){ //只有当点击confirm框的确定时，该层才会关闭
 			    layer.close(index)
@@ -149,7 +151,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 	    } else if(layEvent === 'del'){
 	      layer.confirm('真的删除行么', function(index){
 	        var jsData={'id':data.Id}
-			$.post('/v1/restaurant_dish/del', jsData, function (out) {
+			$.post('/v1/office/announcement/del', jsData, function (out) {
                 if (out.code == 200) {
                     layer.alert('删除成功了', {icon: 1},function(index){
                         layer.close(index);
@@ -162,6 +164,21 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 			obj.del(); //删除对应行（tr）的DOM结构
 	        layer.close(index);
 	        //向服务端发送删除指令
+	      });
+	    } else if(layEvent === 'stop'){
+	      	layer.confirm('真的终止？', function(index){
+	        var jsData={'id':data.Id,'status':"终止"}
+			$.post('/v1/office/announcement/changestatus', jsData, function (out) {
+                if (out.code == 200) {
+                    layer.alert('修改成功了', {icon: 1},function(index){
+                        layer.close(index);
+                        table.reload({});
+                    });
+                } else {
+                    layer.msg(out.message)
+                }
+            }, "json");
+	        layer.close(index);
 	      });
 	    }
 	  });

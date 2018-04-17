@@ -17,7 +17,32 @@ body{padding: 10px;}
 </style>
 </head>
 <body>
-
+<div class="layui-container">  
+  <div class="layui-row layui-col-space30">
+    <div class="layui-col-md6">
+      <div class="layui-collapse">
+		  <div class="layui-colla-item">
+		    <h2 class="layui-colla-title">公告通知</h2>
+		    <div class="layui-colla-content layui-show">
+				<ul class="site-dir">
+				{{range .maps}}
+				  <li><a href="#default">【{{.Style}}】{{.Title}} {{.StartTime}}</a></li>			 
+				{{end}}
+				</ul>
+			</div>
+		  </div>
+	  </div>
+    </div>
+    <div class="layui-col-md4">
+      <div class="layui-collapse">
+		  <div class="layui-colla-item">
+		    <h2 class="layui-colla-title">新闻</h2>
+		    <div class="layui-colla-content layui-show">
+			</div>
+		  </div>
+	  </div>
+    </div>
+  </div>
 <script src="/static/layui.js"></script>
 <!-- <script src="../build/lay/dest/layui.all.js"></script> -->
 
@@ -32,8 +57,6 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
   ,table=layui.table;
 
 	  $(function() {
-	    $( "#sortable" ).sortable();
-	    $( "#sortable" ).disableSelection();
 	  });
 	
 	laydate.render({
