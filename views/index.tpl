@@ -90,7 +90,13 @@
 		  </ul>
 		  <div class="layui-tab-content">
 		    <div class="layui-tab-item layui-show"><iframe src='/v1/message_center' style="width:100%;height:800px;"></iframe></div>
-		    <div class="layui-tab-item"><iframe src='/v1/desk' style="width:100%;height:800px;"></iframe></div>
+<!--		    <div class="layui-tab-item"><iframe src='/v1/desk' style="width:100%;height:800px;"></iframe></div>-->
+			<div class="layui-tab-item">
+				<ul id="sortable">
+				  <li class="ui-state-default" id="announce"><img src="../static/img/admin.jpg" /><span>公告管理</span></li>
+				  <li class="ui-state-default" id="news"><img src="../static/img/car.png" /><span>新闻管理</span></li>
+				</ul>
+			</div>
 		  </div>
 		</div>
 	</div>
@@ -105,6 +111,10 @@
 		display: none;
 		disabled:true
 	}
+	#sortable { list-style-type: none; margin: 0; padding: 0; width: auto; }
+	#sortable li { margin: 5px 20px 20px 0; padding: 1px; float: left; width: 100px; height: 90px;text-align: center; }
+	ul li img { width: 60px; height: 60px; text-align: center; }
+	ul li span {display:block; text-align: center; }
 </style>
 
 <script src="/static/layui.js"></script>
@@ -126,7 +136,7 @@
 			form.render('select');	
 		}				
 	});
-	var dic = {"公告管理": "/v1/office/announcement", "新闻管理": "/v1/office/news"};
+	var dic = {"公告管理": "/v1/office/announcement", "新闻管理": "/v1/office/news","招聘需求":"/v1/recruit/require"};
 	var newarray=new Array()
 	var list =[]
 	list[0]="信息中心"
@@ -168,129 +178,13 @@
 	 // console.log(data.elem); //得到当前的Tab大容器
 	  list.splice(data.index,1);
 	});
-	//获取下拉列表
-	form.on('select(campus_select)',function(data){
-		//layer.msg(data)
-		console.log(data.value);
-		window.location.href="/v1/dining_room?campus="+data.value;
-		
-	});
 	
-	//点击新增按钮
-	$('#addroom').on('click',function(){
-		//layer.msg("点击添加按钮");
-		var cp=$("#campus").val();
-		//iframe窗
-		layer.open({
-		  type: 2,
-		  title: '新增餐厅',
-		  //closeBtn: 0, //不显示关闭按钮
-		  shadeClose: true,
-		  shade: false,
-		  area: ['893px', '600px'],
-		 // offset: 'rb', //右下角弹出
-		  //time: 2000, //2秒后自动关闭
-		  maxmin: true,
-		  anim: 2,
-		  content: ['/v1/dining_room/add?campus='+cp], //iframe的url，no代表不显示滚动条
-		  cancel: function(index, layero){ 
-		  if(confirm('确定要关闭么')){ //只有当点击confirm框的确定时，该层才会关闭
-		    layer.close(index)
-			//window.parent.location.reload();
-			//重载表格
-			table.reload('listReload', {});
-		  }
-		  return false; 
-		  },
-		});
-	});
+	$('#announce').on('click',function(){
+		ChangeTabs("公告管理")
+	  });
 	
-	  //table 渲染
-	  table.render({
-	    elem: '#roomList'
-	    ,height: 315
-	    ,url: '/v1/dining_room/getdata' //数据接口
-	    ,page: true //开启分页
-		,id: 'listReload'
-	    ,cols: [[ //表头
-		  {field: 'RoomPicPath', title: '窗口图片', width:'11%',height:'20%'
-			,templet:function(d){
-				var list=d.RoomPicPath.split(',')
-				//alert(list.length)
-				if(list.length!=1){
-					for(var i=0;i<list.length-1;i++){
-						return '<img src="'+'/'+list[i]+'">'				
-					}
-				}else{
-					return ""	
-				}						
-			}}
-	      ,{field:'Name', title:'窗口名称', width:120}
-	      ,{field:'Status',  title:'状态', width:120}
-	      ,{field:'Time', title:'供应时段', width:120}
-		  ,{fixed: 'right', title:'操作',width:200, align:'center', toolbar: '#barDemo'}
-	    ]]
-	  });		
-		//监听工具条
-		table.on('tool(room)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
-		    var data = obj.data //获得当前行数据
-		    ,layEvent = obj.event; //获得 lay-event 对应的值
-		    if(layEvent === 'edit'){
-		      //layer.msg('查看操作');		
-			  layer.open({
-			  type: 2,
-			  title: '查看菜品',
-			  //closeBtn: 0, //不显示关闭按钮
-			  shadeClose: true,
-			  shade: false,
-			  area: ['893px', '600px'],
-			 // offset: 'rb', //右下角弹出
-			  //time: 2000, //2秒后自动关闭
-			  maxmin: true,
-			  anim: 2,
-			  content: ['/v1/dining_room/edit?id='+data.Id], //iframe的url，no代表不显示滚动条
-			  cancel: function(index, layero){ 
-			  if(confirm('确定要关闭么')){ //只有当点击confirm框的确定时，该层才会关闭
-			    layer.close(index)
-			  }
-			  return false; 
-			  },
-		});
-	    } else if(layEvent === 'del'){
-	      layer.confirm('真的删除行么', function(index){
-	        var jsData={'id':data.Id}
-			$.post('/v1/dining_room/del', jsData, function (out) {
-                if (out.code == 200) {
-                    layer.alert('删除成功了', {icon: 1},function(index){
-                        layer.close(index);
-                        table.reload({});
-                    });
-                } else {
-                    layer.msg(out.message)
-                }
-            }, "json");
-			obj.del(); //删除对应行（tr）的DOM结构
-	        layer.close(index);
-	        //向服务端发送删除指令
-	      });
-	    } else if(layEvent === 'stop'){
-	      layer.confirm('真的停业么', function(index){
-	        var jsData={'id':data.Id}
-			$.post('/v1/dining_room/stop', jsData, function (out) {
-                if (out.code == 200) {
-                    layer.alert('停业成功了', {icon: 1},function(index){
-                        layer.close(index);
-                        table.reload({});
-                    });
-                } else {
-                    layer.msg(out.message)
-                }
-            }, "json");
-			//obj.del(); //删除对应行（tr）的DOM结构
-	        layer.close(index);
-	        //向服务端发送删除指令
-	      });					  
-	    }
+	$('#news').on('click',function(){
+		ChangeTabs("新闻管理")
 	  });	
 			
   });

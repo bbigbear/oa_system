@@ -20,7 +20,7 @@ body{padding: 10px;}
  <div class="layui-form-item"> 
   <div class="layui-inline">
     <div class="layui-input-inline" style="width: 150px;">
-      <select name="style" id="style" lay-filter="style_select">
+      <select name="status" id="status" lay-filter="status_select">
 		    <option value="选择公告类型" > 选择新闻类型</option>
 			  <option value="决定" > 决定</option>
 			  <option value="通知" > 通知</option>
@@ -131,6 +131,24 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
   ,layedit=layui.layedit
   ,element=layui.element;
 
+	//自动加载
+	var id
+	$(function(){
+		//获取
+		//console.log({{.m}})	
+		{{range .m}}
+			id={{.Id}}
+			$("#style").val({{.Style}})
+			$("#title").val({{.Title}})			
+			$("#range").val({{.Range}})
+			$("#day").val({{.Day}})		
+			$("#brief").val({{.Brief}})
+			$("#detail").val({{.Detail}})
+			$("#keyword").val({{.KeyWord}})
+			layedit.build('detail'); 
+		{{end}}						
+	});
+
 	 laydate.render({
 	    elem: '#day'
 		,type: 'datetime'
@@ -164,7 +182,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 			$.ajax({
 			type:"POST",
 			contentType:"application/json;charset=utf-8",
-			url:"/v1/office/news/add_action",
+			url:"/v1/office/announcement/add_action",
 			data:JSON.stringify(data),
 			async:false,
 			error:function(request){
@@ -204,7 +222,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 			$.ajax({
 			type:"POST",
 			contentType:"application/json;charset=utf-8",
-			url:"/v1/office/news/add_action",
+			url:"/v1/office/announcement/add_action",
 			data:JSON.stringify(data),
 			async:false,
 			error:function(request){

@@ -26,7 +26,7 @@ body{padding: 10px;}
 		    <div class="layui-colla-content layui-show">
 				<ul class="site-dir">
 				{{range .maps}}
-				  <li><a href="#default">【{{.Style}}】{{.Title}} {{.StartTime}}</a></li>			 
+				  <li><a href="#default">【{{.Style}}】{{.Title}} ({{.StartTime}})</a></li>			 
 				{{end}}
 				</ul>
 			</div>
@@ -38,6 +38,11 @@ body{padding: 10px;}
 		  <div class="layui-colla-item">
 		    <h2 class="layui-colla-title">新闻</h2>
 		    <div class="layui-colla-content layui-show">
+				<ul class="site-dir">
+				{{range .news_maps}}
+				  <li><a href="#default">【{{.Style}}】{{.Title}} ({{.Day}})</a></li>			 
+				{{end}}
+				</ul>
 			</div>
 		  </div>
 	  </div>

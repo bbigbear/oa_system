@@ -8,6 +8,8 @@ import (
 
 func init() {
 	beego.Router("/", &controllers.MainController{})
+	//get file
+	beego.Router("/v1/put_file", &controllers.BaseController{}, "*:PutFile")
 	beego.Router("/v1/desk", &controllers.MainController{}, "*:GetDesktop")
 	beego.Router("/v1/message_center", &controllers.MainController{}, "*:GetMessageCenter")
 	beego.Router("/v1/office/announcement", &controllers.AdminOfficeController{}, "*:GetAnnouncement")
@@ -19,5 +21,14 @@ func init() {
 	beego.Router("/v1/office/announcement/del", &controllers.AdminOfficeController{}, "post:DelAnnouncement")
 	beego.Router("/v1/office/announcement/changestatus", &controllers.AdminOfficeController{}, "post:ChangeAnnouncementStatus")
 	beego.Router("/v1/office/news", &controllers.AdminOfficeController{}, "*:GetNews")
+	beego.Router("/v1/office/news/getdata", &controllers.AdminOfficeController{}, "*:GetNewsData")
 	beego.Router("/v1/office/news/add", &controllers.AdminOfficeController{}, "*:AddNews")
+	beego.Router("/v1/office/news/add_action", &controllers.AdminOfficeController{}, "post:AddNewsAction")
+	beego.Router("/v1/office/news/edit", &controllers.AdminOfficeController{}, "*:EditNews")
+	beego.Router("/v1/office/news/edit_action", &controllers.AdminOfficeController{}, "post:EditNewsAction")
+	beego.Router("/v1/office/news/del", &controllers.AdminOfficeController{}, "post:DelNews")
+	beego.Router("/v1/office/news/changestatus", &controllers.AdminOfficeController{}, "post:ChangeNewsStatus")
+
+	beego.Router("/v1/recruit/require", &controllers.RecruitManageController{})
+	beego.Router("/v1/recruit/require/add", &controllers.RecruitManageController{}, "*:AddRecruitRequire")
 }

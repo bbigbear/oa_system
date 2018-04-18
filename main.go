@@ -30,6 +30,6 @@ func DBConnection() {
 
 func RegisterModel() {
 	fmt.Println("注册数据库模型")
-	orm.RegisterModel(new(models.Announcement))
+	orm.RegisterModel(new(models.Announcement), new(models.News))
 
 }

@@ -221,19 +221,175 @@ func (this *AdminOfficeController) AddNewsAction() {
 	fmt.Println("新建新闻通知")
 	o := orm.NewOrm()
 	list := make(map[string]interface{})
-	var announce models.Announcement
-	json.Unmarshal(this.Ctx.Input.RequestBody, &announce)
-	fmt.Println("announce_info:", &announce)
-
+	var news models.News
+	json.Unmarshal(this.Ctx.Input.RequestBody, &news)
+	fmt.Println("announce_info:", &news)
 	//插入数据库
-	num, err := o.Insert(&announce)
+	num, err := o.Insert(&news)
 	if err != nil {
-		log4go.Stdout("新增公告通知失败")
+		log4go.Stdout("新增新闻通知失败")
 		this.ajaxMsg("新增失败", MSG_ERR_Resources)
 	}
 	fmt.Println("自增Id(num)", num)
 	list["id"] = num
 	this.ajaxList("新增成功", MSG_OK, 1, list)
 	//this.ajaxMsg("新增成功", MSG_OK)
+	return
+}
+
+func (this *AdminOfficeController) EditNews() {
+
+	o := orm.NewOrm()
+	var maps []orm.Params
+	news := new(models.News)
+
+	id := this.Input().Get("id")
+	fmt.Println("id:", id)
+
+	num, err := o.QueryTable(news).Filter("Id", id).Values(&maps)
+	if err != nil {
+		log4go.Stdout("编辑新闻失败", err.Error())
+		this.ajaxMsg("编辑失败", MSG_ERR_Resources)
+	}
+	fmt.Println("edit news reslut num:", num)
+	this.Data["m"] = maps
+	fmt.Println("maps", maps)
+	this.TplName = "edit_news.tpl"
+}
+
+func (this *AdminOfficeController) EditNewsAction() {
+	fmt.Println("编辑新闻通知")
+	o := orm.NewOrm()
+	//list := make(map[string]interface{})
+	var news models.News
+	json.Unmarshal(this.Ctx.Input.RequestBody, &news)
+	fmt.Println("news_info:", &news)
+	//插入数据库
+	num, err := o.Update(&news)
+	if err != nil {
+		log4go.Stdout("更新新闻通知失败")
+		this.ajaxMsg("更新失败", MSG_ERR_Resources)
+	}
+	fmt.Println("自增Id(num)", num)
+	if num == 0 {
+		log4go.Stdout("更新新闻通知失败")
+		this.ajaxMsg("更新失败", MSG_ERR_Param)
+	}
+	//list["id"] = num
+	//this.ajaxList("更新成功", MSG_OK, 1, list)
+	this.ajaxMsg("更新成功", MSG_OK)
+	return
+}
+
+func (this *AdminOfficeController) GetNewsData() {
+	fmt.Println("获取公告通知信息")
+	o := orm.NewOrm()
+	var maps []orm.Params
+	news := new(models.News)
+	query := o.QueryTable(news)
+	filters := make([]interface{}, 0)
+	//获取id
+	id := this.Input().Get("id")
+	if id != "" {
+		filters = append(filters, "Id", id)
+	}
+	fmt.Println("get id:", id)
+
+	//获取标题名称
+	title := this.Input().Get("title")
+	if title != "" {
+		filters = append(filters, "Title", title)
+	}
+	fmt.Println("get title:", title)
+	//获取发布状态
+	status := this.Input().Get("status")
+	if status != "" {
+		filters = append(filters, "Status", status)
+	}
+	fmt.Println("get status:", status)
+	//发布日期
+	start_time := this.Input().Get("start_time")
+	if start_time != "" {
+		filters = append(filters, "StartTime", start_time)
+	}
+	fmt.Println("start_time:", start_time)
+
+	end_time := this.Input().Get("end_time")
+	if end_time != "" {
+		filters = append(filters, "EndTime", end_time)
+	}
+	fmt.Println("end_time:", end_time)
+	//类型
+	style := this.Input().Get("style")
+	if style != "" {
+		filters = append(filters, "Style", style)
+	}
+	fmt.Println("get status:", status)
+
+	if len(filters) > 0 {
+		l := len(filters)
+		for k := 0; k < l; k += 2 {
+			query = query.Filter(filters[k].(string), filters[k+1])
+		}
+	}
+	//查询数据库
+	num, err := query.Values(&maps)
+	if err != nil {
+		log4go.Stdout("获取新闻通知信息失败", err.Error())
+		this.ajaxMsg("获取新闻通知信息失败", MSG_ERR_Resources)
+	}
+	fmt.Println("get news reslut num:", num)
+	this.ajaxList("获取新闻通知信息成功", 0, num, maps)
+	return
+}
+
+func (this *AdminOfficeController) ChangeNewsStatus() {
+	fmt.Println("修改新闻发布状态")
+	//获取id
+	id, _ := this.GetInt64("id")
+	fmt.Println("get id:", id)
+
+	//获取发布状态
+	status := this.Input().Get("status")
+	fmt.Println("get status:", status)
+	o := orm.NewOrm()
+	var news models.News
+	//update status
+	news.Id = id
+	news.Status = status
+	num, err := o.Update(&news, "Status")
+	if err != nil {
+		log4go.Stdout("更新新闻通知失败")
+		this.ajaxMsg("更新失败", MSG_ERR_Resources)
+	}
+	if num == 0 {
+		log4go.Stdout("更新新闻通知失败")
+		this.ajaxMsg("更新失败", MSG_ERR_Param)
+	}
+	fmt.Println("update(num)", num)
+	//this.ajaxList("新增成功", MSG_OK, 1, list)
+	this.ajaxMsg("修改成功", MSG_OK)
+	return
+}
+
+func (this *AdminOfficeController) DelNews() {
+	fmt.Println("点击删除新闻通知按钮")
+	//获取id
+	id, err := this.GetInt("id")
+	if err != nil {
+		log4go.Stdout("删除新闻通知id失败", err.Error())
+		this.ajaxMsg("删除新闻通知id失败", MSG_ERR_Param)
+	}
+	fmt.Println("删除新闻通知id:", id)
+	o := orm.NewOrm()
+	news := new(models.News)
+	num, err := o.QueryTable(news).Filter("Id", id).Delete()
+	if err != nil {
+		log4go.Stdout("删除新闻通知失败", err.Error())
+		this.ajaxMsg("删除新闻通知失败", MSG_ERR_Resources)
+	}
+	fmt.Println("del news reslut num:", num)
+	//list["data"] = maps
+	this.ajaxMsg("删除新闻通知成功", MSG_OK)
 	return
 }

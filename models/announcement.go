@@ -1,9 +1,5 @@
 package models
 
-import (
-	"time"
-)
-
 type Announcement struct {
 	Id        int64
 	Auth      string
@@ -22,16 +18,14 @@ type Announcement struct {
 }
 
 type News struct {
-	Id        int64
-	Auth      string
-	Style     string
-	Range     string
-	Title     string
-	Day       time.Time
-	Brief     string
-	Detail    string
-	KeyWord   string
-	StartTime time.Time
-	EndTime   time.Time
-	Status    string
+	Id      int64
+	Auth    string
+	Style   string
+	Range   string
+	Title   string
+	Day     string
+	Brief   string
+	Detail  string
+	KeyWord string
+	Status  string
 }

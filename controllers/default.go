@@ -33,5 +33,14 @@ func (c *MainController) GetMessageCenter() {
 		fmt.Println("err!")
 	}
 	fmt.Println("get announce num", num)
+	//news
+	var news_maps []orm.Params
+	news := new(models.News)
+	news_num, err := o.QueryTable(news).Values(&news_maps)
+	if err != nil {
+		fmt.Println("err!")
+	}
+	fmt.Println("get news num", news_num)
+	c.Data["news_maps"] = news_maps
 	c.TplName = "message_center.tpl"
 }

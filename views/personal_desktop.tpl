@@ -49,8 +49,10 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 	  });
 	  
 	  $('#announce').on('click',function(){
-		alert("公告管理")
-		window.parent.ChangeTabs("公告管理");
+		
+		//var index = parent.layer.getFrameIndex(window.name);
+		//alert(index)
+		//top.window.parent.ChangeTabs("公告管理");
 	  });
 	
 	
