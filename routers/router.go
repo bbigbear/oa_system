@@ -12,6 +12,7 @@ func init() {
 	beego.Router("/v1/put_file", &controllers.BaseController{}, "*:PutFile")
 	beego.Router("/v1/desk", &controllers.MainController{}, "*:GetDesktop")
 	beego.Router("/v1/message_center", &controllers.MainController{}, "*:GetMessageCenter")
+
 	beego.Router("/v1/office/announcement", &controllers.AdminOfficeController{}, "*:GetAnnouncement")
 	beego.Router("/v1/office/announcement/getdata", &controllers.AdminOfficeController{}, "*:GetAnnouncementData")
 	beego.Router("/v1/office/announcement/add", &controllers.AdminOfficeController{}, "*:AddAnnouncement")
@@ -20,6 +21,7 @@ func init() {
 	beego.Router("/v1/office/announcement/edit_action", &controllers.AdminOfficeController{}, "post:EditAnnouncementAction")
 	beego.Router("/v1/office/announcement/del", &controllers.AdminOfficeController{}, "post:DelAnnouncement")
 	beego.Router("/v1/office/announcement/changestatus", &controllers.AdminOfficeController{}, "post:ChangeAnnouncementStatus")
+
 	beego.Router("/v1/office/news", &controllers.AdminOfficeController{}, "*:GetNews")
 	beego.Router("/v1/office/news/getdata", &controllers.AdminOfficeController{}, "*:GetNewsData")
 	beego.Router("/v1/office/news/add", &controllers.AdminOfficeController{}, "*:AddNews")
@@ -31,4 +33,9 @@ func init() {
 
 	beego.Router("/v1/recruit/require", &controllers.RecruitManageController{})
 	beego.Router("/v1/recruit/require/add", &controllers.RecruitManageController{}, "*:AddRecruitRequire")
+	beego.Router("/v1/recruit/require/add_action", &controllers.RecruitManageController{}, "post:AddRecruitRequireAction")
+	beego.Router("/v1/recruit/require/getdata", &controllers.RecruitManageController{}, "*:GetRecruitRequireData")
+	beego.Router("/v1/recruit/require/edit", &controllers.RecruitManageController{}, "*:EditRecruitRequire")
+	beego.Router("/v1/recruit/require/edit_action", &controllers.RecruitManageController{}, "post:EditRecruitRequireAction")
+	beego.Router("/v1/recruit/require/del", &controllers.RecruitManageController{}, "post:DelRecruitRequire")
 }

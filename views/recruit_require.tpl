@@ -23,7 +23,7 @@ body{padding: 10px;}
   <div class="layui-inline">
     <label class="layui-form-label">需求编号</label>
     <div class="layui-input-inline" style="width: 100px;">
-      <input type="text" id="name" autocomplete="off" class="layui-input">
+      <input type="text" id="number" autocomplete="off" class="layui-input">
     </div>
   </div>
   <div class="layui-inline">
@@ -80,10 +80,9 @@ body{padding: 10px;}
 
 <br><br>
 
-	<table id="list" lay-filter="announcement"></table>
+	<table id="list" lay-filter="rq"></table>
 	<script type="text/html" id="barDemo">
 		<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit">详情</a>		
-		<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="stop">终止</a>
 		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 	</script>
 
@@ -115,24 +114,21 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 	  table.render({
 	    elem: '#list'
 	    ,height: 315
-	    ,url: '/v1/office/announcement/getdata'//数据接口
+	    ,url: '/v1/recruit/require/getdata'//数据接口
 	    ,page: true //开启分页
 		,id: 'listReload'
 	    ,cols: [[ //表头
 		  {type:'checkbox', fixed: 'left'}		  
-	      ,{field:'Auth', title:'发布人', width:120}
-		  ,{field:'Style',  title:'类型', width:120}
-	      ,{field:'Range',  title:'发布范围', width:120}
-		  ,{field:'Title',  title:'标题', width:120}
-		  ,{field:'Day',  title:'发布时间', width:120}
-		  ,{field:'StartTime',  title:'生效时间', width:120}
-		  ,{field:'EndTime',  title:'终止日期', width:120}
-		  ,{field:'Status',  title:'发布状态', width:120}
+	      ,{field:'Number', title:'需求编号', width:120}
+		  ,{field:'Post',  title:'需求岗位', width:120}
+	      ,{field:'Day',  title:'用工时间', width:120}
+		  ,{field:'People',  title:'需求人数', width:120}
+		  ,{field:'Department',  title:'需求部门', width:120}
 		  ,{fixed: 'right', title:'操作',width:200, align:'center', toolbar: '#barDemo'}
 	    ]]
 	  });
 	//监听工具条
-		table.on('tool(announcement)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+		table.on('tool(rq)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
 		    var data = obj.data //获得当前行数据
 		    ,layEvent = obj.event; //获得 lay-event 对应的值
 		    if(layEvent === 'edit'){
@@ -148,19 +144,12 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 			  //time: 2000, //2秒后自动关闭
 			  maxmin: true,
 			  anim: 2,
-			  content: ['/v1/office/announcement/edit?id='+data.Id], //iframe的url，no代表不显示滚动条
-			  cancel: function(index, layero){ 
-			  if(confirm('确定要关闭么')){ //只有当点击confirm框的确定时，该层才会关闭
-			    layer.close(index)
-				window.location.reload();
-			  }
-			  return false; 
-			  },
+			  content: ['/v1/recruit/require/edit?id='+data.Id], //iframe的url，no代表不显示滚动条			  
 		});
 	    } else if(layEvent === 'del'){
 	      layer.confirm('真的删除行么', function(index){
 	        var jsData={'id':data.Id}
-			$.post('/v1/office/announcement/del', jsData, function (out) {
+			$.post('/v1/recruit/require/del', jsData, function (out) {
                 if (out.code == 200) {
                     layer.alert('删除成功了', {icon: 1},function(index){
                         layer.close(index);
@@ -173,21 +162,6 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 			obj.del(); //删除对应行（tr）的DOM结构
 	        layer.close(index);
 	        //向服务端发送删除指令
-	      });
-	    } else if(layEvent === 'stop'){
-	      	layer.confirm('真的终止？', function(index){
-	        var jsData={'id':data.Id,'status':"终止"}
-			$.post('/v1/office/announcement/changestatus', jsData, function (out) {
-                if (out.code == 200) {
-                    layer.alert('修改成功了', {icon: 1},function(index){
-                        layer.close(index);
-                        table.reload({});
-                    });
-                } else {
-                    layer.msg(out.message)
-                }
-            }, "json");
-	        layer.close(index);
 	      });
 	    }
 	  });

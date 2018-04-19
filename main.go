@@ -18,7 +18,7 @@ func init() {
 func main() {
 	orm.Debug = true
 	orm.RunSyncdb("default", false, true)
-
+	beego.SetStaticPath("/static", "static")
 	beego.Run()
 }
 
@@ -30,6 +30,6 @@ func DBConnection() {
 
 func RegisterModel() {
 	fmt.Println("注册数据库模型")
-	orm.RegisterModel(new(models.Announcement), new(models.News))
+	orm.RegisterModel(new(models.Announcement), new(models.News), new(models.RecruitRequire))
 
 }

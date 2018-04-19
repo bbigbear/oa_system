@@ -70,6 +70,24 @@ body{padding: 10px;}
   <div class="layui-form-item">
     <div class="layui-upload">
 	<div class="layui-inline">	
+    <label class="layui-form-label">已存在附件</label>
+      <div class="layui-input-inline" style="width:auto;">
+		  <div class="layui-upload-list">
+		    <table class="layui-table" lay-size="sm">
+		      <thead>
+		        <th>文件名</th>		        
+		        <th>操作</th>
+		      </thead>
+		      <tbody id="demoListed"></tbody>
+		    </table>
+		  </div>     
+	  </div>
+    </div>	
+	</div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-upload">
+	<div class="layui-inline">	
     <label class="layui-form-label">附件</label>
       <div class="layui-input-inline">
 		  <div style="margin-top:10px;">	    
@@ -139,20 +157,55 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
   ,layedit=layui.layedit
   ,element=layui.element;
 
-	 laydate.render({
-	    elem: '#day'
-		,type: 'datetime'
-	  });
+	//自动加载
+	var id
+	var list=[]
+	$(function(){
+		//获取
+		//console.log({{.m}})	
+		{{range .m}}
+			id={{.Id}}
+			$("#number").val({{.Number}})
+			$("#post").val({{.Post}})			
+			$("#date1").val({{.Day}})	
+			$("#people").val({{.People}})
+			$("#department").val({{.Department}})
+			$("#remark").val({{.Remark}})
+			$("#detail").val({{.Detail}})
+			layedit.build('detail'); 
+			list={{.Path}}.split(',')
+		{{end}}		
+		
+		if(list[0]==""){
+			list=[]
+		}
+		//alert(list[0])
+		for(var i=0;i<list.length-1;i++){
+			var tr = $(['<tr>'
+	          ,'<td>'+ list[0] +'</td>'
+	          ,'<td>'
+	            ,'<a href="/'+list[0]+'" download="file">下载</a>'
+				,'<a id="'+i+'">删除</a>'
+	          ,'</td>'
+	        ,'</tr>'].join(''));
+			//$('#demo1').append('<img src="'+"/"+list[i]+'" id="'+i+'" style="width:80px;height:80px;padding-left:10px;">')
+			$("#"+i).bind('click',function(){             
+                $(this).remove();
+				console.log("this",$(this)[0].id);
+				console.log("i",i);				
+				delete list[$(this)[0].id]
+            });
+		}
+		$('#demoListed').append(tr);
+		form.render();
+		
+	});
 	
 	 laydate.render({
 	    elem: '#date1'
 	    ,type: 'date'
 	  });
 	
-	 laydate.render({
-	    elem: '#date2'
-	    ,type: 'date'
-	  });
 	
 	//文本域
 	var index=layedit.build('detail',{

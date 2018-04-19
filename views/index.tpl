@@ -2,10 +2,17 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
 <title>OA系统</title>
 <link rel="stylesheet" href="/static/css/layui.css">
 <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -91,10 +98,11 @@
 		  <div class="layui-tab-content">
 		    <div class="layui-tab-item layui-show"><iframe src='/v1/message_center' style="width:100%;height:800px;"></iframe></div>
 <!--		    <div class="layui-tab-item"><iframe src='/v1/desk' style="width:100%;height:800px;"></iframe></div>-->
-			<div class="layui-tab-item">
+			<div class="layui-tab-item" style="padding: 40px;">
 				<ul id="sortable">
 				  <li class="ui-state-default" id="announce"><img src="../static/img/admin.jpg" /><span>公告管理</span></li>
 				  <li class="ui-state-default" id="news"><img src="../static/img/car.png" /><span>新闻管理</span></li>
+				  <li class="ui-state-default" id="recruit_require"><img src="../static/img/car.png" /><span>招聘需求</span></li>
 				</ul>
 			</div>
 		  </div>
@@ -131,10 +139,8 @@
 	  //layer.msg("你好");
 	//自动加载
 	$(function(){
-		if({{.campus}}!=""){
-			$("#campus").val({{.campus}});			
-			form.render('select');	
-		}				
+		$( "#sortable" ).sortable();
+	    $( "#sortable" ).disableSelection();			
 	});
 	var dic = {"公告管理": "/v1/office/announcement", "新闻管理": "/v1/office/news","招聘需求":"/v1/recruit/require"};
 	var newarray=new Array()
@@ -185,6 +191,9 @@
 	
 	$('#news').on('click',function(){
 		ChangeTabs("新闻管理")
+	  });
+	$('#recruit_require').on('click',function(){
+		ChangeTabs("招聘需求")
 	  });	
 			
   });

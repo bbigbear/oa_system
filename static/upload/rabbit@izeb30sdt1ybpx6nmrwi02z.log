@@ -1,0 +1,1057 @@
+
+=INFO REPORT==== 22-Mar-2018::14:42:55 ===
+Starting RabbitMQ 3.6.15 on Erlang 20.3
+Copyright (C) 2007-2018 Pivotal Software, Inc.
+Licensed under the MPL.  See http://www.rabbitmq.com/
+
+=INFO REPORT==== 22-Mar-2018::14:42:55 ===
+node           : rabbit@izeb30sdt1ybpx6nmrwi02z
+home dir       : /root
+config file(s) : /data/rabbitmq/rabbitmq_server-3.6.15/etc/rabbitmq/rabbitmq.config (not found)
+cookie hash    : WN/vzdbdkBkSAegn6TxKnA==
+log            : /data/rabbitmq/rabbitmq_server-3.6.15/var/log/rabbitmq/rabbit@izeb30sdt1ybpx6nmrwi02z.log
+sasl log       : /data/rabbitmq/rabbitmq_server-3.6.15/var/log/rabbitmq/rabbit@izeb30sdt1ybpx6nmrwi02z-sasl.log
+database dir   : /data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z
+
+=INFO REPORT==== 22-Mar-2018::14:42:58 ===
+Memory high watermark set to 1516 MiB (1590034432 bytes) of 3790 MiB (3975086080 bytes) total
+
+=INFO REPORT==== 22-Mar-2018::14:42:58 ===
+Enabling free disk space monitoring
+
+=INFO REPORT==== 22-Mar-2018::14:42:58 ===
+Disk free limit set to 50MB
+
+=INFO REPORT==== 22-Mar-2018::14:42:58 ===
+Limiting to approx 65435 file handles (58889 sockets)
+
+=INFO REPORT==== 22-Mar-2018::14:42:58 ===
+FHC read buffering:  OFF
+FHC write buffering: ON
+
+=INFO REPORT==== 22-Mar-2018::14:42:58 ===
+Database directory at /data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z is empty. Initialising from scratch...
+
+=INFO REPORT==== 22-Mar-2018::14:42:58 ===
+Waiting for Mnesia tables for 30000 ms, 9 retries left
+
+=INFO REPORT==== 22-Mar-2018::14:42:58 ===
+Waiting for Mnesia tables for 30000 ms, 9 retries left
+
+=INFO REPORT==== 22-Mar-2018::14:42:58 ===
+Waiting for Mnesia tables for 30000 ms, 9 retries left
+
+=INFO REPORT==== 22-Mar-2018::14:42:58 ===
+Priority queues enabled, real BQ is rabbit_variable_queue
+
+=INFO REPORT==== 22-Mar-2018::14:42:58 ===
+Starting rabbit_node_monitor
+
+=INFO REPORT==== 22-Mar-2018::14:42:58 ===
+Adding vhost '/'
+
+=INFO REPORT==== 22-Mar-2018::14:42:58 ===
+Creating user 'guest'
+
+=INFO REPORT==== 22-Mar-2018::14:42:58 ===
+Setting user tags for user 'guest' to [administrator]
+
+=INFO REPORT==== 22-Mar-2018::14:42:58 ===
+Setting permissions for 'guest' in '/' to '.*', '.*', '.*'
+
+=INFO REPORT==== 22-Mar-2018::14:42:58 ===
+msg_store_transient: using rabbit_msg_store_ets_index to provide index
+
+=INFO REPORT==== 22-Mar-2018::14:42:58 ===
+msg_store_persistent: using rabbit_msg_store_ets_index to provide index
+
+=WARNING REPORT==== 22-Mar-2018::14:42:58 ===
+msg_store_persistent: rebuilding indices from scratch
+
+=INFO REPORT==== 22-Mar-2018::14:42:58 ===
+started TCP Listener on [::]:5672
+
+=INFO REPORT==== 22-Mar-2018::14:42:58 ===
+Server startup complete; 0 plugins started.
+
+=INFO REPORT==== 22-Mar-2018::14:43:11 ===
+RabbitMQ is asked to stop...
+
+=INFO REPORT==== 22-Mar-2018::14:43:11 ===
+Stopping RabbitMQ applications and their dependencies in the following order:
+    rabbit
+    mnesia
+    rabbit_common
+    os_mon
+
+=INFO REPORT==== 22-Mar-2018::14:43:11 ===
+Stopping application 'rabbit'
+=INFO REPORT==== 22-Mar-2018::14:43:11 ===
+stopped TCP Listener on [::]:5672
+
+=INFO REPORT==== 22-Mar-2018::14:43:11 ===
+Stopping message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_persistent'
+=INFO REPORT==== 22-Mar-2018::14:43:11 ===
+Message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_persistent' is stopped
+=INFO REPORT==== 22-Mar-2018::14:43:11 ===
+Stopping message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_transient'
+=INFO REPORT==== 22-Mar-2018::14:43:11 ===
+Message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_transient' is stopped
+=INFO REPORT==== 22-Mar-2018::14:43:11 ===
+Stopping application 'mnesia'
+=INFO REPORT==== 22-Mar-2018::14:43:11 ===
+Stopping application 'rabbit_common'
+=INFO REPORT==== 22-Mar-2018::14:43:11 ===
+Stopping application 'os_mon'
+=INFO REPORT==== 22-Mar-2018::14:43:11 ===
+Successfully stopped RabbitMQ and its dependencies
+
+=INFO REPORT==== 22-Mar-2018::14:43:11 ===
+Halting Erlang VM with the following applications:
+    ranch
+    ssl
+    public_key
+    asn1
+    xmerl
+    recon
+    crypto
+    compiler
+    syntax_tools
+    sasl
+    stdlib
+    kernel
+
+=INFO REPORT==== 22-Mar-2018::14:45:32 ===
+Starting RabbitMQ 3.6.15 on Erlang 20.3
+Copyright (C) 2007-2018 Pivotal Software, Inc.
+Licensed under the MPL.  See http://www.rabbitmq.com/
+
+=INFO REPORT==== 22-Mar-2018::14:45:32 ===
+node           : rabbit@izeb30sdt1ybpx6nmrwi02z
+home dir       : /root
+config file(s) : /data/rabbitmq/rabbitmq_server-3.6.15/etc/rabbitmq/rabbitmq.config (not found)
+cookie hash    : WN/vzdbdkBkSAegn6TxKnA==
+log            : /data/rabbitmq/rabbitmq_server-3.6.15/var/log/rabbitmq/rabbit@izeb30sdt1ybpx6nmrwi02z.log
+sasl log       : /data/rabbitmq/rabbitmq_server-3.6.15/var/log/rabbitmq/rabbit@izeb30sdt1ybpx6nmrwi02z-sasl.log
+database dir   : /data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z
+
+=INFO REPORT==== 22-Mar-2018::14:45:34 ===
+Memory high watermark set to 1516 MiB (1590034432 bytes) of 3790 MiB (3975086080 bytes) total
+
+=INFO REPORT==== 22-Mar-2018::14:45:34 ===
+Enabling free disk space monitoring
+
+=INFO REPORT==== 22-Mar-2018::14:45:34 ===
+Disk free limit set to 50MB
+
+=INFO REPORT==== 22-Mar-2018::14:45:34 ===
+Limiting to approx 65435 file handles (58889 sockets)
+
+=INFO REPORT==== 22-Mar-2018::14:45:34 ===
+FHC read buffering:  OFF
+FHC write buffering: ON
+
+=INFO REPORT==== 22-Mar-2018::14:45:35 ===
+Waiting for Mnesia tables for 30000 ms, 9 retries left
+
+=INFO REPORT==== 22-Mar-2018::14:45:35 ===
+Waiting for Mnesia tables for 30000 ms, 9 retries left
+
+=INFO REPORT==== 22-Mar-2018::14:45:35 ===
+Priority queues enabled, real BQ is rabbit_variable_queue
+
+=INFO REPORT==== 22-Mar-2018::14:45:35 ===
+Starting rabbit_node_monitor
+
+=INFO REPORT==== 22-Mar-2018::14:45:35 ===
+Management plugin: using rates mode 'basic'
+
+=INFO REPORT==== 22-Mar-2018::14:45:35 ===
+msg_store_transient: using rabbit_msg_store_ets_index to provide index
+
+=INFO REPORT==== 22-Mar-2018::14:45:35 ===
+msg_store_persistent: using rabbit_msg_store_ets_index to provide index
+
+=INFO REPORT==== 22-Mar-2018::14:45:35 ===
+started TCP Listener on [::]:5672
+
+=INFO REPORT==== 22-Mar-2018::14:45:35 ===
+Management plugin started. Port: 15672
+
+=INFO REPORT==== 22-Mar-2018::14:45:35 ===
+Statistics database started.
+
+=INFO REPORT==== 22-Mar-2018::14:45:35 ===
+Server startup complete; 6 plugins started.
+ * rabbitmq_management
+ * amqp_client
+ * rabbitmq_management_agent
+ * rabbitmq_web_dispatch
+ * cowboy
+ * cowlib
+
+=INFO REPORT==== 22-Mar-2018::14:45:41 ===
+RabbitMQ is asked to stop...
+
+=INFO REPORT==== 22-Mar-2018::14:45:41 ===
+Stopping RabbitMQ applications and their dependencies in the following order:
+    rabbitmq_management
+    amqp_client
+    rabbitmq_web_dispatch
+    cowboy
+    cowlib
+    rabbitmq_management_agent
+    rabbit
+    mnesia
+    rabbit_common
+    os_mon
+
+=INFO REPORT==== 22-Mar-2018::14:45:41 ===
+Stopping application 'rabbitmq_management'
+=INFO REPORT==== 22-Mar-2018::14:45:41 ===
+Stopping application 'amqp_client'
+=INFO REPORT==== 22-Mar-2018::14:45:41 ===
+Stopping application 'rabbitmq_web_dispatch'
+=INFO REPORT==== 22-Mar-2018::14:45:41 ===
+Stopping application 'cowboy'
+=INFO REPORT==== 22-Mar-2018::14:45:41 ===
+Stopping application 'cowlib'
+=INFO REPORT==== 22-Mar-2018::14:45:41 ===
+Stopping application 'rabbitmq_management_agent'
+=INFO REPORT==== 22-Mar-2018::14:45:41 ===
+Stopping application 'rabbit'
+=INFO REPORT==== 22-Mar-2018::14:45:41 ===
+stopped TCP Listener on [::]:5672
+
+=INFO REPORT==== 22-Mar-2018::14:45:41 ===
+Stopping message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_persistent'
+=INFO REPORT==== 22-Mar-2018::14:45:41 ===
+Message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_persistent' is stopped
+=INFO REPORT==== 22-Mar-2018::14:45:41 ===
+Stopping message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_transient'
+=INFO REPORT==== 22-Mar-2018::14:45:41 ===
+Message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_transient' is stopped
+=INFO REPORT==== 22-Mar-2018::14:45:41 ===
+Stopping application 'mnesia'
+=INFO REPORT==== 22-Mar-2018::14:45:41 ===
+Stopping application 'rabbit_common'
+=INFO REPORT==== 22-Mar-2018::14:45:41 ===
+Stopping application 'os_mon'
+=INFO REPORT==== 22-Mar-2018::14:45:41 ===
+Successfully stopped RabbitMQ and its dependencies
+
+=INFO REPORT==== 22-Mar-2018::14:45:41 ===
+Halting Erlang VM with the following applications:
+    recon
+    ranch
+    ssl
+    public_key
+    asn1
+    xmerl
+    crypto
+    compiler
+    inets
+    syntax_tools
+    sasl
+    stdlib
+    kernel
+
+=INFO REPORT==== 22-Mar-2018::15:12:43 ===
+Starting RabbitMQ 3.6.15 on Erlang 20.3
+Copyright (C) 2007-2018 Pivotal Software, Inc.
+Licensed under the MPL.  See http://www.rabbitmq.com/
+
+=INFO REPORT==== 22-Mar-2018::15:12:43 ===
+node           : rabbit@izeb30sdt1ybpx6nmrwi02z
+home dir       : /root
+config file(s) : /data/rabbitmq/rabbitmq_server-3.6.15/etc/rabbitmq/rabbitmq.config (not found)
+cookie hash    : WN/vzdbdkBkSAegn6TxKnA==
+log            : /data/rabbitmq/rabbitmq_server-3.6.15/var/log/rabbitmq/rabbit@izeb30sdt1ybpx6nmrwi02z.log
+sasl log       : /data/rabbitmq/rabbitmq_server-3.6.15/var/log/rabbitmq/rabbit@izeb30sdt1ybpx6nmrwi02z-sasl.log
+database dir   : /data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z
+
+=INFO REPORT==== 22-Mar-2018::15:12:46 ===
+Memory high watermark set to 1516 MiB (1590034432 bytes) of 3790 MiB (3975086080 bytes) total
+
+=INFO REPORT==== 22-Mar-2018::15:12:46 ===
+Enabling free disk space monitoring
+
+=INFO REPORT==== 22-Mar-2018::15:12:46 ===
+Disk free limit set to 50MB
+
+=INFO REPORT==== 22-Mar-2018::15:12:46 ===
+Limiting to approx 65435 file handles (58889 sockets)
+
+=INFO REPORT==== 22-Mar-2018::15:12:46 ===
+FHC read buffering:  OFF
+FHC write buffering: ON
+
+=INFO REPORT==== 22-Mar-2018::15:12:46 ===
+Waiting for Mnesia tables for 30000 ms, 9 retries left
+
+=INFO REPORT==== 22-Mar-2018::15:12:46 ===
+Waiting for Mnesia tables for 30000 ms, 9 retries left
+
+=INFO REPORT==== 22-Mar-2018::15:12:46 ===
+Priority queues enabled, real BQ is rabbit_variable_queue
+
+=INFO REPORT==== 22-Mar-2018::15:12:46 ===
+Starting rabbit_node_monitor
+
+=INFO REPORT==== 22-Mar-2018::15:12:46 ===
+Management plugin: using rates mode 'basic'
+
+=INFO REPORT==== 22-Mar-2018::15:12:46 ===
+msg_store_transient: using rabbit_msg_store_ets_index to provide index
+
+=INFO REPORT==== 22-Mar-2018::15:12:46 ===
+msg_store_persistent: using rabbit_msg_store_ets_index to provide index
+
+=INFO REPORT==== 22-Mar-2018::15:12:46 ===
+started TCP Listener on [::]:5672
+
+=INFO REPORT==== 22-Mar-2018::15:12:46 ===
+Management plugin started. Port: 15672
+
+=INFO REPORT==== 22-Mar-2018::15:12:46 ===
+Statistics database started.
+
+=INFO REPORT==== 22-Mar-2018::15:12:46 ===
+Server startup complete; 8 plugins started.
+ * rabbitmq_shovel_management
+ * rabbitmq_management
+ * rabbitmq_web_dispatch
+ * cowboy
+ * rabbitmq_shovel
+ * rabbitmq_management_agent
+ * amqp_client
+ * cowlib
+
+=INFO REPORT==== 22-Mar-2018::15:17:35 ===
+RabbitMQ is asked to stop...
+
+=INFO REPORT==== 22-Mar-2018::15:17:35 ===
+Stopping RabbitMQ applications and their dependencies in the following order:
+    rabbitmq_shovel_management
+    rabbitmq_management
+    rabbitmq_shovel
+    amqp_client
+    rabbitmq_web_dispatch
+    cowboy
+    cowlib
+    rabbitmq_management_agent
+    rabbit
+    mnesia
+    rabbit_common
+    os_mon
+
+=INFO REPORT==== 22-Mar-2018::15:17:35 ===
+Stopping application 'rabbitmq_shovel_management'
+=INFO REPORT==== 22-Mar-2018::15:17:35 ===
+Stopping application 'rabbitmq_management'
+=INFO REPORT==== 22-Mar-2018::15:17:35 ===
+Stopping application 'rabbitmq_shovel'
+=INFO REPORT==== 22-Mar-2018::15:17:35 ===
+Stopping application 'amqp_client'
+=INFO REPORT==== 22-Mar-2018::15:17:35 ===
+Stopping application 'rabbitmq_web_dispatch'
+=INFO REPORT==== 22-Mar-2018::15:17:35 ===
+Stopping application 'cowboy'
+=INFO REPORT==== 22-Mar-2018::15:17:35 ===
+Stopping application 'cowlib'
+=INFO REPORT==== 22-Mar-2018::15:17:35 ===
+Stopping application 'rabbitmq_management_agent'
+=INFO REPORT==== 22-Mar-2018::15:17:35 ===
+Stopping application 'rabbit'
+=INFO REPORT==== 22-Mar-2018::15:17:35 ===
+stopped TCP Listener on [::]:5672
+
+=INFO REPORT==== 22-Mar-2018::15:17:35 ===
+Stopping message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_persistent'
+=INFO REPORT==== 22-Mar-2018::15:17:35 ===
+Message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_persistent' is stopped
+=INFO REPORT==== 22-Mar-2018::15:17:35 ===
+Stopping message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_transient'
+=INFO REPORT==== 22-Mar-2018::15:17:35 ===
+Message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_transient' is stopped
+=INFO REPORT==== 22-Mar-2018::15:17:35 ===
+Stopping application 'mnesia'
+=INFO REPORT==== 22-Mar-2018::15:17:35 ===
+Stopping application 'rabbit_common'
+=INFO REPORT==== 22-Mar-2018::15:17:35 ===
+Stopping application 'os_mon'
+=INFO REPORT==== 22-Mar-2018::15:17:35 ===
+Successfully stopped RabbitMQ and its dependencies
+
+=INFO REPORT==== 22-Mar-2018::15:17:35 ===
+Halting Erlang VM with the following applications:
+    ranch
+    ssl
+    public_key
+    asn1
+    xmerl
+    compiler
+    crypto
+    recon
+    inets
+    syntax_tools
+    sasl
+    stdlib
+    kernel
+
+=INFO REPORT==== 22-Mar-2018::15:18:15 ===
+Starting RabbitMQ 3.6.15 on Erlang 20.3
+Copyright (C) 2007-2018 Pivotal Software, Inc.
+Licensed under the MPL.  See http://www.rabbitmq.com/
+
+=INFO REPORT==== 22-Mar-2018::15:18:15 ===
+node           : rabbit@izeb30sdt1ybpx6nmrwi02z
+home dir       : /root
+config file(s) : /data/rabbitmq/rabbitmq_server-3.6.15/etc/rabbitmq/rabbitmq.config (not found)
+cookie hash    : WN/vzdbdkBkSAegn6TxKnA==
+log            : /data/rabbitmq/rabbitmq_server-3.6.15/var/log/rabbitmq/rabbit@izeb30sdt1ybpx6nmrwi02z.log
+sasl log       : /data/rabbitmq/rabbitmq_server-3.6.15/var/log/rabbitmq/rabbit@izeb30sdt1ybpx6nmrwi02z-sasl.log
+database dir   : /data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z
+
+=INFO REPORT==== 22-Mar-2018::15:18:18 ===
+Memory high watermark set to 1516 MiB (1590034432 bytes) of 3790 MiB (3975086080 bytes) total
+
+=INFO REPORT==== 22-Mar-2018::15:18:18 ===
+Enabling free disk space monitoring
+
+=INFO REPORT==== 22-Mar-2018::15:18:18 ===
+Disk free limit set to 50MB
+
+=INFO REPORT==== 22-Mar-2018::15:18:18 ===
+Limiting to approx 65435 file handles (58889 sockets)
+
+=INFO REPORT==== 22-Mar-2018::15:18:18 ===
+FHC read buffering:  OFF
+FHC write buffering: ON
+
+=INFO REPORT==== 22-Mar-2018::15:18:18 ===
+Waiting for Mnesia tables for 30000 ms, 9 retries left
+
+=INFO REPORT==== 22-Mar-2018::15:18:18 ===
+Waiting for Mnesia tables for 30000 ms, 9 retries left
+
+=INFO REPORT==== 22-Mar-2018::15:18:18 ===
+Priority queues enabled, real BQ is rabbit_variable_queue
+
+=INFO REPORT==== 22-Mar-2018::15:18:18 ===
+Starting rabbit_node_monitor
+
+=INFO REPORT==== 22-Mar-2018::15:18:18 ===
+Management plugin: using rates mode 'basic'
+
+=INFO REPORT==== 22-Mar-2018::15:18:18 ===
+msg_store_transient: using rabbit_msg_store_ets_index to provide index
+
+=INFO REPORT==== 22-Mar-2018::15:18:18 ===
+msg_store_persistent: using rabbit_msg_store_ets_index to provide index
+
+=INFO REPORT==== 22-Mar-2018::15:18:18 ===
+started TCP Listener on [::]:5672
+
+=INFO REPORT==== 22-Mar-2018::15:18:18 ===
+Management plugin started. Port: 15672
+
+=INFO REPORT==== 22-Mar-2018::15:18:18 ===
+Statistics database started.
+
+=INFO REPORT==== 22-Mar-2018::15:18:18 ===
+Server startup complete; 8 plugins started.
+ * rabbitmq_shovel_management
+ * rabbitmq_management
+ * rabbitmq_web_dispatch
+ * cowboy
+ * rabbitmq_shovel
+ * rabbitmq_management_agent
+ * amqp_client
+ * cowlib
+
+=INFO REPORT==== 22-Mar-2018::15:25:37 ===
+RabbitMQ is asked to stop...
+
+=INFO REPORT==== 22-Mar-2018::15:25:37 ===
+Stopping RabbitMQ applications and their dependencies in the following order:
+    rabbitmq_shovel_management
+    rabbitmq_management
+    rabbitmq_shovel
+    amqp_client
+    rabbitmq_web_dispatch
+    cowboy
+    cowlib
+    rabbitmq_management_agent
+    rabbit
+    mnesia
+    rabbit_common
+    os_mon
+
+=INFO REPORT==== 22-Mar-2018::15:25:37 ===
+Stopping application 'rabbitmq_shovel_management'
+=INFO REPORT==== 22-Mar-2018::15:25:37 ===
+Stopping application 'rabbitmq_management'
+=INFO REPORT==== 22-Mar-2018::15:25:37 ===
+Stopping application 'rabbitmq_shovel'
+=INFO REPORT==== 22-Mar-2018::15:25:37 ===
+Stopping application 'amqp_client'
+=INFO REPORT==== 22-Mar-2018::15:25:37 ===
+Stopping application 'rabbitmq_web_dispatch'
+=INFO REPORT==== 22-Mar-2018::15:25:37 ===
+Stopping application 'cowboy'
+=INFO REPORT==== 22-Mar-2018::15:25:37 ===
+Stopping application 'cowlib'
+=INFO REPORT==== 22-Mar-2018::15:25:37 ===
+Stopping application 'rabbitmq_management_agent'
+=INFO REPORT==== 22-Mar-2018::15:25:37 ===
+Stopping application 'rabbit'
+=INFO REPORT==== 22-Mar-2018::15:25:37 ===
+stopped TCP Listener on [::]:5672
+
+=INFO REPORT==== 22-Mar-2018::15:25:37 ===
+Stopping message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_persistent'
+=INFO REPORT==== 22-Mar-2018::15:25:37 ===
+Message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_persistent' is stopped
+=INFO REPORT==== 22-Mar-2018::15:25:37 ===
+Stopping message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_transient'
+=INFO REPORT==== 22-Mar-2018::15:25:37 ===
+Message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_transient' is stopped
+=INFO REPORT==== 22-Mar-2018::15:25:37 ===
+Stopping application 'mnesia'
+=INFO REPORT==== 22-Mar-2018::15:25:37 ===
+Stopping application 'rabbit_common'
+=INFO REPORT==== 22-Mar-2018::15:25:37 ===
+Stopping application 'os_mon'
+=INFO REPORT==== 22-Mar-2018::15:25:37 ===
+Successfully stopped RabbitMQ and its dependencies
+
+=INFO REPORT==== 22-Mar-2018::15:25:37 ===
+Halting Erlang VM with the following applications:
+    ranch
+    ssl
+    public_key
+    asn1
+    xmerl
+    crypto
+    recon
+    compiler
+    inets
+    syntax_tools
+    sasl
+    stdlib
+    kernel
+
+=INFO REPORT==== 23-Mar-2018::09:54:08 ===
+Starting RabbitMQ 3.6.15 on Erlang 20.3
+Copyright (C) 2007-2018 Pivotal Software, Inc.
+Licensed under the MPL.  See http://www.rabbitmq.com/
+
+=INFO REPORT==== 23-Mar-2018::09:54:08 ===
+node           : rabbit@izeb30sdt1ybpx6nmrwi02z
+home dir       : /root
+config file(s) : /data/rabbitmq/rabbitmq_server-3.6.15/etc/rabbitmq/rabbitmq.config (not found)
+cookie hash    : WN/vzdbdkBkSAegn6TxKnA==
+log            : /data/rabbitmq/rabbitmq_server-3.6.15/var/log/rabbitmq/rabbit@izeb30sdt1ybpx6nmrwi02z.log
+sasl log       : /data/rabbitmq/rabbitmq_server-3.6.15/var/log/rabbitmq/rabbit@izeb30sdt1ybpx6nmrwi02z-sasl.log
+database dir   : /data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z
+
+=INFO REPORT==== 23-Mar-2018::09:54:10 ===
+Memory high watermark set to 1516 MiB (1590034432 bytes) of 3790 MiB (3975086080 bytes) total
+
+=INFO REPORT==== 23-Mar-2018::09:54:10 ===
+Enabling free disk space monitoring
+
+=INFO REPORT==== 23-Mar-2018::09:54:10 ===
+Disk free limit set to 50MB
+
+=INFO REPORT==== 23-Mar-2018::09:54:10 ===
+Limiting to approx 65435 file handles (58889 sockets)
+
+=INFO REPORT==== 23-Mar-2018::09:54:10 ===
+FHC read buffering:  OFF
+FHC write buffering: ON
+
+=INFO REPORT==== 23-Mar-2018::09:54:10 ===
+Waiting for Mnesia tables for 30000 ms, 9 retries left
+
+=INFO REPORT==== 23-Mar-2018::09:54:10 ===
+Waiting for Mnesia tables for 30000 ms, 9 retries left
+
+=INFO REPORT==== 23-Mar-2018::09:54:10 ===
+Priority queues enabled, real BQ is rabbit_variable_queue
+
+=INFO REPORT==== 23-Mar-2018::09:54:10 ===
+Starting rabbit_node_monitor
+
+=INFO REPORT==== 23-Mar-2018::09:54:10 ===
+Management plugin: using rates mode 'basic'
+
+=INFO REPORT==== 23-Mar-2018::09:54:10 ===
+msg_store_transient: using rabbit_msg_store_ets_index to provide index
+
+=INFO REPORT==== 23-Mar-2018::09:54:10 ===
+msg_store_persistent: using rabbit_msg_store_ets_index to provide index
+
+=INFO REPORT==== 23-Mar-2018::09:54:10 ===
+started TCP Listener on [::]:5672
+
+=INFO REPORT==== 23-Mar-2018::09:54:10 ===
+Management plugin started. Port: 15672
+
+=INFO REPORT==== 23-Mar-2018::09:54:10 ===
+Statistics database started.
+
+=INFO REPORT==== 23-Mar-2018::09:54:11 ===
+Server startup complete; 8 plugins started.
+ * rabbitmq_shovel_management
+ * rabbitmq_management
+ * rabbitmq_web_dispatch
+ * cowboy
+ * rabbitmq_shovel
+ * rabbitmq_management_agent
+ * amqp_client
+ * cowlib
+
+=INFO REPORT==== 23-Mar-2018::09:56:27 ===
+RabbitMQ is asked to stop...
+
+=INFO REPORT==== 23-Mar-2018::09:56:27 ===
+Stopping RabbitMQ applications and their dependencies in the following order:
+    rabbitmq_shovel_management
+    rabbitmq_management
+    rabbitmq_shovel
+    amqp_client
+    rabbitmq_web_dispatch
+    cowboy
+    cowlib
+    rabbitmq_management_agent
+    rabbit
+    mnesia
+    rabbit_common
+    os_mon
+
+=INFO REPORT==== 23-Mar-2018::09:56:27 ===
+Stopping application 'rabbitmq_shovel_management'
+=INFO REPORT==== 23-Mar-2018::09:56:27 ===
+Stopping application 'rabbitmq_management'
+=INFO REPORT==== 23-Mar-2018::09:56:27 ===
+Stopping application 'rabbitmq_shovel'
+=INFO REPORT==== 23-Mar-2018::09:56:27 ===
+Stopping application 'amqp_client'
+=INFO REPORT==== 23-Mar-2018::09:56:27 ===
+Stopping application 'rabbitmq_web_dispatch'
+=INFO REPORT==== 23-Mar-2018::09:56:27 ===
+Stopping application 'cowboy'
+=INFO REPORT==== 23-Mar-2018::09:56:27 ===
+Stopping application 'cowlib'
+=INFO REPORT==== 23-Mar-2018::09:56:27 ===
+Stopping application 'rabbitmq_management_agent'
+=INFO REPORT==== 23-Mar-2018::09:56:27 ===
+Stopping application 'rabbit'
+=INFO REPORT==== 23-Mar-2018::09:56:27 ===
+stopped TCP Listener on [::]:5672
+
+=INFO REPORT==== 23-Mar-2018::09:56:27 ===
+Stopping message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_persistent'
+=INFO REPORT==== 23-Mar-2018::09:56:27 ===
+Message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_persistent' is stopped
+=INFO REPORT==== 23-Mar-2018::09:56:27 ===
+Stopping message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_transient'
+=INFO REPORT==== 23-Mar-2018::09:56:27 ===
+Message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_transient' is stopped
+=INFO REPORT==== 23-Mar-2018::09:56:27 ===
+Stopping application 'mnesia'
+=INFO REPORT==== 23-Mar-2018::09:56:27 ===
+Stopping application 'rabbit_common'
+=INFO REPORT==== 23-Mar-2018::09:56:27 ===
+Stopping application 'os_mon'
+=INFO REPORT==== 23-Mar-2018::09:56:27 ===
+Successfully stopped RabbitMQ and its dependencies
+
+=INFO REPORT==== 23-Mar-2018::09:56:27 ===
+Halting Erlang VM with the following applications:
+    ranch
+    ssl
+    public_key
+    asn1
+    xmerl
+    compiler
+    crypto
+    recon
+    inets
+    syntax_tools
+    sasl
+    stdlib
+    kernel
+
+=INFO REPORT==== 23-Mar-2018::10:08:02 ===
+Starting RabbitMQ 3.6.15 on Erlang 20.3
+Copyright (C) 2007-2018 Pivotal Software, Inc.
+Licensed under the MPL.  See http://www.rabbitmq.com/
+
+=INFO REPORT==== 23-Mar-2018::10:08:02 ===
+node           : rabbit@izeb30sdt1ybpx6nmrwi02z
+home dir       : /root
+config file(s) : /data/rabbitmq/rabbitmq_server-3.6.15/etc/rabbitmq/rabbitmq.config (not found)
+cookie hash    : WN/vzdbdkBkSAegn6TxKnA==
+log            : /data/rabbitmq/rabbitmq_server-3.6.15/var/log/rabbitmq/rabbit@izeb30sdt1ybpx6nmrwi02z.log
+sasl log       : /data/rabbitmq/rabbitmq_server-3.6.15/var/log/rabbitmq/rabbit@izeb30sdt1ybpx6nmrwi02z-sasl.log
+database dir   : /data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z
+
+=INFO REPORT==== 23-Mar-2018::10:08:04 ===
+Memory high watermark set to 1516 MiB (1590034432 bytes) of 3790 MiB (3975086080 bytes) total
+
+=INFO REPORT==== 23-Mar-2018::10:08:04 ===
+Enabling free disk space monitoring
+
+=INFO REPORT==== 23-Mar-2018::10:08:04 ===
+Disk free limit set to 50MB
+
+=INFO REPORT==== 23-Mar-2018::10:08:04 ===
+Limiting to approx 65435 file handles (58889 sockets)
+
+=INFO REPORT==== 23-Mar-2018::10:08:04 ===
+FHC read buffering:  OFF
+FHC write buffering: ON
+
+=INFO REPORT==== 23-Mar-2018::10:08:04 ===
+Waiting for Mnesia tables for 30000 ms, 9 retries left
+
+=INFO REPORT==== 23-Mar-2018::10:08:04 ===
+Waiting for Mnesia tables for 30000 ms, 9 retries left
+
+=INFO REPORT==== 23-Mar-2018::10:08:04 ===
+Priority queues enabled, real BQ is rabbit_variable_queue
+
+=INFO REPORT==== 23-Mar-2018::10:08:04 ===
+Starting rabbit_node_monitor
+
+=INFO REPORT==== 23-Mar-2018::10:08:04 ===
+Management plugin: using rates mode 'basic'
+
+=INFO REPORT==== 23-Mar-2018::10:08:04 ===
+msg_store_transient: using rabbit_msg_store_ets_index to provide index
+
+=INFO REPORT==== 23-Mar-2018::10:08:04 ===
+msg_store_persistent: using rabbit_msg_store_ets_index to provide index
+
+=INFO REPORT==== 23-Mar-2018::10:08:04 ===
+started TCP Listener on [::]:5672
+
+=INFO REPORT==== 23-Mar-2018::10:08:04 ===
+Management plugin started. Port: 15672
+
+=INFO REPORT==== 23-Mar-2018::10:08:04 ===
+Statistics database started.
+
+=INFO REPORT==== 23-Mar-2018::10:08:04 ===
+Server startup complete; 8 plugins started.
+ * rabbitmq_shovel_management
+ * rabbitmq_management
+ * rabbitmq_web_dispatch
+ * cowboy
+ * rabbitmq_shovel
+ * rabbitmq_management_agent
+ * amqp_client
+ * cowlib
+
+=INFO REPORT==== 23-Mar-2018::10:29:18 ===
+SIGTERM received - shutting down
+
+=INFO REPORT==== 23-Mar-2018::10:29:18 ===
+stopped TCP Listener on [::]:5672
+
+=INFO REPORT==== 23-Mar-2018::10:29:18 ===
+Stopping message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_persistent'
+=INFO REPORT==== 23-Mar-2018::10:29:18 ===
+Message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_persistent' is stopped
+=INFO REPORT==== 23-Mar-2018::10:29:18 ===
+Stopping message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_transient'
+=INFO REPORT==== 23-Mar-2018::10:29:18 ===
+Message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_transient' is stopped
+=INFO REPORT==== 23-Mar-2018::10:31:35 ===
+Starting RabbitMQ 3.6.15 on Erlang 20.3
+Copyright (C) 2007-2018 Pivotal Software, Inc.
+Licensed under the MPL.  See http://www.rabbitmq.com/
+
+=INFO REPORT==== 23-Mar-2018::10:31:35 ===
+node           : rabbit@izeb30sdt1ybpx6nmrwi02z
+home dir       : /root
+config file(s) : /data/rabbitmq/rabbitmq_server-3.6.15/etc/rabbitmq/rabbitmq.config (not found)
+cookie hash    : WN/vzdbdkBkSAegn6TxKnA==
+log            : /data/rabbitmq/rabbitmq_server-3.6.15/var/log/rabbitmq/rabbit@izeb30sdt1ybpx6nmrwi02z.log
+sasl log       : /data/rabbitmq/rabbitmq_server-3.6.15/var/log/rabbitmq/rabbit@izeb30sdt1ybpx6nmrwi02z-sasl.log
+database dir   : /data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z
+
+=INFO REPORT==== 23-Mar-2018::10:31:38 ===
+Memory high watermark set to 1516 MiB (1590034432 bytes) of 3790 MiB (3975086080 bytes) total
+
+=INFO REPORT==== 23-Mar-2018::10:31:38 ===
+Enabling free disk space monitoring
+
+=INFO REPORT==== 23-Mar-2018::10:31:38 ===
+Disk free limit set to 50MB
+
+=INFO REPORT==== 23-Mar-2018::10:31:38 ===
+Limiting to approx 65435 file handles (58889 sockets)
+
+=INFO REPORT==== 23-Mar-2018::10:31:38 ===
+FHC read buffering:  OFF
+FHC write buffering: ON
+
+=INFO REPORT==== 23-Mar-2018::10:31:38 ===
+Waiting for Mnesia tables for 30000 ms, 9 retries left
+
+=INFO REPORT==== 23-Mar-2018::10:31:38 ===
+Waiting for Mnesia tables for 30000 ms, 9 retries left
+
+=INFO REPORT==== 23-Mar-2018::10:31:38 ===
+Priority queues enabled, real BQ is rabbit_variable_queue
+
+=INFO REPORT==== 23-Mar-2018::10:31:38 ===
+Starting rabbit_node_monitor
+
+=INFO REPORT==== 23-Mar-2018::10:31:38 ===
+Management plugin: using rates mode 'basic'
+
+=INFO REPORT==== 23-Mar-2018::10:31:38 ===
+msg_store_transient: using rabbit_msg_store_ets_index to provide index
+
+=INFO REPORT==== 23-Mar-2018::10:31:38 ===
+msg_store_persistent: using rabbit_msg_store_ets_index to provide index
+
+=INFO REPORT==== 23-Mar-2018::10:31:38 ===
+started TCP Listener on [::]:5672
+
+=INFO REPORT==== 23-Mar-2018::10:31:38 ===
+Management plugin started. Port: 15672
+
+=INFO REPORT==== 23-Mar-2018::10:31:38 ===
+Statistics database started.
+
+=INFO REPORT==== 23-Mar-2018::10:31:38 ===
+Server startup complete; 8 plugins started.
+ * rabbitmq_shovel_management
+ * rabbitmq_management
+ * rabbitmq_web_dispatch
+ * cowboy
+ * rabbitmq_shovel
+ * rabbitmq_management_agent
+ * amqp_client
+ * cowlib
+
+=INFO REPORT==== 23-Mar-2018::10:32:37 ===
+RabbitMQ is asked to stop...
+
+=INFO REPORT==== 23-Mar-2018::10:32:37 ===
+Stopping RabbitMQ applications and their dependencies in the following order:
+    rabbitmq_shovel_management
+    rabbitmq_management
+    rabbitmq_shovel
+    amqp_client
+    rabbitmq_web_dispatch
+    cowboy
+    cowlib
+    rabbitmq_management_agent
+    rabbit
+    mnesia
+    rabbit_common
+    os_mon
+
+=INFO REPORT==== 23-Mar-2018::10:32:37 ===
+Stopping application 'rabbitmq_shovel_management'
+=INFO REPORT==== 23-Mar-2018::10:32:37 ===
+Stopping application 'rabbitmq_management'
+=INFO REPORT==== 23-Mar-2018::10:32:37 ===
+Stopping application 'rabbitmq_shovel'
+=INFO REPORT==== 23-Mar-2018::10:32:37 ===
+Stopping application 'amqp_client'
+=INFO REPORT==== 23-Mar-2018::10:32:37 ===
+Stopping application 'rabbitmq_web_dispatch'
+=INFO REPORT==== 23-Mar-2018::10:32:37 ===
+Stopping application 'cowboy'
+=INFO REPORT==== 23-Mar-2018::10:32:37 ===
+Stopping application 'cowlib'
+=INFO REPORT==== 23-Mar-2018::10:32:37 ===
+Stopping application 'rabbitmq_management_agent'
+=INFO REPORT==== 23-Mar-2018::10:32:37 ===
+Stopping application 'rabbit'
+=INFO REPORT==== 23-Mar-2018::10:32:37 ===
+stopped TCP Listener on [::]:5672
+
+=INFO REPORT==== 23-Mar-2018::10:32:37 ===
+Stopping message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_persistent'
+=INFO REPORT==== 23-Mar-2018::10:32:37 ===
+Message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_persistent' is stopped
+=INFO REPORT==== 23-Mar-2018::10:32:37 ===
+Stopping message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_transient'
+=INFO REPORT==== 23-Mar-2018::10:32:37 ===
+Message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_transient' is stopped
+=INFO REPORT==== 23-Mar-2018::10:32:37 ===
+Stopping application 'mnesia'
+=INFO REPORT==== 23-Mar-2018::10:32:37 ===
+Stopping application 'rabbit_common'
+=INFO REPORT==== 23-Mar-2018::10:32:37 ===
+Stopping application 'os_mon'
+=INFO REPORT==== 23-Mar-2018::10:32:37 ===
+Successfully stopped RabbitMQ and its dependencies
+
+=INFO REPORT==== 23-Mar-2018::10:32:37 ===
+Halting Erlang VM with the following applications:
+    ranch
+    ssl
+    public_key
+    asn1
+    xmerl
+    crypto
+    compiler
+    recon
+    inets
+    syntax_tools
+    sasl
+    stdlib
+    kernel
+
+=INFO REPORT==== 23-Mar-2018::10:39:29 ===
+Starting RabbitMQ 3.6.15 on Erlang 20.3
+Copyright (C) 2007-2018 Pivotal Software, Inc.
+Licensed under the MPL.  See http://www.rabbitmq.com/
+
+=INFO REPORT==== 23-Mar-2018::10:39:29 ===
+node           : rabbit@izeb30sdt1ybpx6nmrwi02z
+home dir       : /root
+config file(s) : /data/rabbitmq/rabbitmq_server-3.6.15/etc/rabbitmq/rabbitmq.config (not found)
+cookie hash    : WN/vzdbdkBkSAegn6TxKnA==
+log            : /data/rabbitmq/rabbitmq_server-3.6.15/var/log/rabbitmq/rabbit@izeb30sdt1ybpx6nmrwi02z.log
+sasl log       : /data/rabbitmq/rabbitmq_server-3.6.15/var/log/rabbitmq/rabbit@izeb30sdt1ybpx6nmrwi02z-sasl.log
+database dir   : /data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z
+
+=INFO REPORT==== 23-Mar-2018::10:39:32 ===
+Memory high watermark set to 1516 MiB (1590034432 bytes) of 3790 MiB (3975086080 bytes) total
+
+=INFO REPORT==== 23-Mar-2018::10:39:32 ===
+Enabling free disk space monitoring
+
+=INFO REPORT==== 23-Mar-2018::10:39:32 ===
+Disk free limit set to 50MB
+
+=INFO REPORT==== 23-Mar-2018::10:39:32 ===
+Limiting to approx 65435 file handles (58889 sockets)
+
+=INFO REPORT==== 23-Mar-2018::10:39:32 ===
+FHC read buffering:  OFF
+FHC write buffering: ON
+
+=INFO REPORT==== 23-Mar-2018::10:39:32 ===
+Waiting for Mnesia tables for 30000 ms, 9 retries left
+
+=INFO REPORT==== 23-Mar-2018::10:39:32 ===
+Waiting for Mnesia tables for 30000 ms, 9 retries left
+
+=INFO REPORT==== 23-Mar-2018::10:39:32 ===
+Priority queues enabled, real BQ is rabbit_variable_queue
+
+=INFO REPORT==== 23-Mar-2018::10:39:32 ===
+Starting rabbit_node_monitor
+
+=INFO REPORT==== 23-Mar-2018::10:39:32 ===
+Management plugin: using rates mode 'basic'
+
+=INFO REPORT==== 23-Mar-2018::10:39:32 ===
+msg_store_transient: using rabbit_msg_store_ets_index to provide index
+
+=INFO REPORT==== 23-Mar-2018::10:39:32 ===
+msg_store_persistent: using rabbit_msg_store_ets_index to provide index
+
+=INFO REPORT==== 23-Mar-2018::10:39:32 ===
+started TCP Listener on [::]:5672
+
+=INFO REPORT==== 23-Mar-2018::10:39:32 ===
+Management plugin started. Port: 15672
+
+=INFO REPORT==== 23-Mar-2018::10:39:32 ===
+Statistics database started.
+
+=INFO REPORT==== 23-Mar-2018::10:39:32 ===
+Server startup complete; 8 plugins started.
+ * rabbitmq_shovel_management
+ * rabbitmq_management
+ * rabbitmq_web_dispatch
+ * cowboy
+ * rabbitmq_shovel
+ * rabbitmq_management_agent
+ * amqp_client
+ * cowlib
+
+=INFO REPORT==== 23-Mar-2018::10:40:54 ===
+RabbitMQ is asked to stop...
+
+=INFO REPORT==== 23-Mar-2018::10:40:54 ===
+Stopping RabbitMQ applications and their dependencies in the following order:
+    rabbitmq_shovel_management
+    rabbitmq_management
+    rabbitmq_shovel
+    amqp_client
+    rabbitmq_web_dispatch
+    cowboy
+    cowlib
+    rabbitmq_management_agent
+    rabbit
+    mnesia
+    rabbit_common
+    os_mon
+
+=INFO REPORT==== 23-Mar-2018::10:40:54 ===
+Stopping application 'rabbitmq_shovel_management'
+=INFO REPORT==== 23-Mar-2018::10:40:54 ===
+Stopping application 'rabbitmq_management'
+=INFO REPORT==== 23-Mar-2018::10:40:54 ===
+Stopping application 'rabbitmq_shovel'
+=INFO REPORT==== 23-Mar-2018::10:40:54 ===
+Stopping application 'amqp_client'
+=INFO REPORT==== 23-Mar-2018::10:40:54 ===
+Stopping application 'rabbitmq_web_dispatch'
+=INFO REPORT==== 23-Mar-2018::10:40:54 ===
+Stopping application 'cowboy'
+=INFO REPORT==== 23-Mar-2018::10:40:54 ===
+Stopping application 'cowlib'
+=INFO REPORT==== 23-Mar-2018::10:40:54 ===
+Stopping application 'rabbitmq_management_agent'
+=INFO REPORT==== 23-Mar-2018::10:40:54 ===
+Stopping application 'rabbit'
+=INFO REPORT==== 23-Mar-2018::10:40:54 ===
+stopped TCP Listener on [::]:5672
+
+=INFO REPORT==== 23-Mar-2018::10:40:54 ===
+Stopping message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_persistent'
+=INFO REPORT==== 23-Mar-2018::10:40:54 ===
+Message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_persistent' is stopped
+=INFO REPORT==== 23-Mar-2018::10:40:54 ===
+Stopping message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_transient'
+=INFO REPORT==== 23-Mar-2018::10:40:54 ===
+Message store for directory '/data/rabbitmq/rabbitmq_server-3.6.15/var/lib/rabbitmq/mnesia/rabbit@izeb30sdt1ybpx6nmrwi02z/msg_store_transient' is stopped
+=INFO REPORT==== 23-Mar-2018::10:40:54 ===
+Stopping application 'mnesia'
+=INFO REPORT==== 23-Mar-2018::10:40:54 ===
+Stopping application 'rabbit_common'
+=INFO REPORT==== 23-Mar-2018::10:40:54 ===
+Stopping application 'os_mon'
+=INFO REPORT==== 23-Mar-2018::10:40:54 ===
+Successfully stopped RabbitMQ and its dependencies
+
+=INFO REPORT==== 23-Mar-2018::10:40:54 ===
+Halting Erlang VM with the following applications:
+    ranch
+    ssl
+    public_key
+    asn1
+    xmerl
+    crypto
+    compiler
+    recon
+    inets
+    syntax_tools
+    sasl
+    stdlib
+    kernel
