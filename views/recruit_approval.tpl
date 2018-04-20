@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>招聘计划</title>
+  <title>计划审批</title>
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -72,9 +72,9 @@ body{padding: 10px;}
       <input type="text" name="date" id="date1" autocomplete="off" class="layui-input">
     </div>
   </div>
-   <div class="layui-inline">
+<!--   <div class="layui-inline">
     <button class="layui-btn" id="add">新建计划</button>
-   </div>
+   </div>-->
   </div>
 </form>
 
@@ -82,8 +82,8 @@ body{padding: 10px;}
 
 	<table id="list" lay-filter="rq"></table>
 	<script type="text/html" id="barDemo">
-		<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit">详情</a>		
-		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="no">不批准</a>		
+		<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="yes">批准</a>
 	</script>
 
 <script src="/static/layui.js"></script>

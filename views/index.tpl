@@ -77,11 +77,8 @@
         <li class="layui-nav-item">
 		  <a href="javascript:;">招聘管理</a>
 		  <dl class="layui-nav-child">
-            <dd><a href="javascript:;">招聘需求</a></dd>
 			<dd><a href="javascript:;">招聘计划</a></dd>
-			<dd><a href="javascript:;">人才库</a></dd>
-			<dd><a href="javascript:;">招聘筛选</a></dd>
-			<dd><a href="javascript:;">招聘录用</a></dd>
+			<dd><a href="javascript:;">计划审批</a></dd>
           </dl>
 		</li>
       </ul>
@@ -100,9 +97,12 @@
 <!--		    <div class="layui-tab-item"><iframe src='/v1/desk' style="width:100%;height:800px;"></iframe></div>-->
 			<div class="layui-tab-item" style="padding: 40px;">
 				<ul id="sortable">
-				  <li class="ui-state-default" id="announce"><img src="../static/img/admin.jpg" /><span>公告管理</span></li>
-				  <li class="ui-state-default" id="news"><img src="../static/img/car.png" /><span>新闻管理</span></li>
+				  {{range .maps}}
+				  <li class="ui-state-default" id={{.Id}}><img src="{{.Path}}" /><span>{{.Name}}</span></li>
+				  {{end}}
+				 <!-- <li class="ui-state-default" id="news"><img src="../static/img/car.png" /><span>新闻管理</span></li>
 				  <li class="ui-state-default" id="recruit_require"><img src="../static/img/car.png" /><span>招聘需求</span></li>
+				  <li class="ui-state-default" id="recruit_approval"><img src="../static/img/car.png" /><span>计划审批</span></li>-->
 				</ul>
 			</div>
 		  </div>
@@ -142,7 +142,7 @@
 		$( "#sortable" ).sortable();
 	    $( "#sortable" ).disableSelection();			
 	});
-	var dic = {"公告管理": "/v1/office/announcement", "新闻管理": "/v1/office/news","招聘需求":"/v1/recruit/require"};
+	var dic = {"公告管理": "/v1/office/announcement", "新闻管理": "/v1/office/news","招聘计划":"/v1/recruit/require","计划审批":"/v1/recruit/approval"};
 	var newarray=new Array()
 	var list =[]
 	list[0]="信息中心"
@@ -184,16 +184,19 @@
 	 // console.log(data.elem); //得到当前的Tab大容器
 	  list.splice(data.index,1);
 	});
+	{{range .maps}}
+		$('#'+{{.Id}}).on('click',function(){
+			ChangeTabs({{.Name}})
+		  });
+	{{end}}
 	
-	$('#announce').on('click',function(){
-		ChangeTabs("公告管理")
-	  });
+	
 	
 	$('#news').on('click',function(){
 		ChangeTabs("新闻管理")
 	  });
-	$('#recruit_require').on('click',function(){
-		ChangeTabs("招聘需求")
+	$('#recruit_approval').on('click',function(){
+		ChangeTabs("计划审批")
 	  });	
 			
   });

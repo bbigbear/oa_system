@@ -14,10 +14,22 @@ type MainController struct {
 }
 
 func (c *MainController) Get() {
+	o := orm.NewOrm()
+	var maps []orm.Params
+	desk := new(models.Desk)
+	query := o.QueryTable(desk)
+	//查询数据库
+	num, err := query.Values(&maps)
+	c.Data["maps"] = maps
+	if err != nil {
+		fmt.Println("err!")
+	}
+	fmt.Println("get desk num", num)
 	c.TplName = "index.tpl"
 }
 
 func (c *MainController) GetDesktop() {
+
 	c.TplName = "personal_desktop.tpl"
 }
 

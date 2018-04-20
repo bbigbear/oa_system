@@ -18,53 +18,67 @@ body{padding: 10px;}
 <body>
 <form class="layui-form layui-form-pane1" action="">
   <div class="layui-form-item">
-    <label class="layui-form-label">需求编号</label>
+    <label class="layui-form-label">计划编号</label>
     <div class="layui-input-block" style="width: 500px;">
 	<input type="text" name="number" id="number" autocomplete="off" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
-    <label class="layui-form-label">需求岗位</label>
+    <label class="layui-form-label">计划名称</label>
     <div class="layui-input-block" style="width: 500px;">
-	<input type="text" name="post" id="post" autocomplete="off" class="layui-input">
+	<input type="text" name="name" id="name" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">招聘渠道</label>
+    <div class="layui-input-inline" style="width: 150px;">
+      <select name="channel" id="channel" lay-filter="style_select">
+		    <option value="请选择" > 请选择</option>
+			<option value="网络招聘" > 网络招聘</option>
+			<option value="招聘会招聘" > 招聘会招聘</option>
+			<option value="人才猎头推荐" > 人才猎头推荐</option>
+      </select>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">预算费用</label>
+    <div class="layui-input-block" style="width: 500px;">
+	<input type="text" name="cost" id="cost" autocomplete="off" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
     <div class="layui-inline">
-    <label class="layui-form-label">用工日期</label>
-    <div class="layui-input-inline" style="width: 500px;">
+    <label class="layui-form-label">日期</label>
+    <div class="layui-input-inline" style="width: 120px;">
       <input type="text" name="date" id="date1" autocomplete="off" class="layui-input">
     </div>
-<!--	<div class="layui-input-inline" style="width: 120px;">
+	<div class="layui-input-inline" style="width: 120px;">
       <input type="text" name="date" id="date2" autocomplete="off" class="layui-input">
-    </div>-->
+    </div>
   </div>
   </div>
   <div class="layui-form-item">
-    <label class="layui-form-label">需求人数</label>
+    <label class="layui-form-label">招聘人数</label>
     <div class="layui-input-block" style="width: 500px;">
 	<input type="text" name="people" id="people" autocomplete="off" class="layui-input">
     </div>
   </div>
- <!-- <div class="layui-form-item">
-    <div class="layui-inline">
-    <label class="layui-form-label">事务提醒</label>
-      <div class="layui-input-block">
-	      <input type="checkbox" name="like1[write]" lay-skin="primary" title="发送事务提醒信息" checked="">
-	      <input type="checkbox" name="like1[read]" lay-skin="primary" title="分享到企业社区" checked="">
-	  </div>
-    </div>
-  </div>-->
   <div class="layui-form-item">
-    <label class="layui-form-label">需求部门</label>
+    <label class="layui-form-label">审批人</label>
     <div class="layui-input-block" style="width: 500px;">
-	<input type="text" name="department" id="department" autocomplete="off" class="layui-input">
+	<input type="text" name="approver" id="approver" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">招聘说明</label>
+    <div class="layui-input-block">
+      <textarea class="layui-textarea" name="explain" id="explain"></textarea>
     </div>
   </div>
   <div class="layui-form-item">
     <label class="layui-form-label">备注</label>
-    <div class="layui-input-block" style="width: 500px;">
-	<input type="text" name="remark" id="remark" autocomplete="off" placeholder="最多输入30个字" class="layui-input">
+    <div class="layui-input-block">
+      <textarea class="layui-textarea" name="remark" id="remark"></textarea>
     </div>
   </div>
   <div class="layui-form-item">
@@ -112,27 +126,6 @@ body{padding: 10px;}
 	  </div>
     </div>	
   </div>
-<!--  <div class="layui-upload">
-	  <button type="button" class="layui-btn layui-btn-normal" id="testList">选择多文件</button> 
-	  <div class="layui-upload-list">
-	    <table class="layui-table">
-	      <thead>
-	        <th>文件名</th>
-	        <th>大小</th>
-	        <th>状态</th>
-	        <th>操作</th>
-	      </thead>
-	      <tbody id="demoList"></tbody>
-	    </table>
-	  </div>
-	  <button type="button" class="layui-btn" id="testListAction">开始上传</button>
-	</div>-->
-  <div class="layui-form-item layui-form-text">
-    <label class="layui-form-label">岗位要求</label>
-    <div class="layui-input-block">
-      <textarea class="layui-textarea" name="detail" id="detail"></textarea>
-    </div>
-  </div>
   <div class="layui-form-item">
     <div class="layui-input-block">
 <!--      <button class="layui-btn" id="add">发布</button>-->
@@ -160,19 +153,22 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 	//自动加载
 	var id
 	var list=[]
+	var path=""
 	$(function(){
 		//获取
 		//console.log({{.m}})	
 		{{range .m}}
 			id={{.Id}}
 			$("#number").val({{.Number}})
-			$("#post").val({{.Post}})			
-			$("#date1").val({{.Day}})	
+			$("#name").val({{.Name}})			
+			$("#channel").val({{.Channel}})	
+			$("#cost").val({{.Cost}})
+			$("#date1").val({{.StartDay}})
+			$("#date2").val({{.EndDay}})
 			$("#people").val({{.People}})
-			$("#department").val({{.Department}})
+			$("#approver").val({{.Approver}})
+			$("#explain").val({{.Explain}})
 			$("#remark").val({{.Remark}})
-			$("#detail").val({{.Detail}})
-			layedit.build('detail'); 
 			list={{.Path}}.split(',')
 		{{end}}		
 		
@@ -181,24 +177,25 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 		}
 		//alert(list[0])
 		for(var i=0;i<list.length-1;i++){
+			path=path+list[i]+',';
 			var tr = $(['<tr>'
-	          ,'<td>'+ list[0] +'</td>'
+	          ,'<td>'+ list[i] +'</td>'
 	          ,'<td>'
-	            ,'<a href="/'+list[0]+'" download="file">下载</a>'
-				,'<a id="'+i+'">删除</a>'
+	            ,'<a href="/'+list[i]+'" download="file">下载 </a>'
+				//,'<a id="'+i+'"> 删除</a>'
 	          ,'</td>'
 	        ,'</tr>'].join(''));
 			//$('#demo1').append('<img src="'+"/"+list[i]+'" id="'+i+'" style="width:80px;height:80px;padding-left:10px;">')
 			$("#"+i).bind('click',function(){             
-                $(this).remove();
+                alert("删除")
+				$(this).remove();
 				console.log("this",$(this)[0].id);
 				console.log("i",i);				
 				delete list[$(this)[0].id]
             });
 		}
 		$('#demoListed').append(tr);
-		form.render();
-		
+		form.render();		
 	});
 	
 	 laydate.render({
@@ -214,7 +211,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 		
    
 	  //多文件列表示例
-	  var path=""
+	 
 	  var demoListView = $('#demoList')
 	  ,uploadListIns = upload.render({
 	    elem: '#testList'
@@ -279,36 +276,45 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 		
 	//数据上传
 	function uploadData(){
+		var channel=$("#channel").val()
 		var data={
+			'id':id,
 			'number':$("#number").val(),
-			'post':$("#post").val(),
-			'day':$("#date1").val(),
+			'name':$("#name").val(),
+			'channel':channel,
+			'cost':$("#cost").val(),
+			'startDay':$("#date1").val(),
+			'endDay':$("#date2").val(),
 			'people':$("#people").val(),
+			'approver':$("#approver").val(),
+			'explain':$("#explain").val(),
 			'remark':$("#remark").val(),
-			'detail':layedit.getContent(index),
-			'path':path,
-			'department':$("#department").val()
+			'path':path
 			};
 			console.log(data)
-			//发布
-			$.ajax({
-				type:"POST",
-				contentType:"application/json;charset=utf-8",
-				url:"/v1/recruit/require/add_action",
-				data:JSON.stringify(data),
-				async:false,
-				error:function(request){ 
-					alert("post error")						
-				},
-				success:function(res){
-					if(res.code==200){
-						alert("保存成功")
-						window.location.reload();		
-					}else{
-						alert("保存失败")
-					}						
-				}
-		  	});				
+			if(channel=="请选择"){
+				alert("请选择招聘渠道")
+			}else{
+				//发布
+				$.ajax({
+					type:"POST",
+					contentType:"application/json;charset=utf-8",
+					url:"/v1/recruit/require/edit_action",
+					data:JSON.stringify(data),
+					async:false,
+					error:function(request){ 
+						alert("post error")						
+					},
+					success:function(res){
+						if(res.code==200){
+							alert("保存成功")
+							window.location.reload();		
+						}else{
+							alert("保存失败")
+						}						
+					}
+			  	});	
+			}			
 	}
 	
 	//保存

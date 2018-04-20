@@ -1,13 +1,17 @@
 package models
 
 type RecruitRequire struct {
-	Id         int64
-	Number     string
-	Post       string
-	Day        string
-	People     string
-	Remark     string
-	Detail     string
-	Path       string
-	Department string
+	Id       int64
+	Number   string
+	Name     string
+	Channel  string
+	Cost     string
+	StartDay string
+	EndDay   string
+	People   string
+	Approver string
+	Explain  string
+	Remark   string
+	Path     string
+	Status   string
 }

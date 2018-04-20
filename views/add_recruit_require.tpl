@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>新增公告通知</title>
+  <title>新增招聘计划</title>
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -18,53 +18,67 @@ body{padding: 10px;}
 <body>
 <form class="layui-form layui-form-pane1" action="">
   <div class="layui-form-item">
-    <label class="layui-form-label">需求编号</label>
+    <label class="layui-form-label">计划编号</label>
     <div class="layui-input-block" style="width: 500px;">
 	<input type="text" name="number" id="number" autocomplete="off" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
-    <label class="layui-form-label">需求岗位</label>
+    <label class="layui-form-label">计划名称</label>
     <div class="layui-input-block" style="width: 500px;">
-	<input type="text" name="post" id="post" autocomplete="off" class="layui-input">
+	<input type="text" name="name" id="name" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">招聘渠道</label>
+    <div class="layui-input-inline" style="width: 150px;">
+      <select name="channel" id="channel" lay-filter="style_select">
+		    <option value="请选择" > 请选择</option>
+			<option value="网络招聘" > 网络招聘</option>
+			<option value="招聘会招聘" > 招聘会招聘</option>
+			<option value="人才猎头推荐" > 人才猎头推荐</option>
+      </select>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">预算费用</label>
+    <div class="layui-input-block" style="width: 500px;">
+	<input type="text" name="cost" id="cost" autocomplete="off" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
     <div class="layui-inline">
-    <label class="layui-form-label">用工日期</label>
-    <div class="layui-input-inline" style="width: 500px;">
+    <label class="layui-form-label">日期</label>
+    <div class="layui-input-inline" style="width: 120px;">
       <input type="text" name="date" id="date1" autocomplete="off" class="layui-input">
     </div>
-<!--	<div class="layui-input-inline" style="width: 120px;">
+	<div class="layui-input-inline" style="width: 120px;">
       <input type="text" name="date" id="date2" autocomplete="off" class="layui-input">
-    </div>-->
+    </div>
   </div>
   </div>
   <div class="layui-form-item">
-    <label class="layui-form-label">需求人数</label>
+    <label class="layui-form-label">招聘人数</label>
     <div class="layui-input-block" style="width: 500px;">
 	<input type="text" name="people" id="people" autocomplete="off" class="layui-input">
     </div>
   </div>
- <!-- <div class="layui-form-item">
-    <div class="layui-inline">
-    <label class="layui-form-label">事务提醒</label>
-      <div class="layui-input-block">
-	      <input type="checkbox" name="like1[write]" lay-skin="primary" title="发送事务提醒信息" checked="">
-	      <input type="checkbox" name="like1[read]" lay-skin="primary" title="分享到企业社区" checked="">
-	  </div>
-    </div>
-  </div>-->
   <div class="layui-form-item">
-    <label class="layui-form-label">需求部门</label>
+    <label class="layui-form-label">审批人</label>
     <div class="layui-input-block" style="width: 500px;">
-	<input type="text" name="department" id="department" autocomplete="off" class="layui-input">
+	<input type="text" name="approver" id="approver" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">招聘说明</label>
+    <div class="layui-input-block">
+      <textarea class="layui-textarea" name="explain" id="explain"></textarea>
     </div>
   </div>
   <div class="layui-form-item">
     <label class="layui-form-label">备注</label>
-    <div class="layui-input-block" style="width: 500px;">
-	<input type="text" name="remark" id="remark" autocomplete="off" placeholder="最多输入30个字" class="layui-input">
+    <div class="layui-input-block">
+      <textarea class="layui-textarea" name="remark" id="remark"></textarea>
     </div>
   </div>
   <div class="layui-form-item">
@@ -109,12 +123,12 @@ body{padding: 10px;}
 	  </div>
 	  <button type="button" class="layui-btn" id="testListAction">开始上传</button>
 	</div>-->
-  <div class="layui-form-item layui-form-text">
+  <!--<div class="layui-form-item layui-form-text">
     <label class="layui-form-label">岗位要求</label>
     <div class="layui-input-block">
       <textarea class="layui-textarea" name="detail" id="detail"></textarea>
     </div>
-  </div>
+  </div>-->
   <div class="layui-form-item">
     <div class="layui-input-block">
 <!--      <button class="layui-btn" id="add">发布</button>-->
@@ -226,36 +240,44 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 		
 	//数据上传
 	function uploadData(){
+		var channel=$("#channel").val()
 		var data={
 			'number':$("#number").val(),
-			'post':$("#post").val(),
-			'day':$("#date1").val(),
+			'name':$("#name").val(),
+			'channel':channel,
+			'cost':$("#cost").val(),
+			'startDay':$("#date1").val(),
+			'endDay':$("#date2").val(),
 			'people':$("#people").val(),
+			'approver':$("#approver").val(),
+			'explain':$("#explain").val(),
 			'remark':$("#remark").val(),
-			'detail':layedit.getContent(index),
-			'path':path,
-			'department':$("#department").val()
+			'path':path
 			};
 			console.log(data)
-			//发布
-			$.ajax({
-				type:"POST",
-				contentType:"application/json;charset=utf-8",
-				url:"/v1/recruit/require/add_action",
-				data:JSON.stringify(data),
-				async:false,
-				error:function(request){ 
-					alert("post error")						
-				},
-				success:function(res){
-					if(res.code==200){
-						alert("保存成功")
-						window.location.reload();		
-					}else{
-						alert("保存失败")
-					}						
-				}
-		  	});				
+			if(channel=="请选择"){
+				alert("请选择招聘渠道")
+			}else{
+				//发布
+				$.ajax({
+					type:"POST",
+					contentType:"application/json;charset=utf-8",
+					url:"/v1/recruit/require/add_action",
+					data:JSON.stringify(data),
+					async:false,
+					error:function(request){ 
+						alert("post error")						
+					},
+					success:function(res){
+						if(res.code==200){
+							alert("保存成功")
+							window.location.reload();		
+						}else{
+							alert("保存失败")
+						}						
+					}
+			  	});	
+			}						
 	}
 	
 	//保存

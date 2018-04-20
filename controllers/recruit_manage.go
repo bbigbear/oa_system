@@ -32,6 +32,7 @@ func (this *RecruitManageController) AddRecruitRequireAction() {
 	var rq models.RecruitRequire
 	json.Unmarshal(this.Ctx.Input.RequestBody, &rq)
 	fmt.Println("rq_info:", &rq)
+	rq.Status = "待审批"
 	//插入数据库
 	num, err := o.Insert(&rq)
 	if err != nil {
@@ -166,4 +167,9 @@ func (this *RecruitManageController) DelRecruitRequire() {
 	//list["data"] = maps
 	this.ajaxMsg("删除招聘需求成功", MSG_OK)
 	return
+}
+
+func (this *RecruitManageController) GetRecruitApproval() {
+
+	this.TplName = "recruit_approval.tpl"
 }
