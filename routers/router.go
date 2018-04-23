@@ -12,6 +12,7 @@ func init() {
 	beego.Router("/v1/put_file", &controllers.BaseController{}, "*:PutFile")
 	beego.Router("/v1/desk", &controllers.MainController{}, "*:GetDesktop")
 	beego.Router("/v1/message_center", &controllers.MainController{}, "*:GetMessageCenter")
+	beego.Router("/v1/quick_enter", &controllers.MainController{}, "*:GetQuickEnter")
 
 	beego.Router("/v1/office/announcement", &controllers.AdminOfficeController{}, "*:GetAnnouncement")
 	beego.Router("/v1/office/announcement/getdata", &controllers.AdminOfficeController{}, "*:GetAnnouncementData")

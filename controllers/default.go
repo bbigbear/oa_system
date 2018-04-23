@@ -56,3 +56,8 @@ func (c *MainController) GetMessageCenter() {
 	c.Data["news_maps"] = news_maps
 	c.TplName = "message_center.tpl"
 }
+
+func (c *MainController) GetQuickEnter() {
+
+	c.TplName = "select_quick_enter.tpl"
+}
