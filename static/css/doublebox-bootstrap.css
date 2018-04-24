@@ -37,7 +37,7 @@
 }
 
 .bootstrap-duallistbox-container .moveall,.bootstrap-duallistbox-container .removeall {
-	width: 40%
+	width: 40%;
 }
 
 .bootstrap-duallistbox-container.bs2compatible .btn-group>.btn+.btn {

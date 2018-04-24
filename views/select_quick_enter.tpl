@@ -8,6 +8,7 @@
     <title>双边栏选择框</title>
 
     <!-- 需要引用的CSS -->
+	<link rel="stylesheet" href="/static/css/layui.css">
 	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css" />
 	<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
 	<link rel="stylesheet" type="text/css" href="../static/css/doublebox-bootstrap.css" />
@@ -33,28 +34,74 @@
 	<!-- 页面结构 -->
 	<div class="ue-container">
 	    <select multiple="multiple" size="10" name="doublebox" class="demo">
-        </select>
+        </select>			
 	</div>
+	<div style="text-align:center;margin-top:10px;">
+		<button class="layui-btn" id="save" style="text-align:center;">保存</button>
+	</div>	
     <!-- 需要引用的JS -->
+	<script src="/static/layui.js"></script>
    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="../static/js/bootstrap.js"></script>
     <script type="text/javascript" src="../static/js/doublebox-bootstrap.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
 		  var demo2 = $('.demo').doublebox({
-          nonSelectedListLabel: '选择角色',
-          selectedListLabel: '授权用户角色',
+          nonSelectedListLabel: '备选菜单项',
+          selectedListLabel: '菜单快捷组项目',
           preserveSelectionOnMove: 'moved',
           moveOnSelect: false,
-          nonSelectedList:[{"roleId":"1","roleName":"zhangsan"},{"roleId":"2","roleName":"lisi"},{"roleId":"3","roleName":"wangwu"}],
-          selectedList:[{"roleId":"4","roleName":"zhangsan1"},{"roleId":"5","roleName":"lisi1"},{"roleId":"6","roleName":"wangwu1"}],
-          optionValue:"roleId",
+          nonSelectedList:[
+			{{range .menu}}
+			{"roleName":{{.}}},
+			{{end}}			
+			],
+          selectedList:[
+			{{range .quickmenu}}
+			{"roleName":{{.}}},
+			{{end}}
+			],
+          optionValue:"roleName",
           optionText:"roleName",
           doubleMove:true,
         });
         })
-       
-
-      </script>
+		
+		$('#save').on('click',function(){
+			//alert("保存")
+			var roles = [];
+			var n =""
+			$("#bootstrap-duallistbox-selected-list_doublebox option").each(function(){
+			    //遍历所有option
+			    var role ={roleId:$(this).val(),roleName:$(this).text()};
+			    roles.push(role);
+			});
+			for(var i=0;i<roles.length;i++){
+				n=n+roles[i].roleName+','
+			}
+			console.log(n)
+			//post
+			$.ajax({
+					type:"POST",
+					url:"/v1/quick_enter/add",
+					data:{
+						name:n
+					},
+					async:false,
+					error:function(request){ 
+						alert("post error")						
+					},
+					success:function(res){
+						if(res.code==200){
+							alert("保存成功")
+							window.location.reload();		
+						}else{
+							alert("保存失败")
+						}						
+					}
+			  	});
+		}); 
+		 
+    </script>
   </body>
 </html>

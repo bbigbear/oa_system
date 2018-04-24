@@ -55,9 +55,11 @@
         <li class="layui-nav-item">
           <a class="" href="javascript:;">快捷菜单</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">列表一</a></dd>
-            <dd><a href="javascript:;">列表二</a></dd>
-            <dd><a href="javascript:;">列表三</a></dd>
+            <dd><a href="javascript:;">快捷菜单</a></dd>
+			{{range .quickmenu}}
+            <dd><a href="javascript:;">{{.}}</a></dd>
+			{{end}}
+<!--            <dd><a href="javascript:;">列表三</a></dd>-->
           </dl>
         </li>
         <li class="layui-nav-item">
@@ -142,7 +144,7 @@
 		$( "#sortable" ).sortable();
 	    $( "#sortable" ).disableSelection();			
 	});
-	var dic = {"公告管理": "/v1/office/announcement", "新闻管理": "/v1/office/news","招聘计划":"/v1/recruit/require","计划审批":"/v1/recruit/approval"};
+	var dic = {"公告管理": "/v1/office/announcement", "新闻管理": "/v1/office/news","招聘计划":"/v1/recruit/require","计划审批":"/v1/recruit/approval","快捷菜单":"/v1/quick_enter"};
 	var newarray=new Array()
 	var list =[]
 	list[0]="信息中心"

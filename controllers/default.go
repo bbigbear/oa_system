@@ -25,6 +25,17 @@ func (c *MainController) Get() {
 		fmt.Println("err!")
 	}
 	fmt.Println("get desk num", num)
+
+	var q_maps orm.ParamsList
+	qm := new(models.QucikMenu)
+	//查询数据库
+	q_num, err := o.QueryTable(qm).ValuesFlat(&q_maps, "name")
+	c.Data["quickmenu"] = q_maps
+	if err != nil {
+		fmt.Println("err!")
+	}
+	fmt.Println("get quickmenu num", q_num)
+
 	c.TplName = "index.tpl"
 }
 
