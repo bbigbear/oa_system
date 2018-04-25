@@ -96,8 +96,11 @@
 		  </ul>
 		  <div class="layui-tab-content">
 		    <div class="layui-tab-item layui-show"><iframe src='/v1/message_center' style="width:100%;height:800px;"></iframe></div>
-<!--		    <div class="layui-tab-item"><iframe src='/v1/desk' style="width:100%;height:800px;"></iframe></div>-->
-			<div class="layui-tab-item" style="padding: 40px;">
+<!--		    <div class="layui-tab-item"><iframe src='/v1/desk' style="width:100%;height:800px;"></iframe></div>-->			
+			<div class="layui-tab-item" style="padding: 40px;">	
+				<div style="text-align:center;">
+				<i class="layui-icon" style="font-size: 30px;text-align:center;" id="setting">&#xe857;</i>设置 			
+				</div>
 				<ul id="sortable">
 				  {{range .maps}}
 				  <li class="ui-state-default" id={{.Id}}><img src="{{.Path}}" /><span>{{.Name}}</span></li>
@@ -191,15 +194,34 @@
 			ChangeTabs({{.Name}})
 		  });
 	{{end}}
+		
 	
-	
-	
-	$('#news').on('click',function(){
-		ChangeTabs("新闻管理")
+	$('#setting').on('click',function(){
+		
+		//alert("设置")
+		layer.open({
+			  type: 2,
+			  title: '设置桌面',
+			  //closeBtn: 0, //不显示关闭按钮
+			  shadeClose: true,
+			  shade: false,
+			  area: ['893px', '600px'],
+			 // offset: 'rb', //右下角弹出
+			  //time: 2000, //2秒后自动关闭
+			  maxmin: true,
+			  anim: 2,
+			  content: ['/v1/desk'], //iframe的url，no代表不显示滚动条
+			  //cancel: function(index, layero){ 
+			 // if(confirm('确定要关闭么')){ //只有当点击confirm框的确定时，该层才会关闭
+			  //  layer.close(index)
+			 // }
+			   
+			 // },
+		});
+		return false;
+		
 	  });
-	$('#recruit_approval').on('click',function(){
-		ChangeTabs("计划审批")
-	  });	
+	
 			
   });
 
