@@ -187,8 +187,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 			 // },
 		});
 		return false;
-	});
-	
+	});	
 });
 </script>
 

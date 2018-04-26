@@ -10,7 +10,6 @@ func init() {
 	beego.Router("/", &controllers.MainController{})
 	//get file
 	beego.Router("/v1/put_file", &controllers.BaseController{}, "*:PutFile")
-	beego.Router("/v1/desk", &controllers.MainController{}, "*:GetDesktop")
 	beego.Router("/v1/message_center", &controllers.MainController{}, "*:GetMessageCenter")
 	beego.Router("/v1/quick_enter", &controllers.QuickController{}, "*:GetQuickEnter")
 
@@ -42,5 +41,9 @@ func init() {
 
 	beego.Router("/v1/recruit/approval", &controllers.RecruitManageController{}, "*:GetRecruitApproval")
 	beego.Router("/v1/quick_enter/add", &controllers.QuickController{}, "post:AddQuickMenu")
+
+	beego.Router("/v1/desk", &controllers.DeskController{}, "*:GetDesktop")
+	beego.Router("/v1/desk/add", &controllers.DeskController{}, "post:AddDesktop")
+	beego.Router("/v1/desk/del", &controllers.DeskController{}, "*:RemoveDesktop")
 
 }

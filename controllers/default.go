@@ -39,11 +39,6 @@ func (c *MainController) Get() {
 	c.TplName = "index.tpl"
 }
 
-func (c *MainController) GetDesktop() {
-
-	c.TplName = "personal_desktop.tpl"
-}
-
 func (c *MainController) GetMessageCenter() {
 	o := orm.NewOrm()
 	var maps []orm.Params
