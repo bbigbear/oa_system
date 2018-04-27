@@ -67,3 +67,36 @@ func (c *MainController) GetQuickEnter() {
 
 	c.TplName = "select_quick_enter.tpl"
 }
+
+func (c *MainController) GetMessageDetail() {
+
+	//获取id
+	id, err := c.GetInt("id")
+	if err != nil {
+		fmt.Println("get id err!")
+	}
+	typ := c.Input().Get("type")
+	o := orm.NewOrm()
+	var maps []orm.Params
+	if typ == "announce" {
+		announce := new(models.Announcement)
+		query := o.QueryTable(announce).Filter("Id", id)
+		//查询数据库
+		num, err := query.Values(&maps)
+		c.Data["maps"] = maps
+		if err != nil {
+			fmt.Println("err!")
+		}
+		fmt.Println("get announce num", num)
+	} else if typ == "news" {
+		news := new(models.News)
+		news_num, err := o.QueryTable(news).Filter("Id", id).Values(&maps)
+		if err != nil {
+			fmt.Println("err!")
+		}
+		fmt.Println("get news num", news_num)
+	}
+	fmt.Println("maps:", maps)
+	c.Data["maps"] = maps
+	c.TplName = "message_detail.tpl"
+}

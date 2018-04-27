@@ -23,13 +23,13 @@ body{padding: 10px;}
   <div class="layui-inline">
     <label class="layui-form-label">标题名称</label>
     <div class="layui-input-inline" style="width: 100px;">
-      <input type="text" id="name" autocomplete="off" class="layui-input">
+      <input type="text" id="title" autocomplete="off" class="layui-input">
     </div>
   </div>
   <div class="layui-inline">
-    <label class="layui-form-label">发布状态</label>
+    <label class="layui-form-label">类型</label>
     <div class="layui-input-inline" style="width: 100px;">
-      <select name="status" id="status" lay-filter="status_select">
+      <select name="style" id="style" lay-filter="status_select">
 		    <option value="全部" > 全部</option>
 			<option value="生效" > 生效</option>
 			<option value="终止" > 终止</option>
@@ -206,6 +206,18 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 		return false;
 	});
 	
+	$('#query').on('click',function(){
+		//alert("点击查询")	
+		table.reload('listReload',{
+			where:{
+				title:$("#title").val(),
+				status:$("#status").val(),
+				start_time:$("#date").val(),
+				end_time:$("#date1").val(),
+				style:$("#style").val(),
+			}
+		})
+	})
 });
 </script>
 

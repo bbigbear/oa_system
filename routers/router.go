@@ -46,4 +46,6 @@ func init() {
 	beego.Router("/v1/desk/add", &controllers.DeskController{}, "post:AddDesktop")
 	beego.Router("/v1/desk/del", &controllers.DeskController{}, "*:RemoveDesktop")
 
+	beego.Router("/v1/message_detail", &controllers.MainController{}, "*:GetMessageDetail")
+
 }
