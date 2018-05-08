@@ -89,6 +89,11 @@ body{padding: 10px;}
 		</td>
     </tr>
 	<tr>
+        <td class="fujian" align="left">
+            &nbsp;&nbsp;附件：<span id="fj"></span>          
+        </td>
+    </tr>
+	<tr>
         <td class="TableContent" align="left">
             &nbsp;&nbsp;<span title="{{.Auth}}">{{.Auth}}</span>&nbsp;
             最后编辑于：<span>{{.Day}}</span>
@@ -99,13 +104,39 @@ body{padding: 10px;}
 <script src="/static/layui.js"></script>
 <!-- <script src="../build/lay/dest/layui.all.js"></script> -->
 <script>
-layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
+layui.use(['form','laydate','upload','jquery','layedit','element','table'], function(){
   var form = layui.form
   ,laydate=layui.laydate
   ,upload = layui.upload
   , $ = layui.jquery
   ,layedit=layui.layedit
-  ,element=layui.element;
+  ,element=layui.element
+  ,table=layui.table;
+	
+ 
+	//自动加载
+	var list=[]
+	$(function(){
+		//获取
+		//console.log({{.m}})	
+		{{range .maps}}			
+			list={{.Path}}.split(',')
+		{{end}}		
+		
+		//alert(list)
+		
+		if(list[0]==""){
+			list=[]
+		}
+		//alert(list[0])
+		
+		//alert(m[2])
+		for(var i=0;i<list.length-1;i++){
+			var m=list[i].split('/')				
+			$('#fj').append('<a href="/'+list[i]+'" download="'+m[2]+'">'+m[2]+'</a>')			
+		}
+		//$('#demoListed').append(tr);
+	});
 
 	
 });

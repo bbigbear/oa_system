@@ -176,12 +176,14 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 			list=[]
 		}
 		//alert(list[0])
+		
 		for(var i=0;i<list.length-1;i++){
 			path=path+list[i]+',';
+			var m=list[i].split('/')
 			var tr = $(['<tr>'
-	          ,'<td>'+ list[i] +'</td>'
+	          ,'<td>'+ m[2] +'</td>'
 	          ,'<td>'
-	            ,'<a href="/'+list[i]+'" download="file">下载 </a>'
+	            ,'<a href="/'+list[i]+'" download="'+m[2]+'">下载 </a>'
 				//,'<a id="'+i+'"> 删除</a>'
 	          ,'</td>'
 	        ,'</tr>'].join(''));

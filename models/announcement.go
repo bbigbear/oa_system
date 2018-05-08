@@ -15,6 +15,7 @@ type Announcement struct {
 	StartTime string
 	EndTime   string
 	Status    string
+	Path      string
 }
 
 type News struct {
