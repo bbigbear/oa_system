@@ -48,4 +48,14 @@ func init() {
 
 	beego.Router("/v1/message_detail", &controllers.MainController{}, "*:GetMessageDetail")
 
+	beego.Router("/v1/train/plan", &controllers.TrainController{})
+	beego.Router("/v1/train/plan/add", &controllers.TrainController{}, "*:AddTrainPlan")
+	beego.Router("/v1/train/plan/add_action", &controllers.TrainController{}, "post:AddTrainPlanAction")
+	beego.Router("/v1/train/plan/getdata", &controllers.TrainController{}, "*:GetTrainPlanData")
+	beego.Router("/v1/train/plan/edit", &controllers.TrainController{}, "*:EditTrainPlan")
+	beego.Router("/v1/train/plan/edit_action", &controllers.TrainController{}, "*:EditTrainPlanAction")
+	beego.Router("/v1/train/plan/del", &controllers.TrainController{}, "*:DelTrainPlan")
+
+	beego.Router("/v1/train/approval", &controllers.TrainController{}, "*:GetTrainApproval")
+
 }

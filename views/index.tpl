@@ -55,7 +55,7 @@
         <li class="layui-nav-item">
           <a class="" href="javascript:;">快捷菜单</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">快捷菜单</a></dd>
+            <dd><a href="javascript:;">快捷菜单设置</a></dd>
 			{{range .quickmenu}}
             <dd><a href="javascript:;">{{.}}</a></dd>
 			{{end}}
@@ -65,8 +65,8 @@
         <li class="layui-nav-item">
           <a href="javascript:;">个人事务</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">列表一</a></dd>
-            <dd><a href="javascript:;">列表二</a></dd>
+            <dd><a href="javascript:;">个人考勤</a></dd>
+<!--            <dd><a href="javascript:;">列表二</a></dd>-->
           </dl>
         </li>
         <li class="layui-nav-item">
@@ -81,6 +81,14 @@
 		  <dl class="layui-nav-child">
 			<dd><a href="javascript:;">招聘计划</a></dd>
 			<dd><a href="javascript:;">计划审批</a></dd>
+          </dl>
+		</li>
+		<li class="layui-nav-item">
+		  <a href="javascript:;">培训管理</a>
+		  <dl class="layui-nav-child">
+			<dd><a href="javascript:;">培训计划</a></dd>
+			<dd><a href="javascript:;">培训审批</a></dd>
+<!--			<dd><a href="javascript:;">培训记录</a></dd>-->
           </dl>
 		</li>
       </ul>
@@ -147,7 +155,7 @@
 		$( "#sortable" ).sortable();
 	    $( "#sortable" ).disableSelection();			
 	});
-	var dic = {"公告管理": "/v1/office/announcement", "新闻管理": "/v1/office/news","招聘计划":"/v1/recruit/require","计划审批":"/v1/recruit/approval","快捷菜单":"/v1/quick_enter"};
+	var dic = {"公告管理": "/v1/office/announcement", "新闻管理": "/v1/office/news","招聘计划":"/v1/recruit/require","计划审批":"/v1/recruit/approval","快捷菜单设置":"/v1/quick_enter","培训计划":"/v1/train/plan","培训审批":"/v1/train/approval"};
 	var newarray=new Array()
 	var list =[]
 	list[0]="信息中心"
