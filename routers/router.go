@@ -53,9 +53,19 @@ func init() {
 	beego.Router("/v1/train/plan/add_action", &controllers.TrainController{}, "post:AddTrainPlanAction")
 	beego.Router("/v1/train/plan/getdata", &controllers.TrainController{}, "*:GetTrainPlanData")
 	beego.Router("/v1/train/plan/edit", &controllers.TrainController{}, "*:EditTrainPlan")
-	beego.Router("/v1/train/plan/edit_action", &controllers.TrainController{}, "*:EditTrainPlanAction")
-	beego.Router("/v1/train/plan/del", &controllers.TrainController{}, "*:DelTrainPlan")
+	beego.Router("/v1/train/plan/edit_action", &controllers.TrainController{}, "post:EditTrainPlanAction")
+	beego.Router("/v1/train/plan/del", &controllers.TrainController{}, "post:DelTrainPlan")
 
 	beego.Router("/v1/train/approval", &controllers.TrainController{}, "*:GetTrainApproval")
+
+	beego.Router("/v1/perform/checkset", &controllers.PerformanceController{})
+	beego.Router("/v1/perform/checkset/add", &controllers.PerformanceController{}, "post:AddCheckProjectSet")
+	beego.Router("/v1/perform/checkset/getdata", &controllers.PerformanceController{}, "*:GetCheckProjectSetData")
+	beego.Router("/v1/perform/checkset/edit", &controllers.PerformanceController{}, "*:EditCheckProjectSet")
+	beego.Router("/v1/perform/checkset/edit_action", &controllers.PerformanceController{}, "post:EditCheckProjectSetAction")
+	beego.Router("/v1/perform/checkset/del", &controllers.PerformanceController{}, "post:DelCheckProjectSet")
+	beego.Router("/v1/perform/checkset/detail", &controllers.PerformanceController{}, "*:CheckProjectDetail")
+	beego.Router("/v1/perform/checkset/detail/add", &controllers.PerformanceController{}, "post:AddCheckProjectDetail")
+	beego.Router("/v1/perform/checkset/detail/del", &controllers.PerformanceController{}, "post:DelCheckProjectDetail")
 
 }

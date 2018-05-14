@@ -92,7 +92,7 @@ body{padding: 10px;}
 	<div class="layui-inline">
 	    <label class="layui-form-label">培训机构联系人</label>
 	    <div class="layui-input-block" >
-		<input type="text" name="trainContract" id="trainTotalTime" autocomplete="off" class="layui-input">
+		<input type="text" name="trainContract" id="trainContract" autocomplete="off" class="layui-input">
 	    </div>
 	</div>
   </div>
