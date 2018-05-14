@@ -163,7 +163,7 @@
 		$( "#sortable" ).sortable();
 	    $( "#sortable" ).disableSelection();			
 	});
-	var dic = {"公告管理": "/v1/office/announcement", "新闻管理": "/v1/office/news","招聘计划":"/v1/recruit/require","计划审批":"/v1/recruit/approval","快捷菜单设置":"/v1/quick_enter","培训计划":"/v1/train/plan","培训审批":"/v1/train/approval","考核项目设定":"/v1/perform/checkset"};
+	var dic = {"公告管理": "/v1/office/announcement", "新闻管理": "/v1/office/news","招聘计划":"/v1/recruit/require","计划审批":"/v1/recruit/approval","快捷菜单设置":"/v1/quick_enter","培训计划":"/v1/train/plan","培训审批":"/v1/train/approval","考核项目设定":"/v1/perform/checkset","考核任务管理":"/v1/perform/checkmanage"};
 	var newarray=new Array()
 	var list =[]
 	list[0]="信息中心"

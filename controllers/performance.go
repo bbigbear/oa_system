@@ -196,3 +196,34 @@ func (this *PerformanceController) DelCheckProjectDetail() {
 	this.ajaxMsg("删除考核项目成功", MSG_OK)
 	return
 }
+
+func (this *PerformanceController) GetCheckTaskManage() {
+
+	this.TplName = "check_task_manage.tpl"
+}
+
+func (this *PerformanceController) AddCheckTask() {
+	this.TplName = "add_check_task.tpl"
+}
+
+func (this *PerformanceController) AddCheckTaskAction() {
+
+	fmt.Println("新建考核任务")
+	o := orm.NewOrm()
+	list := make(map[string]interface{})
+	var ct models.CheckTask
+	json.Unmarshal(this.Ctx.Input.RequestBody, &ct)
+	fmt.Println("ct_info:", &ct)
+	ct.Status = "生效"
+	//插入数据库
+	num, err := o.Insert(&ct)
+	if err != nil {
+		log4go.Stdout("新增考核项目失败")
+		this.ajaxMsg("新增失败", MSG_ERR_Resources)
+	}
+	fmt.Println("自增Id(num)", num)
+	list["id"] = num
+	this.ajaxList("新增成功", MSG_OK, 1, list)
+	//this.ajaxMsg("新增成功", MSG_OK)
+	return
+}

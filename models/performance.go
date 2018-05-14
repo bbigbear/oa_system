@@ -1,5 +1,9 @@
 package models
 
+import (
+	"time"
+)
+
 type CheckProjectSet struct {
 	Id         int64
 	Name       string
@@ -17,4 +21,21 @@ type CheckProjectDetail struct {
 	Range1  int
 	Range2  int
 	Info    string
+}
+
+type CheckTask struct {
+	Id                int64
+	Title             string
+	CheckPeople       string
+	CheckedPeople     string
+	SeePeople         string
+	ManageRangeStatus int
+	CheckYourself     int
+	CheckIndexs       string
+	Anonymous         int
+	StartTime         time.Time
+	EndTime           time.Time
+	Warn              int
+	Info              string
+	Status            string
 }
