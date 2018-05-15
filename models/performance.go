@@ -25,17 +25,22 @@ type CheckProjectDetail struct {
 
 type CheckTask struct {
 	Id                int64
-	Title             string
-	CheckPeople       string
-	CheckedPeople     string
-	SeePeople         string
-	ManageRangeStatus int
-	CheckYourself     int
-	CheckIndexs       string
-	Anonymous         int
+	Title             string `json:"title"`
+	CheckPeople       string `json:"checkPeople"`
+	CheckedPeople     string `json:"checkedPeople"`
+	SeePeople         string `json:"seePeople"`
+	ManageRangeStatus int    `json:"manageRangeStatus"`
+	CheckYourself     int    `json:"checkYourself"`
+	CheckIndexs       string `json:"checkIndexs"`
+	Anonymous         int    `json:"anonymous"`
 	StartTime         time.Time
 	EndTime           time.Time
-	Warn              int
-	Info              string
-	Status            string
+	Warn              int    `json:"warn"`
+	Info              string `json:"info"`
+	Status            string `json:"status"`
+}
+
+type TaskTime struct {
+	StartTime string
+	EndTime   string
 }

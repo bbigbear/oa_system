@@ -70,6 +70,9 @@ func init() {
 
 	beego.Router("/v1/perform/checkmanage", &controllers.PerformanceController{}, "*:GetCheckTaskManage")
 	beego.Router("/v1/perform/checkmanage/add", &controllers.PerformanceController{}, "*:AddCheckTask")
-	beego.Router("/v1/perform/checkmanage/add_action", &controllers.PerformanceController{}, "*:AddCheckTaskAction")
+	beego.Router("/v1/perform/checkmanage/add_action", &controllers.PerformanceController{}, "post:AddCheckTaskAction")
+	beego.Router("/v1/perform/checkmanage/getdata", &controllers.PerformanceController{}, "*:GetCheckTaskData")
+	beego.Router("/v1/perform/checkmanage/del", &controllers.PerformanceController{}, "post:DelCheckTask")
+	beego.Router("/v1/perform/checkmanage/edit", &controllers.PerformanceController{}, "*:EditCheckTask")
 
 }

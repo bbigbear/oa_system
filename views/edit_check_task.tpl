@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>新建考核任务</title>
+  <title>编辑考核任务</title>
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -116,6 +116,25 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
   , $ = layui.jquery
   ,layedit=layui.layedit
   ,element=layui.element;
+
+
+	//自动加载
+	var id
+	$(function(){
+		//获取
+		//console.log({{.m}})	
+		{{range .m}}
+			id={{.Id}}
+			$("#title").val({{.Title}})			
+			$("#checkPeople").val({{.CheckPeople}})	
+			$("#checkedPeople").val({{.CheckedPeople}})
+			$("#seePeople").val({{.SeePeople}})
+			$("#info").val({{.Info}})		
+			$("#date1").val({{.StartTime}})			
+			$("#date2").val({{.EndTime}})
+		{{end}}		
+		
+	});
 
 	 laydate.render({
 	    elem: '#day'

@@ -72,8 +72,10 @@ body{padding: 10px;}
 
 	<table id="list" lay-filter="rq"></table>
 	<script type="text/html" id="barDemo">
+		<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="check">考核情况</a>	
 		<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit">详情</a>		
 		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="stop">立即终止</a>	
 	</script>
 
 <script src="/static/layui.js"></script>
@@ -104,16 +106,19 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 	  table.render({
 	    elem: '#list'
 	    ,height: 315
-	    ,url: '/v1/train/plan/getdata'//数据接口
+	    ,url: '/v1/perform/checkmanage/getdata'//数据接口
 	    ,page: true //开启分页
 		,id: 'listReload'
 	    ,cols: [[ //表头
-		  {type:'checkbox', fixed: 'left'}		  
-	      ,{field:'Number', title:'培训计划编号', width:120}
-		  ,{field:'PlanName',  title:'培训计划名称', width:120}
-	      ,{field:'TrainChannel',  title:'培训渠道', width:120}
-		  ,{field:'TrainForm',  title:'培训形式', width:120}
-		  ,{field:'Status',  title:'计划状态', width:120}
+		  //{type:'checkbox', fixed: 'left'}	  
+	      {field:'Title', title:'考核任务名称', width:120}
+		  ,{field:'CheckPeople',  title:'考核人', width:120}
+	      ,{field:'CheckedPeople',  title:'被考核人', width:120}
+		  ,{field:'CheckIndexs',  title:'考核指标集', width:120}
+		  ,{field:'Anonymous',  title:'匿名', width:120}
+		  ,{field:'StartTime',  title:'生效日期', width:120}
+		  ,{field:'EndTime',  title:'终止日期', width:120}
+		  ,{field:'Status',  title:'状态', width:120}
 		  ,{fixed: 'right', title:'操作',width:200, align:'center', toolbar: '#barDemo'}
 	    ]]
 	  });
@@ -134,12 +139,12 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 			  //time: 2000, //2秒后自动关闭
 			  maxmin: true,
 			  anim: 2,
-			  content: ['/v1/train/plan/edit?id='+data.Id], //iframe的url，no代表不显示滚动条			  
+			  content: ['/v1/perform/checkmanage/edit?id='+data.Id], //iframe的url，no代表不显示滚动条			  
 		});
 	    } else if(layEvent === 'del'){
 	      layer.confirm('真的删除行么', function(index){
 	        var jsData={'id':data.Id}
-			$.post('/v1/recruit/require/del', jsData, function (out) {
+			$.post('/v1/perform/checkmanage/del', jsData, function (out) {
                 if (out.code == 200) {
                     layer.alert('删除成功了', {icon: 1},function(index){
                         layer.close(index);
