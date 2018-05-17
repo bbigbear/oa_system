@@ -74,5 +74,19 @@ func init() {
 	beego.Router("/v1/perform/checkmanage/getdata", &controllers.PerformanceController{}, "*:GetCheckTaskData")
 	beego.Router("/v1/perform/checkmanage/del", &controllers.PerformanceController{}, "post:DelCheckTask")
 	beego.Router("/v1/perform/checkmanage/edit", &controllers.PerformanceController{}, "*:EditCheckTask")
+	beego.Router("/v1/perform/checkmanage/change", &controllers.PerformanceController{}, "post:ChangeCheckTaskStauts")
+	beego.Router("/v1/perform/checkmanage/result", &controllers.PerformanceController{}, "*:CheckDetail")
+
+	beego.Router("/v1/perform/checkself", &controllers.PerformanceController{}, "*:GetCheckSelf")
+	beego.Router("/v1/perform/checkself/getdata", &controllers.PerformanceController{}, "*:GetCheckSelfData")
+	beego.Router("/v1/perform/checkself/detail", &controllers.PerformanceController{}, "*:GetCheckSelfDetail")
+
+	beego.Router("/v1/personal/attendance", &controllers.PersonalThingsController{}, "*:GetAttendance")
+	beego.Router("/v1/personal/leave/add", &controllers.PersonalThingsController{}, "*:AddLeave")
+	beego.Router("/v1/personal/leave/add_action", &controllers.PersonalThingsController{}, "post:AddLeaveAction")
+	beego.Router("/v1/personal/leave/getdata", &controllers.PersonalThingsController{}, "*:GetLeaveData")
+	beego.Router("/v1/personal/leave/change", &controllers.PersonalThingsController{}, "*:ChangeLeaveStauts")
+
+	beego.Router("/v1/attendance/approve", &controllers.PersonalThingsController{}, "*:GetAttendanceApprove")
 
 }

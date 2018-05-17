@@ -107,7 +107,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 	    elem: '#list'
 	    ,height: 315
 	    ,url: '/v1/perform/checkmanage/getdata'//数据接口
-	    ,page: true //开启分页
+	    //,page: true //开启分页
 		,id: 'listReload'
 	    ,cols: [[ //表头
 		  //{type:'checkbox', fixed: 'left'}	  
@@ -119,7 +119,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 		  ,{field:'StartTime',  title:'生效日期', width:120}
 		  ,{field:'EndTime',  title:'终止日期', width:120}
 		  ,{field:'Status',  title:'状态', width:120}
-		  ,{fixed: 'right', title:'操作',width:200, align:'center', toolbar: '#barDemo'}
+		  ,{fixed: 'right', title:'操作',width:250, align:'center', toolbar: '#barDemo'}
 	    ]]
 	  });
 	//监听工具条
@@ -158,7 +158,38 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 	        layer.close(index);
 	        //向服务端发送删除指令
 	      });
-	    }
+	    }else if(layEvent === 'stop'){
+	      layer.confirm('真的立刻终止么', function(index){
+	        var jsData={'id':data.Id}
+			$.post('/v1/perform/checkmanage/change', jsData, function (out) {
+                if (out.code == 200) {
+                    layer.alert('修改成功了', {icon: 1},function(index){
+                        layer.close(index);
+                        table.reload({});
+                    });
+                } else {
+                    layer.msg(out.message)
+                }
+            }, "json");
+	        layer.close(index);
+	        //向服务端发送删除指令
+	      });
+	    }else if(layEvent === 'check'){
+		      //layer.msg('查看操作');		
+			  layer.open({
+			  type: 2,
+			  title: '查看考核情况',
+			  //closeBtn: 0, //不显示关闭按钮
+			  shadeClose: true,
+			  shade: false,
+			  area: ['893px', '600px'],
+			 // offset: 'rb', //右下角弹出
+			  //time: 2000, //2秒后自动关闭
+			  maxmin: true,
+			  anim: 2,
+			  content: ['/v1/perform/checkmanage/result?id='+data.Id], //iframe的url，no代表不显示滚动条			  
+		});
+	    } 
 	  });
   
 	$('#add').on('click',function(){
@@ -177,8 +208,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 			  //cancel: function(index, layero){ 
 			 // if(confirm('确定要关闭么')){ //只有当点击confirm框的确定时，该层才会关闭
 			  //  layer.close(index)
-			 // }
-			   
+			 // }			   
 			 // },
 		});
 		return false;

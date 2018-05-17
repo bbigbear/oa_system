@@ -99,6 +99,12 @@
 			<dd><a href="javascript:;">被考核人自评</a></dd>
           </dl>
 		</li>
+		<li class="layui-nav-item">
+		  <a href="javascript:;">考勤管理</a>
+		  <dl class="layui-nav-child">
+			<dd><a href="javascript:;">考勤审批</a></dd>
+          </dl>
+		</li>
       </ul>
     </div>
   </div>
@@ -163,7 +169,7 @@
 		$( "#sortable" ).sortable();
 	    $( "#sortable" ).disableSelection();			
 	});
-	var dic = {"公告管理": "/v1/office/announcement", "新闻管理": "/v1/office/news","招聘计划":"/v1/recruit/require","计划审批":"/v1/recruit/approval","快捷菜单设置":"/v1/quick_enter","培训计划":"/v1/train/plan","培训审批":"/v1/train/approval","考核项目设定":"/v1/perform/checkset","考核任务管理":"/v1/perform/checkmanage"};
+	var dic = {"公告管理": "/v1/office/announcement", "新闻管理": "/v1/office/news","招聘计划":"/v1/recruit/require","计划审批":"/v1/recruit/approval","快捷菜单设置":"/v1/quick_enter","培训计划":"/v1/train/plan","培训审批":"/v1/train/approval","考核项目设定":"/v1/perform/checkset","考核任务管理":"/v1/perform/checkmanage","被考核人自评":"/v1/perform/checkself","个人考勤":"/v1/personal/attendance","考勤审批":"/v1/attendance/approve"};
 	var newarray=new Array()
 	var list =[]
 	list[0]="信息中心"

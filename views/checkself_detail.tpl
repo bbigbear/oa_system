@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>考核详情</title>
+  <title>考核情况</title>
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -24,17 +24,16 @@ body{padding: 10px;}
 		  <div class="layui-upload-list">
 		    <table class="layui-table">
 		      <thead>
-		        <th>考试项目</th>		        
-		        <th>分值范围</th>
-				<th>分值说明</th>
-				<th>操作</th>
+		        <th>自评项目</th>	
+		        <th>自评分数</th>
+				<th>自评说明</th>
 		      </thead>
 		      <tbody id="demoListed">
 			  	<tr>
-					<td><label>考核项目:</label><input type="text" id="project" style="width:100px;"></td>
-					<td><label>分值范围:</label><input type="text"  id="range1" style="width:50px;">~<input type="text" id="range2" style="width:50px;"></td>
-					<td><label>分值说明:</label><input type="text" id="info"></td>
-					<td><i class="layui-icon">&#xe654;</i><a id="add">添加</a></td>
+					<td style="width:200px;"></td>
+					<td style="width:200px;"></td>
+					<td style="width:200px;"></td>
+<!--					<td><i class="layui-icon">&#xe654;</i><a id="add">添加</a></td>-->
 				</tr>
 			  </tbody>
 		    </table>
@@ -60,37 +59,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
   ,layedit=layui.layedit
   ,element=layui.element;
 
-	//自动加载
-	var id
-	$(function(){
-		//获取
-		var tr
-		{{range .maps}}
-			tr = $(['<tr>'
-	          ,'<td>'+ {{.Project}} +'</td>'
-			  ,'<td>'+ {{.Range1}} +'~'+{{.Range2}}+'</td>'
-			  ,'<td>'+ {{.Info}} +'</td>'
-	          ,'<td>'
-				,'<a id="{{.Id}}">删除</a>'
-	          ,'</td>'
-	        ,'</tr>'].join(''));			
-			$('#demoListed').append(tr);
-			$("#"+{{.Id}}).on('click',function(){             
-                //alert("删除")
-				var jsData={'id':parseInt({{.Id}})}
-				$.post('/v1/perform/checkset/detail/del', jsData, function (out) {
-	                if (out.code == 200) {
-	                    layer.alert('删除成功了', {icon: 1},function(index){
-	                        layer.close(index);
-							table.reload();
-	                    });
-	                } else {
-	                    layer.msg(out.message)
-	                }
-	            }, "json");
-            });
-		{{end}}	
-	});
+	
 	
 	 laydate.render({
 	    elem: '#date1'

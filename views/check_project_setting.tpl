@@ -117,7 +117,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 	    elem: '#list'
 	    ,height: 315
 	    ,url: '/v1/perform/checkset/getdata'//数据接口
-	    ,page: true //开启分页
+	    //,page: true //开启分页
 		,id: 'listReload'
 	    ,cols: [[ //表头
 		  {type:'checkbox', fixed: 'left'}		  
@@ -131,7 +131,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 		    var data = obj.data //获得当前行数据
 		    ,layEvent = obj.event; //获得 lay-event 对应的值
 		    if(layEvent === 'edit'){
-		      //layer.msg('查看操作');		
+		      //layer.msg('查看操作');
 			  layer.open({
 			  type: 2,
 			  title: '查看考核指标',

@@ -259,7 +259,6 @@ func (this *PerformanceController) GetCheckTaskData() {
 	ct := new(models.CheckTask)
 	query := o.QueryTable(ct)
 	//	filters := make([]interface{}, 0)
-
 	//查询数据库
 	num, err := query.Values(&maps)
 	if err != nil {
@@ -272,6 +271,9 @@ func (this *PerformanceController) GetCheckTaskData() {
 		} else {
 			m["Anonymous"] = "不允许"
 		}
+		m["StartTime"] = m["StartTime"].(time.Time).Format("2006-01-02 15:04:05")
+		m["EndTime"] = m["EndTime"].(time.Time).Format("2006-01-02 15:04:05")
+
 	}
 	fmt.Println("get checkprojectset reslut num:", num)
 	this.ajaxList("获取考核项目成功", 0, num, maps)
@@ -342,4 +344,83 @@ func (this *PerformanceController) DelCheckTask() {
 	//list["data"] = maps
 	this.ajaxMsg("删除考核项目成功", MSG_OK)
 	return
+}
+
+func (this *PerformanceController) ChangeCheckTaskStauts() {
+	fmt.Println("点击删除考核项目按钮")
+	//获取id
+	id, err := this.GetInt("id")
+	if err != nil {
+		log4go.Stdout("考核项目id失败", err.Error())
+		this.ajaxMsg("考核项目id失败", MSG_ERR_Param)
+	}
+	fmt.Println("考核项目id:", id)
+	o := orm.NewOrm()
+	var ct_info models.CheckTask
+	ct_info.Id = int64(id)
+	ct_info.Status = "失效"
+	num, err := o.Update(&ct_info, "Stauts")
+	if err != nil {
+		log4go.Stdout("修改状态失败", err.Error())
+		this.ajaxMsg("修改状态失败", MSG_ERR_Resources)
+	}
+	fmt.Println("del news reslut num:", num)
+	//list["data"] = maps
+	this.ajaxMsg("修改状态成功", MSG_OK)
+	return
+}
+func (this *PerformanceController) CheckDetail() {
+	//获取id
+	fmt.Println("考核情况")
+	id, err := this.GetInt("id")
+	if err != nil {
+		fmt.Println("get cid err!")
+	}
+	fmt.Println("cid:", id)
+	this.Data["cid"] = id
+
+	o := orm.NewOrm()
+	var maps []orm.Params
+	detail := new(models.CheckTask)
+	query := o.QueryTable(detail).Filter("Id", id)
+	//	filters := make([]interface{}, 0)
+
+	//查询数据库
+	num, err := query.Values(&maps, "CheckPeople", "CheckedPeople", "Id")
+	if err != nil {
+		log4go.Stdout("获取失败", err.Error())
+		this.ajaxMsg("获取失败", MSG_ERR_Resources)
+	}
+	fmt.Println("get checkprojectset reslut num:", num)
+	this.Data["maps"] = maps
+
+	this.TplName = "check_result.tpl"
+}
+
+func (this *PerformanceController) GetCheckSelf() {
+
+	this.TplName = "checkself.tpl"
+}
+
+func (this *PerformanceController) GetCheckSelfData() {
+	fmt.Println("获取被考核人自评信息")
+	o := orm.NewOrm()
+	var maps []orm.Params
+	ct := new(models.CheckTask)
+	query := o.QueryTable(ct).Filter("CheckYourself", 1)
+	//	filters := make([]interface{}, 0)
+	//查询数据库
+	num, err := query.Values(&maps, "Title", "CheckPeople", "Id")
+	if err != nil {
+		log4go.Stdout("获取被考核人自评失败", err.Error())
+		this.ajaxMsg("获取被考核人自评失败", MSG_ERR_Resources)
+	}
+	fmt.Println("get checkprojectset reslut num:", num)
+	this.ajaxList("获取考核项目成功", 0, num, maps)
+	return
+}
+
+func (this *PerformanceController) GetCheckSelfDetail() {
+
+	this.TplName = "checkself_detail.tpl"
 }
