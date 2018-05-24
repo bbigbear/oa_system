@@ -261,8 +261,8 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 			topday=""
 		}
 		//alert($("input[name='top']:checked").val())
-		//if($("input[name={{.Type}}]:checked").val()!=undefined){
-		//	checkbox_src=checkbox_src+$("input[name={{.Type}}]:checked").val()+',';
+		//if($("input[name=<<<.Type>>>]:checked").val()!=undefined){
+		//	checkbox_src=checkbox_src+$("input[name=<<<.Type>>>]:checked").val()+',';
 		//}
 		var s=$('input[name="status"]:checked').val();
 		var status
@@ -336,8 +336,8 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 			topday=""
 		}
 		//alert($("input[name='top']:checked").val())
-		//if($("input[name={{.Type}}]:checked").val()!=undefined){
-		//	checkbox_src=checkbox_src+$("input[name={{.Type}}]:checked").val()+',';
+		//if($("input[name=<<<.Type>>>]:checked").val()!=undefined){
+		//	checkbox_src=checkbox_src+$("input[name=<<<.Type>>>]:checked").val()+',';
 		//}
 		var data={
 			'auth':"admin",

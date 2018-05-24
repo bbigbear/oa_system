@@ -56,9 +56,9 @@
           <a class="" href="javascript:;">快捷菜单</a>
           <dl class="layui-nav-child">
             <dd><a href="javascript:;">快捷菜单设置</a></dd>
-			{{range .quickmenu}}
-            <dd><a href="javascript:;">{{.}}</a></dd>
-			{{end}}
+			<<<range .quickmenu>>>
+            <dd><a href="javascript:;"><<<.>>></a></dd>
+			<<<end>>>
 <!--            <dd><a href="javascript:;">列表三</a></dd>-->
           </dl>
         </li>
@@ -124,9 +124,9 @@
 				<i class="layui-icon" style="font-size: 30px;text-align:center;" id="setting">&#xe857;</i>设置 			
 				</div>
 				<ul id="sortable">
-				  {{range .maps}}
-				  <li class="ui-state-default" id={{.Id}}><img src="{{.Path}}" /><span>{{.Name}}</span></li>
-				  {{end}}
+				  <<<range .maps>>>
+				  <li class="ui-state-default" id=<<<.Id>>>><img src="<<<.Path>>>" /><span><<<.Name>>></span></li>
+				  <<<end>>>
 				 <!-- <li class="ui-state-default" id="news"><img src="../static/img/car.png" /><span>新闻管理</span></li>
 				  <li class="ui-state-default" id="recruit_require"><img src="../static/img/car.png" /><span>招聘需求</span></li>
 				  <li class="ui-state-default" id="recruit_approval"><img src="../static/img/car.png" /><span>计划审批</span></li>-->
@@ -211,11 +211,11 @@
 	 // console.log(data.elem); //得到当前的Tab大容器
 	  list.splice(data.index,1);
 	});
-	{{range .maps}}
-		$('#'+{{.Id}}).on('click',function(){
-			ChangeTabs({{.Name}})
+	<<<range .maps>>>
+		$('#'+<<<.Id>>>).on('click',function(){
+			ChangeTabs(<<<.Name>>>)
 		  });
-	{{end}}
+	<<<end>>>
 		
 	
 	$('#setting').on('click',function(){

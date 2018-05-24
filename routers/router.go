@@ -37,6 +37,7 @@ func init() {
 	beego.Router("/v1/recruit/require/getdata", &controllers.RecruitManageController{}, "*:GetRecruitRequireData")
 	beego.Router("/v1/recruit/require/edit", &controllers.RecruitManageController{}, "*:EditRecruitRequire")
 	beego.Router("/v1/recruit/require/edit_action", &controllers.RecruitManageController{}, "post:EditRecruitRequireAction")
+	beego.Router("/v1/recruit/require/change", &controllers.RecruitManageController{}, "post:ChangeRecruitStatus")
 	beego.Router("/v1/recruit/require/del", &controllers.RecruitManageController{}, "post:DelRecruitRequire")
 
 	beego.Router("/v1/recruit/approval", &controllers.RecruitManageController{}, "*:GetRecruitApproval")
@@ -55,6 +56,7 @@ func init() {
 	beego.Router("/v1/train/plan/edit", &controllers.TrainController{}, "*:EditTrainPlan")
 	beego.Router("/v1/train/plan/edit_action", &controllers.TrainController{}, "post:EditTrainPlanAction")
 	beego.Router("/v1/train/plan/del", &controllers.TrainController{}, "post:DelTrainPlan")
+	beego.Router("/v1/train/approval/change", &controllers.TrainController{}, "*:ChangeTrainPlanStatus")
 
 	beego.Router("/v1/train/approval", &controllers.TrainController{}, "*:GetTrainApproval")
 

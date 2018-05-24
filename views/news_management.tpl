@@ -72,23 +72,26 @@ body{padding: 10px;}
 
 	<table id="list" lay-filter="news"></table>
 	<script type="text/html" id="barDemo">
-		<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit">详情</a>		
-		<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="stop">终止</a>
+		<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit">详情</a>				
 		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+		{{#  if(d.Status =="生效" ){ }}
+			<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="stop">终止</a>
+		{{#  } }}
 	</script>
 
 <script src="/static/layui.js"></script>
 <!-- <script src="../build/lay/dest/layui.all.js"></script> -->
 
 <script>
-layui.use(['form','laydate','upload','jquery','layedit','element','table'], function(){
+layui.use(['form','laydate','upload','jquery','layedit','element','table','laytpl'], function(){
   var form = layui.form
   ,laydate=layui.laydate
   ,upload = layui.upload
   , $ = layui.jquery
   ,layedit=layui.layedit
   ,element=layui.element
-  ,table=layui.table;
+  ,table=layui.table
+  ,laytpl = layui.laytpl;
 
 	laydate.render({
 	    elem: '#date'
@@ -167,7 +170,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
                 if (out.code == 200) {
                     layer.alert('修改成功了', {icon: 1},function(index){
                         layer.close(index);
-                        table.reload({});
+                        location.reload();
                     });
                 } else {
                     layer.msg(out.message)

@@ -173,22 +173,22 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 	var path=""
 	$(function(){
 		//获取
-		//console.log({{.m}})	
-		{{range .m}}
-			id={{.Id}}
-			$("#style").val({{.Style}})
-			$("#title").val({{.Title}})			
-			$("#range").val({{.Range}})
-			$("#day").val({{.Day}})		
-			$("#date1").val({{.StartTime}})
-			$("#date2").val({{.EndTime}})
-			$("#topday").val({{.TopDay}})
-			$("#brief").val({{.Brief}})
-			$("#detail").val({{.Detail}})
-			$("#keyword").val({{.KeyWord}})
-			list={{.Path}}.split(',')
+		//console.log(<<<.m>>>)	
+		<<<range .m>>>
+			id=<<<.Id>>>
+			$("#style").val(<<<.Style>>>)
+			$("#title").val(<<<.Title>>>)			
+			$("#range").val(<<<.Range>>>)
+			$("#day").val(<<<.Day>>>)		
+			$("#date1").val(<<<.StartTime>>>)
+			$("#date2").val(<<<.EndTime>>>)
+			$("#topday").val(<<<.TopDay>>>)
+			$("#brief").val(<<<.Brief>>>)
+			$("#detail").val(<<<.Detail>>>)
+			$("#keyword").val(<<<.KeyWord>>>)
+			list=<<<.Path>>>.split(',')
 			layedit.build('detail'); 
-		{{end}}						
+		<<<end>>>						
 		//form.render();
 		if(list[0]==""){
 			list=[]
@@ -313,8 +313,8 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 			topday=""
 		}
 		//alert($("input[name='top']:checked").val())
-		//if($("input[name={{.Type}}]:checked").val()!=undefined){
-		//	checkbox_src=checkbox_src+$("input[name={{.Type}}]:checked").val()+',';
+		//if($("input[name=<<<.Type>>>]:checked").val()!=undefined){
+		//	checkbox_src=checkbox_src+$("input[name=<<<.Type>>>]:checked").val()+',';
 		//}
 		var s=$('input[name="status"]:checked').val();
 		var status
@@ -391,8 +391,8 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 			topday=""
 		}
 		//alert($("input[name='top']:checked").val())
-		//if($("input[name={{.Type}}]:checked").val()!=undefined){
-		//	checkbox_src=checkbox_src+$("input[name={{.Type}}]:checked").val()+',';
+		//if($("input[name=<<<.Type>>>]:checked").val()!=undefined){
+		//	checkbox_src=checkbox_src+$("input[name=<<<.Type>>>]:checked").val()+',';
 		//}
 		var data={
 			'Id':id,

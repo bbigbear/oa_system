@@ -34,13 +34,13 @@ body{padding: 10px;}
 </style>
 </head>
 <body>
-{{range .maps}}
+<<<range .maps>>>
 <table border="1" width="90%" align="center" >
 	<tr>
         <td  width="100%" style="padding:0px">
             <table class="TableTop" width="100%" cellpadding="0" >
                 <tr>
-                    <td class="center"  width="100%"  style="font-size:20px;"><font color=''>[{{.Style}}]</font>{{.Title}}               
+                    <td class="center"  width="100%"  style="font-size:20px;"><font color=''>[<<<.Style>>>]</font><<<.Title>>>               
 					</td>
                 </tr>
             </table>
@@ -51,11 +51,11 @@ body{padding: 10px;}
             <span class="ui-notify-tips-preview">
                 <!--公告类型-->
                 <div>
-                    公告类型: <span>{{.Style}}</span>
+                    公告类型: <span><<<.Style>>></span>
                 </div>
                 <!--发布人-->
                 <div>
-                    发布人: <span>{{.Auth}}</span>
+                    发布人: <span><<<.Auth>>></span>
                 </div>
                 <!--审核人-->
             </span>
@@ -66,7 +66,7 @@ body{padding: 10px;}
                 </div>
                 <!--发布时间-->
                 <div>
-                    发布时间：<span>{{.Day}}</span>
+                    发布时间：<span><<<.Day>>></span>
                 </div>
                 <!--审核时间-->
             </span>
@@ -77,7 +77,7 @@ body{padding: 10px;}
                 </div>
                 <!--发布范围-->
                 <div>
-                    发布范围: <span title="{{.Range}}">{{.Range}}</span>
+                    发布范围: <span title="<<<.Range>>>"><<<.Range>>></span>
                 </div>
             </span>
         </td>
@@ -85,7 +85,7 @@ body{padding: 10px;}
 	<br>
 	<tr>
         <td colspan="2" valign="top"  class="rich-content content" style="height:300px;font-size:12pt;">
-		{{.Detail}}
+		<<<.Detail>>>
 		</td>
     </tr>
 	<tr>
@@ -95,12 +95,12 @@ body{padding: 10px;}
     </tr>
 	<tr>
         <td class="TableContent" align="left">
-            &nbsp;&nbsp;<span title="{{.Auth}}">{{.Auth}}</span>&nbsp;
-            最后编辑于：<span>{{.Day}}</span>
+            &nbsp;&nbsp;<span title="<<<.Auth>>>"><<<.Auth>>></span>&nbsp;
+            最后编辑于：<span><<<.Day>>></span>
         </td>
     </tr>
 </table>
-{{end}}
+<<<end>>>
 <script src="/static/layui.js"></script>
 <!-- <script src="../build/lay/dest/layui.all.js"></script> -->
 <script>
@@ -118,10 +118,10 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 	var list=[]
 	$(function(){
 		//获取
-		//console.log({{.m}})	
-		{{range .maps}}			
-			list={{.Path}}.split(',')
-		{{end}}		
+		//console.log(<<<.m>>>)	
+		<<<range .maps>>>			
+			list=<<<.Path>>>.split(',')
+		<<<end>>>		
 		
 		//alert(list)
 		

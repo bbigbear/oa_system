@@ -30,7 +30,10 @@ body{padding: 10px;}
 		</div>
 		<table id="list_qj" lay-filter="qj"></table>
 		<script type="text/html" id="barDemo1">
-			<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit">销假</a>		
+		    {{#  if(d.Status =="审批中" ){ }}
+			    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit">销假</a>
+			{{#  } }} 
+			
 		</script>
 	</div>
     <div class="layui-tab-item">
@@ -38,7 +41,7 @@ body{padding: 10px;}
 			<button class="layui-btn layui-btn-primary" id="jiabang">加班登记</button>	 			
 		</div>
 		<table id="list" lay-filter="rq"></table>
-		<script type="text/html" id="barDemo">
+		<script type="text/html" id="barDemo">		    
 			<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit">查看</a>		
 		</script>
 	</div>
@@ -49,14 +52,15 @@ body{padding: 10px;}
 <!-- <script src="../build/lay/dest/layui.all.js"></script> -->
 
 <script>
-layui.use(['form','laydate','upload','jquery','layedit','element','table'], function(){
+layui.use(['form','laydate','upload','jquery','layedit','element','table','laytpl'], function(){
   var form = layui.form
   ,laydate=layui.laydate
   ,upload = layui.upload
   , $ = layui.jquery
   ,layedit=layui.layedit
   ,element=layui.element
-  ,table=layui.table;
+  ,table=layui.table
+  ,laytpl = layui.laytpl;
 
 		
 	laydate.render({

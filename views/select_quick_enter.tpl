@@ -52,14 +52,14 @@
           preserveSelectionOnMove: 'moved',
           moveOnSelect: false,
           nonSelectedList:[
-			{{range .menu}}
-			{"roleName":{{.}}},
-			{{end}}			
+			<<<range .menu>>>
+			{"roleName":<<<.>>>},
+			<<<end>>>			
 			],
           selectedList:[
-			{{range .quickmenu}}
-			{"roleName":{{.}}},
-			{{end}}
+			<<<range .quickmenu>>>
+			{"roleName":<<<.>>>},
+			<<<end>>>
 			],
           optionValue:"roleName",
           optionText:"roleName",

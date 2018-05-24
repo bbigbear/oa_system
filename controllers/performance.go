@@ -355,11 +355,13 @@ func (this *PerformanceController) ChangeCheckTaskStauts() {
 		this.ajaxMsg("考核项目id失败", MSG_ERR_Param)
 	}
 	fmt.Println("考核项目id:", id)
+	status := this.GetString("status")
+	fmt.Println("status", status)
 	o := orm.NewOrm()
 	var ct_info models.CheckTask
 	ct_info.Id = int64(id)
-	ct_info.Status = "失效"
-	num, err := o.Update(&ct_info, "Stauts")
+	ct_info.Status = status
+	num, err := o.Update(&ct_info, "Status")
 	if err != nil {
 		log4go.Stdout("修改状态失败", err.Error())
 		this.ajaxMsg("修改状态失败", MSG_ERR_Resources)

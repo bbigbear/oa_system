@@ -282,35 +282,35 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 	var path=""
 	$(function(){
 		//获取
-		console.log({{.m}})	
-		{{range .m}}
-			id={{.Id}}
-			$("#number").val({{.Number}})
-			$("#planName").val({{.PlanName}})			
-			$("#trainChannel").val({{.TrainChannel}})	
-			$("#trainForm").val({{.TrainForm}})
-			$("#date1").val({{.TrainStartTime}})
-			$("#date2").val({{.TrainEndTime}})
-			$("#department").val({{.Department}})
-			$("#leader").val({{.Leader}})
-			$("#joinNum").val({{.JoinNum}})
-			$("#trainPlace").val({{.TrainPlace}})
-			$("#trainName").val({{.TrainName}})
-			$("#trainContract").val({{.TrainContract}})
-			$("#trainCname").val({{.TrainCname}})
-			$("#totalTime").val({{.TrainTotalTime}})
-			$("#budgrt").val({{.Budget}})
-			$("#approver").val({{.Approver}})
-			$("#joinDepartment").val({{.JoinDepartment}})
-			$("#joinPeople").val({{.JoinPeople}})
-			$("#trainInfo").val({{.TrainInfo}})
-			$("#trainContractInfo").val({{.TrainContractInfo}})
-			$("#trainRequire").val({{.TrainRequire}})
-			$("#trainExplain").val({{.TrainExplain}})
-			$("#remark").val({{.Remark}})
-			$("#trainDetail").val({{.TrainDetail}})
-			list={{.FilePath}}.split(',')			
-		{{end}}		
+		console.log(<<<.m>>>)	
+		<<<range .m>>>
+			id=<<<.Id>>>
+			$("#number").val(<<<.Number>>>)
+			$("#planName").val(<<<.PlanName>>>)			
+			$("#trainChannel").val(<<<.TrainChannel>>>)	
+			$("#trainForm").val(<<<.TrainForm>>>)
+			$("#date1").val(<<<.TrainStartTime>>>)
+			$("#date2").val(<<<.TrainEndTime>>>)
+			$("#department").val(<<<.Department>>>)
+			$("#leader").val(<<<.Leader>>>)
+			$("#joinNum").val(<<<.JoinNum>>>)
+			$("#trainPlace").val(<<<.TrainPlace>>>)
+			$("#trainName").val(<<<.TrainName>>>)
+			$("#trainContract").val(<<<.TrainContract>>>)
+			$("#trainCname").val(<<<.TrainCname>>>)
+			$("#totalTime").val(<<<.TrainTotalTime>>>)
+			$("#budgrt").val(<<<.Budget>>>)
+			$("#approver").val(<<<.Approver>>>)
+			$("#joinDepartment").val(<<<.JoinDepartment>>>)
+			$("#joinPeople").val(<<<.JoinPeople>>>)
+			$("#trainInfo").val(<<<.TrainInfo>>>)
+			$("#trainContractInfo").val(<<<.TrainContractInfo>>>)
+			$("#trainRequire").val(<<<.TrainRequire>>>)
+			$("#trainExplain").val(<<<.TrainExplain>>>)
+			$("#remark").val(<<<.Remark>>>)
+			$("#trainDetail").val(<<<.TrainDetail>>>)
+			list=<<<.FilePath>>>.split(',')			
+		<<<end>>>		
 		
 		if(list[0]==""){
 			list=[]

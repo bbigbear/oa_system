@@ -82,22 +82,26 @@ body{padding: 10px;}
 
 	<table id="list" lay-filter="rq"></table>
 	<script type="text/html" id="barDemo">
-		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="no">不批准</a>		
-		<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="yes">批准</a>
+		{{#  if((d.Status =="待审批")||(d.Status=="不批准")){ }}
+			 <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="yes">批准</a>
+		{{#  }else{ }}
+			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="no">不批准</a>
+		{{#  } }}
 	</script>
 
 <script src="/static/layui.js"></script>
 <!-- <script src="../build/lay/dest/layui.all.js"></script> -->
 
 <script>
-layui.use(['form','laydate','upload','jquery','layedit','element','table'], function(){
+layui.use(['form','laydate','upload','jquery','layedit','element','table','laytpl'], function(){
   var form = layui.form
   ,laydate=layui.laydate
   ,upload = layui.upload
   , $ = layui.jquery
   ,layedit=layui.layedit
   ,element=layui.element
-  ,table=layui.table;
+  ,table=layui.table
+  ,laytpl = layui.laytpl;
 
 	
 	
@@ -131,38 +135,33 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 		table.on('tool(rq)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
 		    var data = obj.data //获得当前行数据
 		    ,layEvent = obj.event; //获得 lay-event 对应的值
-		    if(layEvent === 'edit'){
-		      //layer.msg('查看操作');		
-			  layer.open({
-			  type: 2,
-			  title: '查看计划',
-			  //closeBtn: 0, //不显示关闭按钮
-			  shadeClose: true,
-			  shade: false,
-			  area: ['893px', '600px'],
-			 // offset: 'rb', //右下角弹出
-			  //time: 2000, //2秒后自动关闭
-			  maxmin: true,
-			  anim: 2,
-			  content: ['/v1/recruit/require/edit?id='+data.Id], //iframe的url，no代表不显示滚动条			  
-		});
-	    } else if(layEvent === 'del'){
-	      layer.confirm('真的删除行么', function(index){
-	        var jsData={'id':data.Id}
-			$.post('/v1/recruit/require/del', jsData, function (out) {
+		    if(layEvent === 'yes'){
+		        var jsData={'id':data.Id,'status':"批准"}
+				$.post('/v1/recruit/require/change', jsData, function (out) {
+	                if (out.code == 200) {
+	                    layer.alert('批准成功', {icon: 1},function(index){
+	                        layer.close(index);
+	                        //table.reload({});
+							location.reload();	
+	                    });
+	                } else {
+	                    layer.msg(out.message)
+	                }
+	            }, "json");
+		        //向服务端发送删除指令			  
+	    } else if(layEvent === 'no'){
+	        var jsData={'id':data.Id,'status':"不批准"}
+			$.post('/v1/recruit/require/change', jsData, function (out) {
                 if (out.code == 200) {
-                    layer.alert('删除成功了', {icon: 1},function(index){
+                    layer.alert('不批准成功', {icon: 1},function(index){
                         layer.close(index);
-                        table.reload({});
+                       // table.reload({});
+						location.reload();	
                     });
                 } else {
                     layer.msg(out.message)
                 }
             }, "json");
-			obj.del(); //删除对应行（tr）的DOM结构
-	        layer.close(index);
-	        //向服务端发送删除指令
-	      });
 	    }
 	  });
   

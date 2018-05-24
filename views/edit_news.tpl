@@ -135,18 +135,18 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 	var id
 	$(function(){
 		//获取
-		//console.log({{.m}})	
-		{{range .m}}
-			id={{.Id}}
-			$("#style").val({{.Style}})
-			$("#title").val({{.Title}})			
-			$("#range").val({{.Range}})
-			$("#day").val({{.Day}})		
-			$("#brief").val({{.Brief}})
-			$("#detail").val({{.Detail}})
-			$("#keyword").val({{.KeyWord}})
+		//console.log(<<<.m>>>)	
+		<<<range .m>>>
+			id=<<<.Id>>>
+			$("#style").val(<<<.Style>>>)
+			$("#title").val(<<<.Title>>>)			
+			$("#range").val(<<<.Range>>>)
+			$("#day").val(<<<.Day>>>)		
+			$("#brief").val(<<<.Brief>>>)
+			$("#detail").val(<<<.Detail>>>)
+			$("#keyword").val(<<<.KeyWord>>>)
 			layedit.build('detail'); 
-		{{end}}						
+		<<<end>>>						
 	});
 
 	 laydate.render({

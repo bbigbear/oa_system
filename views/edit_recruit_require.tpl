@@ -156,21 +156,21 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 	var path=""
 	$(function(){
 		//获取
-		//console.log({{.m}})	
-		{{range .m}}
-			id={{.Id}}
-			$("#number").val({{.Number}})
-			$("#name").val({{.Name}})			
-			$("#channel").val({{.Channel}})	
-			$("#cost").val({{.Cost}})
-			$("#date1").val({{.StartDay}})
-			$("#date2").val({{.EndDay}})
-			$("#people").val({{.People}})
-			$("#approver").val({{.Approver}})
-			$("#explain").val({{.Explain}})
-			$("#remark").val({{.Remark}})
-			list={{.Path}}.split(',')
-		{{end}}		
+		//console.log(<<<.m>>>)	
+		<<<range .m>>>
+			id=<<<.Id>>>
+			$("#number").val(<<<.Number>>>)
+			$("#name").val(<<<.Name>>>)			
+			$("#channel").val(<<<.Channel>>>)	
+			$("#cost").val(<<<.Cost>>>)
+			$("#date1").val(<<<.StartDay>>>)
+			$("#date2").val(<<<.EndDay>>>)
+			$("#people").val(<<<.People>>>)
+			$("#approver").val(<<<.Approver>>>)
+			$("#explain").val(<<<.Explain>>>)
+			$("#remark").val(<<<.Remark>>>)
+			list=<<<.Path>>>.split(',')
+		<<<end>>>		
 		
 		if(list[0]==""){
 			list=[]

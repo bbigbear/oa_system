@@ -86,16 +86,16 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 	var id
 	$(function(){
 		//获取
-		//console.log({{.m}})	
-		{{range .m}}
-			id={{.Id}}
-			$("#name").val({{.Name}})			
-			$("#detail").val({{.Detail}})	
-			$("#module").val({{.Module}})
-			$("#department").val({{.Department}})
-			$("#people").val({{.People}})
-			$("#role").val({{.Role}})
-		{{end}}		
+		//console.log(<<<.m>>>)	
+		<<<range .m>>>
+			id=<<<.Id>>>
+			$("#name").val(<<<.Name>>>)			
+			$("#detail").val(<<<.Detail>>>)	
+			$("#module").val(<<<.Module>>>)
+			$("#department").val(<<<.Department>>>)
+			$("#people").val(<<<.People>>>)
+			$("#role").val(<<<.Role>>>)
+		<<<end>>>		
 		
 	});
 	

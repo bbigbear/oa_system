@@ -30,12 +30,12 @@ body{padding: 10px;}
 		      </thead>
 		      <tbody id="demoListed">
 			  	<tr>
-				{{range .maps}}
-					<td style="width:200px;">{{.CheckPeople}}</td>
+				<<<range .maps>>>
+					<td style="width:200px;"><<<.CheckPeople>>></td>
 					<td style="width:200px;"></td>
-					<td style="width:200px;">{{.CheckedPeople}}</td>
+					<td style="width:200px;"><<<.CheckedPeople>>></td>
 <!--					<td><i class="layui-icon">&#xe654;</i><a id="add">添加</a></td>-->
-				{{end}}
+				<<<end>>>
 				</tr>
 			  </tbody>
 		    </table>
@@ -79,7 +79,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 	//数据上传
 	function uploadData(){
 		var data={
-			'cid':parseInt({{.cid}}),
+			'cid':parseInt(<<<.cid>>>),
 			'project':$("#project").val(),
 			'range1':parseInt($("#range1").val()),
 			'range2':parseInt($("#range2").val()),

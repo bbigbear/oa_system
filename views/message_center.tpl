@@ -25,9 +25,9 @@ body{padding: 10px;}
 		    <h2 class="layui-colla-title">公告通知</h2>
 		    <div class="layui-colla-content layui-show">
 				<ul class="site-dir">
-				{{range .maps}}
-				  <li id="a_{{.Id}}"><a>【{{.Style}}】{{.Title}} ({{.StartTime}})</a></li>			 
-				{{end}}
+				<<<range .maps>>>
+				  <li id="a_<<<.Id>>>"><a>【<<<.Style>>>】<<<.Title>>> (<<<.StartTime>>>)</a></li>			 
+				<<<end>>>
 				</ul>
 			</div>
 		  </div>
@@ -39,9 +39,9 @@ body{padding: 10px;}
 		    <h2 class="layui-colla-title">新闻</h2>
 		    <div class="layui-colla-content layui-show">
 				<ul class="site-dir">
-				{{range .news_maps}}
-				  <li id="n_{{.Id}}"><a>【{{.Style}}】{{.Title}} ({{.Day}})</a></li>			 
-				{{end}}
+				<<<range .news_maps>>>
+				  <li id="n_<<<.Id>>>"><a>【<<<.Style>>>】<<<.Title>>> (<<<.Day>>>)</a></li>			 
+				<<<end>>>
 				</ul>
 			</div>
 		  </div>
@@ -74,9 +74,9 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 	    ,type: 'date'
 	  });
 	 
-	{{range .maps}}
-		$('#a_'+{{.Id}}).on('click',function(){
-			//alert({{.Id}})
+	<<<range .maps>>>
+		$('#a_'+<<<.Id>>>).on('click',function(){
+			//alert(<<<.Id>>>)
 			//iframe窗
 			layer.open({
 			  type: 2,
@@ -89,7 +89,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 			  //time: 2000, //2秒后自动关闭
 			  maxmin: true,
 			  anim: 2,
-			  content: ['/v1/message_detail?id='+parseInt({{.Id}})+'&type=announce'], //iframe的url，no代表不显示滚动条
+			  content: ['/v1/message_detail?id='+parseInt(<<<.Id>>>)+'&type=announce'], //iframe的url，no代表不显示滚动条
 			  cancel: function(index, layero){ 
 			  //if(confirm('确定要关闭么')){ //只有当点击confirm框的确定时，该层才会关闭
 			    layer.close(index)
@@ -102,11 +102,11 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 			  },
 			});
 		})
-	{{end}}
+	<<<end>>>
 	
-	{{range .news_maps}}
-		$('#n_'+{{.Id}}).on('click',function(){
-			//alert({{.Id}})
+	<<<range .news_maps>>>
+		$('#n_'+<<<.Id>>>).on('click',function(){
+			//alert(<<<.Id>>>)
 			//iframe窗
 			layer.open({
 			  type: 2,
@@ -119,7 +119,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 			  //time: 2000, //2秒后自动关闭
 			  maxmin: true,
 			  anim: 2,
-			  content: ['/v1/message_detail?id='+parseInt({{.Id}})+'&type=news'], //iframe的url，no代表不显示滚动条
+			  content: ['/v1/message_detail?id='+parseInt(<<<.Id>>>)+'&type=news'], //iframe的url，no代表不显示滚动条
 			  cancel: function(index, layero){ 
 			  //if(confirm('确定要关闭么')){ //只有当点击confirm框的确定时，该层才会关闭
 			    layer.close(index)
@@ -132,7 +132,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 			  },
 			});
 		})
-	{{end}}
+	<<<end>>>
 });
 </script>
 

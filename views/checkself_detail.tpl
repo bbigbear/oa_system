@@ -77,7 +77,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 	//数据上传
 	function uploadData(){
 		var data={
-			'cid':parseInt({{.cid}}),
+			'cid':parseInt(<<<.cid>>>),
 			'project':$("#project").val(),
 			'range1':parseInt($("#range1").val()),
 			'range2':parseInt($("#range2").val()),

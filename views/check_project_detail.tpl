@@ -65,19 +65,19 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 	$(function(){
 		//获取
 		var tr
-		{{range .maps}}
+		<<<range .maps>>>
 			tr = $(['<tr>'
-	          ,'<td>'+ {{.Project}} +'</td>'
-			  ,'<td>'+ {{.Range1}} +'~'+{{.Range2}}+'</td>'
-			  ,'<td>'+ {{.Info}} +'</td>'
+	          ,'<td>'+ <<<.Project>>> +'</td>'
+			  ,'<td>'+ <<<.Range1>>> +'~'+<<<.Range2>>>+'</td>'
+			  ,'<td>'+ <<<.Info>>> +'</td>'
 	          ,'<td>'
-				,'<a id="{{.Id}}">删除</a>'
+				,'<a id="<<<.Id>>>">删除</a>'
 	          ,'</td>'
 	        ,'</tr>'].join(''));			
 			$('#demoListed').append(tr);
-			$("#"+{{.Id}}).on('click',function(){             
+			$("#"+<<<.Id>>>).on('click',function(){             
                 //alert("删除")
-				var jsData={'id':parseInt({{.Id}})}
+				var jsData={'id':parseInt(<<<.Id>>>)}
 				$.post('/v1/perform/checkset/detail/del', jsData, function (out) {
 	                if (out.code == 200) {
 	                    layer.alert('删除成功了', {icon: 1},function(index){
@@ -89,7 +89,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 	                }
 	            }, "json");
             });
-		{{end}}	
+		<<<end>>>	
 	});
 	
 	 laydate.render({
@@ -108,7 +108,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 	//数据上传
 	function uploadData(){
 		var data={
-			'cid':parseInt({{.cid}}),
+			'cid':parseInt(<<<.cid>>>),
 			'project':$("#project").val(),
 			'range1':parseInt($("#range1").val()),
 			'range2':parseInt($("#range2").val()),

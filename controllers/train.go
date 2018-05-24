@@ -169,6 +169,36 @@ func (this *TrainController) EditTrainPlanAction() {
 	return
 }
 
+func (this *TrainController) ChangeTrainPlanStatus() {
+	fmt.Println("改变状态")
+	//获取id
+	id, err := this.GetInt("id")
+	if err != nil {
+		log4go.Stdout("修改状态id失败", err.Error())
+		this.ajaxMsg("修改状态id失败", MSG_ERR_Param)
+	}
+	fmt.Println("修改状态id:", id)
+	//获取status
+	status := this.GetString("status")
+	fmt.Println("status is", status)
+
+	o := orm.NewOrm()
+	train := new(models.Train)
+	//插入数据库
+	num, err := o.QueryTable(train).Filter("Id", id).Update(orm.Params{
+		"Status": status,
+	})
+	if err != nil {
+		log4go.Stdout("改变状态失败")
+		this.ajaxMsg("改变状态失败", MSG_ERR_Resources)
+	}
+	fmt.Println("自增Id(num)", num)
+	//list["id"] = num
+	//this.ajaxList("更新成功", MSG_OK, 1, list)
+	this.ajaxMsg("更新成功", MSG_OK)
+	return
+}
+
 func (this *TrainController) DelTrainPlan() {
 	fmt.Println("点击删除培训计划按钮")
 	//获取id

@@ -93,10 +93,10 @@ func (this *AdminOfficeController) EditAnnouncementAction() {
 		this.ajaxMsg("更新失败", MSG_ERR_Resources)
 	}
 	fmt.Println("自增Id(num)", num)
-	if num == 0 {
-		log4go.Stdout("更新公告通知失败")
-		this.ajaxMsg("更新失败", MSG_ERR_Param)
-	}
+	//	if num == 0 {
+	//		log4go.Stdout("更新公告通知失败")
+	//		this.ajaxMsg("更新失败", MSG_ERR_Param)
+	//	}
 	//list["id"] = num
 	//this.ajaxList("更新成功", MSG_OK, 1, list)
 	this.ajaxMsg("更新成功", MSG_OK)
@@ -183,10 +183,6 @@ func (this *AdminOfficeController) ChangeAnnouncementStatus() {
 	if err != nil {
 		log4go.Stdout("更新公告通知失败")
 		this.ajaxMsg("更新失败", MSG_ERR_Resources)
-	}
-	if num == 0 {
-		log4go.Stdout("更新公告通知失败")
-		this.ajaxMsg("更新失败", MSG_ERR_Param)
 	}
 	fmt.Println("update(num)", num)
 	//this.ajaxList("新增成功", MSG_OK, 1, list)
@@ -361,10 +357,6 @@ func (this *AdminOfficeController) ChangeNewsStatus() {
 	if err != nil {
 		log4go.Stdout("更新新闻通知失败")
 		this.ajaxMsg("更新失败", MSG_ERR_Resources)
-	}
-	if num == 0 {
-		log4go.Stdout("更新新闻通知失败")
-		this.ajaxMsg("更新失败", MSG_ERR_Param)
 	}
 	fmt.Println("update(num)", num)
 	//this.ajaxList("新增成功", MSG_OK, 1, list)

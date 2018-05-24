@@ -57,9 +57,9 @@ body{padding: 10px;}
 		<label class="layui-form-label">考核指标集</label>
 	    <div class="layui-input-inline" style="width: 150px;">
 	      <select name="checkIndexs" id="checkIndexs" lay-filter="status_select">
-				  {{range .maps}}
-				  <option value="{{.Project}}" > {{.Project}}</option>
-				  {{end}}
+				  <<<range .maps>>>
+				  <option value="<<<.Project>>>" > <<<.Project>>></option>
+				  <<<end>>>
 <!--				  <option value="通知" > 通知</option>-->
 	      </select>
 	    </div>

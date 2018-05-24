@@ -27,8 +27,10 @@ body{padding: 10px;}
     <div class="layui-tab-item layui-show">		
 		<table id="list_qj" lay-filter="qj"></table>
 		<script type="text/html" id="barDemo1">
-			<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="tongguo">通过</a>	
-			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="bohui">驳回</a>		
+			{{#  if(d.Status =="审批中" ){ }}
+			    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="tongguo">通过</a>	
+				<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="bohui">驳回</a>
+			{{#  } }}			
 		</script>
 	</div>
     <div class="layui-tab-item">		
@@ -44,14 +46,15 @@ body{padding: 10px;}
 <!-- <script src="../build/lay/dest/layui.all.js"></script> -->
 
 <script>
-layui.use(['form','laydate','upload','jquery','layedit','element','table'], function(){
+layui.use(['form','laydate','upload','jquery','layedit','element','table','laytpl'], function(){
   var form = layui.form
   ,laydate=layui.laydate
   ,upload = layui.upload
   , $ = layui.jquery
   ,layedit=layui.layedit
   ,element=layui.element
-  ,table=layui.table;
+  ,table=layui.table
+  ,laytpl = layui.laytpl;
 
 		
 	laydate.render({
@@ -93,7 +96,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 	                if (out.code == 200) {
 	                    layer.alert('已通过', {icon: 1},function(index){
 	                        layer.close(index);
-	                        table.reload({});
+	                        location.reload();
 	                    });
 	                } else {
 	                    layer.msg(out.message)
@@ -108,7 +111,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 	                if (out.code == 200) {
 	                    layer.alert('驳回成功了', {icon: 1},function(index){
 	                        layer.close(index);
-	                        table.reload({});
+	                        location.reload();
 	                    });
 	                } else {
 	                    layer.msg(out.message)

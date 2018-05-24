@@ -33,18 +33,18 @@ ul li span {display:block; text-align: center; }
   <div class="layui-tab-content">
 	<div class="layui-tab-item layui-show">
 		<ul id="sortable">
-		  {{range .unset}}
-		  <li class="ui-state-default" id={{.Id}}><img src={{.Pic}} /><span>{{.Name}}</span></li>
+		  <<<range .unset>>>
+		  <li class="ui-state-default" id=<<<.Id>>>><img src=<<<.Pic>>> /><span><<<.Name>>></span></li>
 <!--		  <li class="ui-state-default" id="news"><img src="../static/img/car.png" /><span>新闻管理</span></li>-->
-		  {{end}}
+		  <<<end>>>
 		</ul>
 	</div>
     <div class="layui-tab-item">
 		<ul id="sortable">
-		  {{range .desk}}
-		  <li class="ui-state-default" id={{.Id}}><img src={{.Path}} /><span>{{.Name}}</span></li>
+		  <<<range .desk>>>
+		  <li class="ui-state-default" id=<<<.Id>>>><img src=<<<.Path>>> /><span><<<.Name>>></span></li>
 <!--		  <li class="ui-state-default" id="news"><img src="../static/img/car.png" /><span>新闻管理</span></li>-->
-		  {{end}}
+		  <<<end>>>
 		</ul>
 	</div>
   </div>
@@ -75,11 +75,11 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 		//top.window.parent.ChangeTabs("公告管理");
 	  });
 	//未设置
-		{{range .unset}}
-			$('#'+{{.Id}}).on('click',function(){
+		<<<range .unset>>>
+			$('#'+<<<.Id>>>).on('click',function(){
 				//alert("未设置")
 				layer.confirm('确定添加到桌面？', function(index){
-			        var data={'name':{{.Name}},'path':{{.Pic}}}
+			        var data={'name':<<<.Name>>>,'path':<<<.Pic>>>}
 					$.ajax({
 						type:"POST",
 						contentType:"application/json;charset=utf-8",
@@ -102,14 +102,14 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 					  	});
 			      });
 			});
-		{{end}}
+		<<<end>>>
 		
 	//已设置
-		{{range .desk}}
-			$('#'+{{.Id}}).on('click',function(){
+		<<<range .desk>>>
+			$('#'+<<<.Id>>>).on('click',function(){
 				//alert("已设置")	
 				layer.confirm('确定要移除桌面？', function(index){
-			        var jsData={'id':{{.Id}}}
+			        var jsData={'id':<<<.Id>>>}
 					$.post('/v1/desk/del', jsData, function (out) {
 		                if (out.code == 200) {
 		                    layer.alert('移除成功', {icon: 1},function(index){
@@ -122,7 +122,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
 		            }, "json");
 			      });
 			});
-		{{end}}
+		<<<end>>>
 	
 	
 });
