@@ -7,9 +7,11 @@ import (
 )
 
 func init() {
-	beego.Router("/", &controllers.MainController{})
+	beego.Router("/", &controllers.LoginController{})
+	beego.Router("/v1/main", &controllers.MainController{})
 	//get file
 	beego.Router("/v1/login", &controllers.LoginController{})
+	//beego.Router("/v1/login_s", &controllers.LoginController{}, "*:SessionLogin")
 	beego.Router("/v1/login_action", &controllers.LoginController{}, "post:LoginAction")
 	beego.Router("/v1/put_file", &controllers.BaseController{}, "*:PutFile")
 	beego.Router("/v1/message_center", &controllers.MainController{}, "*:GetMessageCenter")

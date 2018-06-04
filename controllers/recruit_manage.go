@@ -16,11 +16,18 @@ type RecruitManageController struct {
 }
 
 func (this *RecruitManageController) Get() {
-
+	if this.GetSession("islogin") != 1 {
+		fmt.Println("未登录")
+		this.Redirect("/v1/login", 302)
+	}
 	this.TplName = "recruit_require.tpl"
 }
 
 func (this *RecruitManageController) AddRecruitRequire() {
+	if this.GetSession("islogin") != 1 {
+		fmt.Println("未登录")
+		this.Redirect("/v1/login", 302)
+	}
 	this.TplName = "add_recruit_require.tpl"
 }
 
@@ -104,7 +111,14 @@ func (this *RecruitManageController) GetRecruitRequireData() {
 }
 
 func (this *RecruitManageController) EditRecruitRequire() {
-
+	if this.GetSession("islogin") != 1 {
+		fmt.Println("未登录")
+		this.Redirect("/v1/login", 302)
+	}
+	if this.GetSession("islogin") != 1 {
+		fmt.Println("未登录")
+		this.Redirect("/v1/login", 302)
+	}
 	o := orm.NewOrm()
 	var maps []orm.Params
 	rq := new(models.RecruitRequire)
@@ -200,6 +214,9 @@ func (this *RecruitManageController) DelRecruitRequire() {
 }
 
 func (this *RecruitManageController) GetRecruitApproval() {
-
+	if this.GetSession("islogin") != 1 {
+		fmt.Println("未登录")
+		this.Redirect("/v1/login", 302)
+	}
 	this.TplName = "recruit_approval.tpl"
 }

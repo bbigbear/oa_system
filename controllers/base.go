@@ -1,10 +1,13 @@
 package controllers
 
 import (
-	//"MenuPj/models"
 	"fmt"
 	"log"
 	//"strconv"
+	"encoding/base64"
+	"encoding/json"
+	"net/http"
+	"oa_system/models"
 	"time"
 
 	//_ "github.com/Go-SQL-Driver/MySQL"
@@ -16,6 +19,7 @@ import (
 	//"github.com/alecthomas/log4go"
 	"github.com/astaxie/beego"
 	//"github.com/astaxie/beego/toolbox"
+	"github.com/astaxie/beego/httplib"
 )
 
 const (
@@ -151,4 +155,47 @@ func (this *BaseController) GetRandomString(l int) string {
 		result = append(result, bytes[r.Intn(len(bytes))])
 	}
 	return string(result)
+}
+
+//单点登录
+func (this *BaseController) SessionLogin(skey string) int {
+	buf, err := base64.StdEncoding.DecodeString(skey)
+	if err != nil {
+		return 0
+	}
+
+	var v []string
+	err1 := json.Unmarshal(buf, &v)
+	if err1 != nil {
+		return 0
+	}
+
+	url := beego.AppConfig.String("session_login_url")
+	reqParm := httplib.Get(url)
+	cookie := &http.Cookie{
+		Name:  v[0],
+		Value: v[1],
+	}
+	reqParm.SetCookie(cookie)
+	//	str, err := reqParm.String()
+	//	if err != nil {
+	//		fmt.Println("err", err.Error())
+	//	}
+	//	fmt.Println(str)
+	var login_info models.Login
+	err2 := reqParm.ToJSON(&login_info)
+	if err2 != nil {
+		fmt.Println(err)
+		return 0
+	}
+	fmt.Println("login_info", &login_info)
+	if login_info.ReadName == "管理员" {
+		fmt.Println("登录成功")
+		//存session
+		this.SetSession("islogin", 1)
+		return 1
+	} else {
+		fmt.Println("不是管理员，无权登录")
+		return 0
+	}
 }

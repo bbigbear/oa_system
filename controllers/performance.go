@@ -16,6 +16,11 @@ type PerformanceController struct {
 }
 
 func (this *PerformanceController) Get() {
+	if this.GetSession("islogin") != 1 {
+		fmt.Println("未登录")
+		this.Redirect("/v1/login", 302)
+	}
+
 	this.TplName = "check_project_setting.tpl"
 }
 
@@ -61,6 +66,10 @@ func (this *PerformanceController) GetCheckProjectSetData() {
 }
 
 func (this *PerformanceController) EditCheckProjectSet() {
+	if this.GetSession("islogin") != 1 {
+		fmt.Println("未登录")
+		this.Redirect("/v1/login", 302)
+	}
 
 	o := orm.NewOrm()
 	var maps []orm.Params
@@ -127,6 +136,10 @@ func (this *PerformanceController) DelCheckProjectSet() {
 }
 
 func (this *PerformanceController) CheckProjectDetail() {
+	if this.GetSession("islogin") != 1 {
+		fmt.Println("未登录")
+		this.Redirect("/v1/login", 302)
+	}
 	//获取id
 	id, err := this.GetInt("id")
 	if err != nil {
@@ -198,11 +211,19 @@ func (this *PerformanceController) DelCheckProjectDetail() {
 }
 
 func (this *PerformanceController) GetCheckTaskManage() {
-
+	if this.GetSession("islogin") != 1 {
+		fmt.Println("未登录")
+		this.Redirect("/v1/login", 302)
+	}
 	this.TplName = "check_task_manage.tpl"
 }
 
 func (this *PerformanceController) AddCheckTask() {
+	if this.GetSession("islogin") != 1 {
+		fmt.Println("未登录")
+		this.Redirect("/v1/login", 302)
+	}
+
 	o := orm.NewOrm()
 	cp := new(models.CheckProjectDetail)
 	var maps []orm.Params
@@ -281,7 +302,10 @@ func (this *PerformanceController) GetCheckTaskData() {
 }
 
 func (this *PerformanceController) EditCheckTask() {
-
+	if this.GetSession("islogin") != 1 {
+		fmt.Println("未登录")
+		this.Redirect("/v1/login", 302)
+	}
 	o := orm.NewOrm()
 	var maps []orm.Params
 	ct := new(models.CheckTask)
@@ -372,6 +396,10 @@ func (this *PerformanceController) ChangeCheckTaskStauts() {
 	return
 }
 func (this *PerformanceController) CheckDetail() {
+	if this.GetSession("islogin") != 1 {
+		fmt.Println("未登录")
+		this.Redirect("/v1/login", 302)
+	}
 	//获取id
 	fmt.Println("考核情况")
 	id, err := this.GetInt("id")
@@ -400,7 +428,10 @@ func (this *PerformanceController) CheckDetail() {
 }
 
 func (this *PerformanceController) GetCheckSelf() {
-
+	if this.GetSession("islogin") != 1 {
+		fmt.Println("未登录")
+		this.Redirect("/v1/login", 302)
+	}
 	this.TplName = "checkself.tpl"
 }
 
@@ -423,6 +454,9 @@ func (this *PerformanceController) GetCheckSelfData() {
 }
 
 func (this *PerformanceController) GetCheckSelfDetail() {
-
+	if this.GetSession("islogin") != 1 {
+		fmt.Println("未登录")
+		this.Redirect("/v1/login", 302)
+	}
 	this.TplName = "checkself_detail.tpl"
 }

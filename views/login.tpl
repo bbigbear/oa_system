@@ -36,7 +36,7 @@
 					success:function(res){
 						if(res.code==200){
 							alert("登录成功")
-							window.location.href="/"																			
+							window.location.href="/v1/main"																			
 						}else{
 							alert("账户密码错误")
 						}						

@@ -16,22 +16,30 @@ type AdminOfficeController struct {
 }
 
 func (this *AdminOfficeController) Get() {
-
+	if this.GetSession("islogin") != 1 {
+		fmt.Println("未登录")
+		this.Redirect("/v1/login", 302)
+	}
 	this.TplName = "announcement_management.tpl"
 }
 
 func (this *AdminOfficeController) GetAnnouncement() {
-
+	if this.GetSession("islogin") != 1 {
+		fmt.Println("未登录")
+		this.Redirect("/v1/login", 302)
+	}
 	this.TplName = "announcement_management.tpl"
 }
 
 func (this *AdminOfficeController) GetNews() {
-
+	if this.GetSession("islogin") != 1 {
+		fmt.Println("未登录")
+		this.Redirect("/v1/login", 302)
+	}
 	this.TplName = "news_management.tpl"
 }
 
 func (this *AdminOfficeController) AddAnnouncement() {
-
 	this.TplName = "add_announcement.tpl"
 }
 

@@ -17,6 +17,17 @@ func (this *LoginController) Get() {
 
 	//this.StartNotificationTask()
 	//this.TplName = "index.tpl"
+	skey := this.GetString("session")
+	fmt.Println("skey", skey)
+	if skey != "" {
+		fmt.Println("单点登录")
+		n := this.SessionLogin(skey)
+		fmt.Println("n:", n)
+		if n == 1 {
+			fmt.Println("进入首页")
+			this.Redirect("/v1/main", 302)
+		}
+	}
 	this.TplName = "login.tpl"
 }
 
@@ -46,9 +57,13 @@ func (this *LoginController) LoginAction() {
 		err := req.ToJSON(&login_info)
 		if err != nil {
 			fmt.Println(err)
+			this.ajaxMsg("err to json", MSG_ERR)
 		}
 		fmt.Println(login_info.ReadName)
+		//存session
+		this.SetSession("islogin", 1)
 		this.ajaxMsg("登录成功", MSG_OK)
+
 	} else {
 		fmt.Println("账户密码错误")
 		this.ajaxMsg("账户密码错误", MSG_ERR)

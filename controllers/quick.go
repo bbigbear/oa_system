@@ -15,7 +15,10 @@ type QuickController struct {
 }
 
 func (this *QuickController) GetQuickEnter() {
-
+	if this.GetSession("islogin") != 1 {
+		fmt.Println("未登录")
+		this.Redirect("/v1/login", 302)
+	}
 	o := orm.NewOrm()
 	var maps orm.ParamsList
 	menu := new(models.Menu)

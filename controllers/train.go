@@ -17,11 +17,19 @@ type TrainController struct {
 }
 
 func (this *TrainController) Get() {
-
+	if this.GetSession("islogin") != 1 {
+		fmt.Println("未登录")
+		this.Redirect("/v1/login", 302)
+	}
 	this.TplName = "train_plan.tpl"
 }
 
 func (this *TrainController) AddTrainPlan() {
+
+	if this.GetSession("islogin") != 1 {
+		fmt.Println("未登录")
+		this.Redirect("/v1/login", 302)
+	}
 	this.TplName = "add_train_plan.tpl"
 }
 
@@ -122,7 +130,10 @@ func (this *TrainController) GetTrainPlanData() {
 }
 
 func (this *TrainController) EditTrainPlan() {
-
+	if this.GetSession("islogin") != 1 {
+		fmt.Println("未登录")
+		this.Redirect("/v1/login", 302)
+	}
 	o := orm.NewOrm()
 	var maps []orm.Params
 	train := new(models.Train)
@@ -222,6 +233,9 @@ func (this *TrainController) DelTrainPlan() {
 }
 
 func (this *TrainController) GetTrainApproval() {
-
+	if this.GetSession("islogin") != 1 {
+		fmt.Println("未登录")
+		this.Redirect("/v1/login", 302)
+	}
 	this.TplName = "train_approval.tpl"
 }
