@@ -378,6 +378,8 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 			console.log(data)
 			if(trainChannel=="请选择"||trainForm=="请选择"){
 				alert("请选择培训通道或者培训形式")
+			}else if($("#date1").val()==""||$("#date2").val()==""){
+				alert("时间不能为空")
 			}else{
 				//发布
 				$.ajax({

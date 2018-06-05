@@ -177,11 +177,11 @@ func (this *BaseController) SessionLogin(skey string) int {
 		Value: v[1],
 	}
 	reqParm.SetCookie(cookie)
-	//	str, err := reqParm.String()
-	//	if err != nil {
-	//		fmt.Println("err", err.Error())
-	//	}
-	//	fmt.Println(str)
+	str, err := reqParm.String()
+	if err != nil {
+		fmt.Println("err", err.Error())
+	}
+	fmt.Println("str", str)
 	var login_info models.Login
 	err2 := reqParm.ToJSON(&login_info)
 	if err2 != nil {

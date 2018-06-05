@@ -413,6 +413,8 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 		console.log(data)
 		if (style=="选择公告类型"){
 			alert("请选择公告类型")
+		}else if($("#date1").val()==""||$("#date2").val()==""){
+				alert("时间不能为空")
 		}else{
 			//发布
 			$.ajax({

@@ -49,6 +49,7 @@
 		  var demo2 = $('.demo').doublebox({
           nonSelectedListLabel: '备选菜单项',
           selectedListLabel: '菜单快捷组项目',
+		  filterPlaceHolder:'搜索',
           preserveSelectionOnMove: 'moved',
           moveOnSelect: false,
           nonSelectedList:[

@@ -130,8 +130,11 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 			'startTime':$("#date1").val(),
 			'StopTime':$("#date2").val()
 			};
-			console.log(data)			
-				//发布
+			console.log(data)
+		if($("#date1").val()==""||$("#date2").val()==""){
+			alert("时间不能为空")
+		}else{
+		//发布
 				$.ajax({
 					type:"POST",
 					contentType:"application/json;charset=utf-8",
@@ -149,8 +152,8 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 							alert("保存失败")
 						}						
 					}
-			  	});	
-									
+			  	});		
+		}															
 	}
 	
 	//保存

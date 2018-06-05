@@ -271,7 +271,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 			status="生效"
 		}else if(status=="存为草稿"){
 			status="草稿"
-		}		
+		}
 		var data={
 			'auth':"admin",
 			'style':$("#style").val(),
@@ -293,6 +293,8 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 			alert("请选择公告类型")
 		}else if(s==undefined){
 			alert("请公告状态")
+		}else if($("#date1").val()==""||$("#date2").val()==""){
+			alert("时间不能为空")
 		}else{
 			//发布
 			$.ajax({

@@ -205,6 +205,8 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 			console.log(data)
 			if(checkIndexs=="请选择"){
 				alert("请选择考核指标集")
+			}else if($("#date1").val()==""||$("#date2").val()==""){
+				alert("时间不能为空")
 			}else{
 				//发布
 				$.ajax({

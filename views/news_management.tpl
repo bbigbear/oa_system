@@ -107,7 +107,7 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table','laytp
 	    elem: '#list'
 	    ,height: 315
 	    ,url: '/v1/office/news/getdata'//数据接口
-	    ,page: true //开启分页
+	    //,page: true //开启分页
 		,id: 'listReload'
 	    ,cols: [[ //表头
 		  {type:'checkbox', fixed: 'left'}		  
