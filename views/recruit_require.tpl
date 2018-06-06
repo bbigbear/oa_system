@@ -86,6 +86,7 @@ body{padding: 10px;}
 		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 	</script>
 
+<script src="/static/js/jquery.cookie.js"></script>
 <script src="/static/layui.js"></script>
 <!-- <script src="../build/lay/dest/layui.all.js"></script> -->
 
@@ -99,7 +100,13 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table'], func
   ,element=layui.element
   ,table=layui.table;
 
-	
+	//自动加载
+	$(function(){
+		//获取缓存
+		if($.cookie('userCookie')!=1){
+			$(window).attr('location','/');
+		}		
+	});
 	
 	laydate.render({
 	    elem: '#date'

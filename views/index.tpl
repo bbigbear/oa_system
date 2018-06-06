@@ -44,7 +44,7 @@
           <dd><a href="">安全设置</a></dd>
         </dl>
       </li>
-      <li class="layui-nav-item"><a href="">退出</a></li>
+      <li class="layui-nav-item"><a id="logout">退出</a></li>
     </ul>
   </div>
   
@@ -152,7 +152,9 @@
 	ul li span {display:block; text-align: center; }
 </style>
 
+
 <script src="/static/layui.js"></script>
+<script src="/static/js/jquery.cookie.js"></script>
 <!--<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>-->
 
 <script>
@@ -166,6 +168,11 @@
 	  //layer.msg("你好");
 	//自动加载
 	$(function(){
+		//获取缓存
+		if($.cookie('userCookie')!=1){
+			$(window).attr('location','/');
+		}
+		console.log($.cookie('userCookie'))
 		$( "#sortable" ).sortable();
 	    $( "#sortable" ).disableSelection();			
 	});
@@ -244,7 +251,12 @@
 		return false;
 		
 	  });
-	
+	//退出
+	$('#logout').on('click',function(){
+		//alert("点击退出")
+		$.cookie('userCookie', null,{expires: -1,path: '/'}); 
+		$(window).attr('location','/');
+	})
 			
   });
 

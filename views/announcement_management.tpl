@@ -12,7 +12,6 @@
 
   <link rel="stylesheet" href="/static/css/layui.css">
 
-
 <style>
 body{padding: 10px;}
 </style>
@@ -79,8 +78,8 @@ body{padding: 10px;}
 			<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="stop">终止</a>
 		{{#  } }}
 	</script>
-
 <script src="/static/layui.js"></script>
+<script src="/static/js/jquery.cookie.js"></script>
 <!-- <script src="../build/lay/dest/layui.all.js"></script> -->
 
 <script>
@@ -93,7 +92,13 @@ layui.use(['form','laydate','upload','jquery','layedit','element','table','laytp
   ,element=layui.element
   ,table=layui.table
   ,laytpl = layui.laytpl;
-
+	//自动加载
+	$(function(){
+		//获取缓存
+		if($.cookie('userCookie')!=1){
+			$(window).attr('location','/');
+		}		
+	});
 	
 	
 	laydate.render({

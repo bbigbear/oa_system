@@ -49,6 +49,7 @@ body{padding: 10px;}
 
 
 <script src="/static/layui.js"></script>
+<script src="/static/js/jquery.cookie.js"></script>
 <!-- <script src="../build/lay/dest/layui.all.js"></script> -->
 
 <script>
@@ -63,7 +64,11 @@ layui.use(['form','laydate','upload','jquery','layedit','element'], function(){
 	//自动加载
 	var id
 	$(function(){
-		//获取
+		//获取缓存
+		if($.cookie('userCookie')!=1){
+			$(window).attr('location','/');
+		}
+		//获取		
 		var tr
 		<<<range .maps>>>
 			tr = $(['<tr>'

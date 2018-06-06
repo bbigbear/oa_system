@@ -44,8 +44,13 @@
    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="../static/js/bootstrap.js"></script>
     <script type="text/javascript" src="../static/js/doublebox-bootstrap.js"></script>
+	<script type="text/javascript" src="../static/js/jquery.cookie.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
+			//获取缓存
+			if($.cookie('userCookie')!=1){
+				$(window).attr('location','/');
+			}
 		  var demo2 = $('.demo').doublebox({
           nonSelectedListLabel: '备选菜单项',
           selectedListLabel: '菜单快捷组项目',

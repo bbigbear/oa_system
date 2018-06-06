@@ -14,10 +14,6 @@ type MainController struct {
 }
 
 func (c *MainController) Get() {
-	if c.GetSession("islogin") != 1 {
-		fmt.Println("未登录")
-		c.Redirect("/v1/login", 302)
-	}
 	fmt.Println("进入首页")
 	o := orm.NewOrm()
 	var maps []orm.Params
@@ -45,10 +41,6 @@ func (c *MainController) Get() {
 }
 
 func (c *MainController) GetMessageCenter() {
-	if c.GetSession("islogin") != 1 {
-		fmt.Println("未登录")
-		c.Redirect("/v1/login", 302)
-	}
 	o := orm.NewOrm()
 	var maps []orm.Params
 	announce := new(models.Announcement)
@@ -73,19 +65,10 @@ func (c *MainController) GetMessageCenter() {
 }
 
 func (c *MainController) GetQuickEnter() {
-	if c.GetSession("islogin") != 1 {
-		fmt.Println("未登录")
-		c.Redirect("/v1/login", 302)
-	}
 	c.TplName = "select_quick_enter.tpl"
 }
 
 func (c *MainController) GetMessageDetail() {
-	if c.GetSession("islogin") != 1 {
-		fmt.Println("未登录")
-		c.Redirect("/v1/login", 302)
-	}
-
 	//获取id
 	id, err := c.GetInt("id")
 	if err != nil {

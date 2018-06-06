@@ -20,6 +20,7 @@
 	      	</form>
 		</div>
 		<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="/static/js/jquery.cookie.js"></script>
 		<script>
 			$('#login').on('click',function(){	
 				$.ajax({
@@ -36,6 +37,9 @@
 					success:function(res){
 						if(res.code==200){
 							//alert("登录成功")
+							//设置缓存
+							//setCookie("userCookie",1)
+							$.cookie('userCookie', 1, { expires: 0.5 ,path: '/'});
 							window.location.href="/v1/main"																			
 						}else{
 							alert("账户密码错误")
