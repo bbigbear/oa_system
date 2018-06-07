@@ -13,6 +13,7 @@ func init() {
 	beego.Router("/v1/login", &controllers.LoginController{})
 	//beego.Router("/v1/login_s", &controllers.LoginController{}, "*:SessionLogin")
 	beego.Router("/v1/login_action", &controllers.LoginController{}, "post:LoginAction")
+	beego.Router("/v1/logout", &controllers.LoginController{}, "*:Logout")
 	beego.Router("/v1/put_file", &controllers.BaseController{}, "*:PutFile")
 	beego.Router("/v1/message_center", &controllers.MainController{}, "*:GetMessageCenter")
 	beego.Router("/v1/quick_enter", &controllers.QuickController{}, "*:GetQuickEnter")
